@@ -738,7 +738,7 @@ const brands = [
 function chip(b) {
   const d = document.createElement('div');
   d.className = 'brand-chip';
-  d.innerHTML = `<img src="https://logo.clearbit.com/${b.domain}" alt="${b.name}" onerror="this.style.display='none'"><span class="brand-name">${b.name}</span>`;
+  d.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${b.domain}&sz=128" alt="${b.name}" onerror="this.style.display='none'"><span class="brand-name">${b.name}</span>`;
   return d;
 }
 function fill(id, r) {

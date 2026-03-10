@@ -806,7 +806,7 @@ function createBrandChip(brand) {
   const chip = document.createElement('div');
   chip.className = 'brand-chip';
   chip.innerHTML = `
-    <img src="https://logo.clearbit.com/${brand.domain}" alt="${brand.name}" onerror="this.style.display='none'">
+    <img src="https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128" alt="${brand.name}" onerror="this.style.display='none'">
     <span class="brand-name">${brand.name}</span>
   `;
   return chip;
