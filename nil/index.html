@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TapNPay+ NIL | Earn NIL Revenue Everyday</title>
+<meta name="description" content="TapNPay+ makes NIL simple for college athletes. Get paid every day just by sharing the app with your network. No selling, just effortless earnings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #1A0A3E;
+    --purple-core: #4A1D96;
+    --purple-mid: #6D28D9;
+    --purple-bright: #8B5CF6;
+    --purple-glow: #A78BFA;
+    --purple-soft: #C4B5FD;
+    --green-neon: #00E676;
+    --green-bright: #34D399;
+    --green-accent: #4ADE80;
+    --green-dark: #16A34A;
+    --gold: #FBBF24;
+    --white: #FFFFFF;
+    --dark: #0A0518;
+    --dark-card: #120B2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 40px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10, 5, 24, 0.7);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+    transition: all 0.4s;
+  }
+  .navbar.scrolled {
+    background: rgba(10, 5, 24, 0.95);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  }
+  .nav-left { display: flex; align-items: center; gap: 12px; }
+  .navbar-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px; letter-spacing: 2px; color: var(--white);
+  }
+  .navbar-logo span { color: var(--green-neon); }
+  .nav-nil-badge {
+    font-size: 10px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--purple-bright);
+    background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.2);
+    padding: 4px 10px; border-radius: 4px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .navbar-cta {
+    background: linear-gradient(135deg, var(--green-neon), var(--green-dark));
+    color: var(--dark); font-weight: 700; font-size: 13px;
+    padding: 10px 26px; border-radius: 50px; border: none; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s;
+    text-decoration: none;
+  }
+  .navbar-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 230, 118, 0.3); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 24px 60px;
+    position: relative; overflow: hidden;
+  }
+
+  /* Animated gradient mesh background */
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(74, 29, 150, 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 30%, rgba(109, 40, 217, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 50% at 50% 80%, rgba(0, 230, 118, 0.08) 0%, transparent 50%);
+    animation: mesh-drift 12s ease-in-out infinite alternate;
+  }
+  @keyframes mesh-drift {
+    0% { filter: hue-rotate(0deg); transform: scale(1); }
+    100% { filter: hue-rotate(10deg); transform: scale(1.05); }
+  }
+
+  /* Floating particles */
+  .particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .particle {
+    position: absolute; border-radius: 50%;
+    animation: float-particle linear infinite;
+    opacity: 0;
+  }
+  @keyframes float-particle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  /* Grid overlay */
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1;
+    background-image:
+      linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 50% at 50% 45%, black, transparent);
+  }
+
+  .hero-content { position: relative; z-index: 10; max-width: 900px; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 22px; border-radius: 50px;
+    background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2);
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--purple-glow); margin-bottom: 32px;
+    animation: fade-in-up 0.8s ease-out;
+  }
+  .live-dot {
+    width: 8px; height: 8px; background: var(--green-neon);
+    border-radius: 50%; animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6); }
+    50% { box-shadow: 0 0 0 6px rgba(0, 230, 118, 0); }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 11vw, 130px);
+    line-height: 0.92; letter-spacing: -2px; margin-bottom: 6px;
+    animation: fade-in-up 0.8s ease-out 0.12s both;
+  }
+  .hero h1 .green {
+    color: var(--green-neon);
+    text-shadow: 0 0 60px rgba(0, 230, 118, 0.25);
+  }
+  .hero h1 .outline {
+    -webkit-text-stroke: 2px rgba(255,255,255,0.2);
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: clamp(17px, 2.5vw, 22px); font-weight: 300;
+    color: rgba(255,255,255,0.6); margin-bottom: 36px;
+    max-width: 580px; margin-left: auto; margin-right: auto;
+    animation: fade-in-up 0.8s ease-out 0.25s both;
+  }
+  .hero-sub strong { color: var(--green-neon); font-weight: 600; }
+
+  .hero-pills {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 44px; animation: fade-in-up 0.8s ease-out 0.35s both;
+  }
+  .pill {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 18px; border-radius: 50px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75);
+  }
+  .pill svg { width: 16px; height: 16px; color: var(--green-neon); flex-shrink: 0; }
+
+  .hero-cta-group {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fade-in-up 0.8s ease-out 0.5s both;
+  }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 18px 44px; border-radius: 60px;
+    background: linear-gradient(135deg, var(--green-neon), #00C853);
+    color: var(--dark); font-weight: 800; font-size: 16px;
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+    transition: all 0.4s; position: relative; overflow: hidden;
+  }
+  .cta-primary::after {
+    content: ''; position: absolute; inset: 0; border-radius: 60px;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2));
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0, 230, 118, 0.35); }
+  .cta-primary:hover::after { opacity: 1; }
+  .cta-primary svg { width: 20px; height: 20px; }
+
+  .cta-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 18px 36px; border-radius: 60px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white); font-weight: 600; font-size: 14px;
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s;
+  }
+  .cta-secondary:hover { border-color: var(--purple-bright); background: rgba(139, 92, 246, 0.08); }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SOCIAL PROOF BAR ===== */
+  .proof-bar {
+    padding: 20px 24px; text-align: center;
+    border-top: 1px solid rgba(139, 92, 246, 0.06);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.06);
+    background: rgba(18, 11, 46, 0.5);
+  }
+  .proof-bar p {
+    font-size: 13px; color: rgba(255,255,255,0.35);
+    text-transform: uppercase; letter-spacing: 3px; font-weight: 600;
+  }
+
+  /* ===== SECTION UTILITIES ===== */
+  .section-pad { padding: 100px 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label {
+    font-size: 12px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 5px; color: var(--purple-glow); margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 66px); line-height: 0.95;
+  }
+  .section-subtitle {
+    font-size: 16px; color: rgba(255,255,255,0.45);
+    max-width: 540px; margin: 16px auto 0; line-height: 1.6;
+  }
+
+  .container { max-width: 1140px; margin: 0 auto; }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .how-card {
+    position: relative; padding: 44px 30px 36px;
+    background: linear-gradient(160deg, rgba(26, 10, 62, 0.6), rgba(18, 11, 46, 0.4));
+    border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 24px;
+    text-align: center; overflow: hidden; transition: all 0.5s;
+  }
+  .how-card:hover {
+    border-color: rgba(0, 230, 118, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0, 230, 118, 0.06);
+  }
+  .how-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--purple-bright), transparent);
+    opacity: 0; transition: opacity 0.5s;
+  }
+  .how-card:hover::before { opacity: 1; }
+
+  .how-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.2), transparent);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .how-icon {
+    width: 56px; height: 56px; margin: 0 auto 16px;
+    background: linear-gradient(135deg, var(--purple-mid), var(--purple-bright));
+    border-radius: 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .how-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .how-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+
+  /* ===== STATS COUNTER ===== */
+  .stats-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid rgba(139, 92, 246, 0.08);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+    background: rgba(18, 11, 46, 0.3);
+  }
+  .stat-cell {
+    text-align: center; padding: 44px 20px;
+    border-right: 1px solid rgba(139, 92, 246, 0.06);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
+    color: var(--green-neon); line-height: 1;
+  }
+  .stat-number .suffix { font-size: 36px; color: var(--purple-glow); }
+  .stat-desc {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: rgba(255,255,255,0.35); margin-top: 6px; font-weight: 600;
+  }
+
+  /* ===== WHY SECTION ===== */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .why-card {
+    padding: 36px 32px; border-radius: 20px;
+    background: rgba(18, 11, 46, 0.35);
+    border: 1px solid rgba(139, 92, 246, 0.08);
+    transition: all 0.4s; position: relative; overflow: hidden;
+  }
+  .why-card::after {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0, 230, 118, 0.04), transparent);
+    pointer-events: none;
+  }
+  .why-card:hover {
+    border-color: rgba(139, 92, 246, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+  }
+  .why-icon-wrap {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--green-neon), var(--green-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 18px;
+  }
+  .why-card:nth-child(2) .why-icon-wrap { background: linear-gradient(135deg, var(--purple-mid), var(--purple-bright)); }
+  .why-card:nth-child(3) .why-icon-wrap { background: linear-gradient(135deg, var(--gold), #F59E0B); }
+  .why-card:nth-child(4) .why-icon-wrap { background: linear-gradient(135deg, #06B6D4, #0891B2); }
+  .why-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+
+  /* ===== BRAND LOGOS ===== */
+  .brands-section {
+    padding: 80px 24px; overflow: hidden; position: relative;
+  }
+  .brands-section .section-header { margin-bottom: 48px; }
+
+  .logo-marquee-wrap {
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    margin-bottom: 16px;
+  }
+  .logo-marquee {
+    display: flex; gap: 24px;
+    animation: marquee 40s linear infinite;
+    width: max-content;
+  }
+  .logo-marquee.reverse { animation-direction: reverse; }
+  .logo-marquee.slow { animation-duration: 50s; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .brand-chip {
+    flex-shrink: 0; display: flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 12px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s; min-width: fit-content;
+  }
+  .brand-chip:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+  .brand-chip img {
+    width: 28px; height: 28px; border-radius: 6px;
+    object-fit: contain; background: white; padding: 2px;
+  }
+  .brand-chip .brand-name {
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+  }
+
+  .brands-count {
+    text-align: center; margin-top: 32px;
+    font-size: 14px; color: rgba(255,255,255,0.3);
+  }
+  .brands-count strong { color: var(--green-neon); }
+
+  /* ===== FAQ ===== */
+  .faq-section { max-width: 720px; margin: 0 auto; }
+
+  .faq-item {
+    border: 1px solid rgba(139, 92, 246, 0.08);
+    border-radius: 14px; margin-bottom: 10px;
+    overflow: hidden; transition: all 0.3s;
+    background: rgba(18, 11, 46, 0.2);
+  }
+  .faq-item:hover { border-color: rgba(139, 92, 246, 0.18); }
+
+  .faq-q {
+    padding: 20px 24px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    font-weight: 600; font-size: 16px;
+  }
+  .faq-q .faq-label {
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    color: var(--green-neon); margin-right: 12px;
+  }
+  .faq-toggle {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--purple-glow); font-size: 18px; flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: rgba(0, 230, 118, 0.1); color: var(--green-neon); }
+
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: all 0.4s ease;
+    padding: 0 24px;
+  }
+  .faq-item.open .faq-a {
+    max-height: 200px; padding: 0 24px 20px;
+  }
+  .faq-a p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    padding: 120px 24px; text-align: center; position: relative;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 60%, rgba(74, 29, 150, 0.25), transparent),
+      radial-gradient(ellipse 40% 30% at 30% 40%, rgba(0, 230, 118, 0.06), transparent);
+    pointer-events: none;
+  }
+  .cta-content { position: relative; z-index: 2; max-width: 660px; margin: 0 auto; }
+  .cta-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 68px); line-height: 0.95; margin-bottom: 14px;
+  }
+  .cta-content .green { color: var(--green-neon); }
+  .cta-content .sub {
+    font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 44px;
+  }
+
+  .ghl-embed {
+    background: rgba(18, 11, 46, 0.5);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-radius: 20px; padding: 56px 36px;
+  }
+  .ghl-embed .embed-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--purple-glow); margin-bottom: 8px;
+  }
+  .ghl-embed p { font-size: 14px; color: rgba(255,255,255,0.3); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 48px 24px; border-top: 1px solid rgba(139, 92, 246, 0.06);
+    background: rgba(10, 5, 24, 0.8);
+  }
+  .footer-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-left .f-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 2px; margin-bottom: 4px;
+  }
+  .footer-left .f-logo span { color: var(--green-neon); }
+  .footer-left p { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 12px; color: rgba(255,255,255,0.3);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--green-neon); }
+  .footer-social { display: flex; gap: 12px; }
+  .social-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); font-size: 16px; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .social-icon:hover { background: rgba(139, 92, 246, 0.15); color: var(--purple-glow); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .navbar { padding: 0 20px; }
+    .nav-links { display: none; }
+    .how-cards { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .stat-cell { border-bottom: 1px solid rgba(139, 92, 246, 0.06); }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-left">
+    <div class="navbar-logo">TAPNPAY<span>+</span></div>
+    <div class="nav-nil-badge">NIL Hub</div>
+  </div>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#why">Benefits</a>
+    <a href="#brands">Partners</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#signup" class="navbar-cta">Start Earning</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="live-dot"></span> Open to All College Athletes</div>
+    <h1>EARN NIL<br>REVENUE <span class="green">EVERYDAY</span></h1>
+    <p class="hero-sub">TapNPay+ makes NIL simple. Get paid <strong>every single day</strong> just by sharing the app. No contracts, no selling.</p>
+    <div class="hero-pills">
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Simple Setup
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Daily Earnings
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        300+ Brands
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        70% Upfront
+      </div>
+    </div>
+    <div class="hero-cta-group">
+      <a href="#signup" class="cta-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Start Your NIL Journey, Today.
+      </a>
+      <a href="#how" class="cta-secondary">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-bar">
+  <p>Trusted by College Athletes Nationwide &nbsp;&bull;&nbsp; Pittsburgh, PA &nbsp;&bull;&nbsp; 300+ Brand Partners</p>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section-pad" id="how">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">YOUR NAME. YOUR BRAND.<br>YOUR EARNINGS.</h2>
+      <p class="section-subtitle">Three simple steps to start earning NIL revenue every single day.</p>
+    </div>
+    <div class="how-cards">
+      <div class="how-card reveal reveal-delay-1">
+        <div class="how-num">01</div>
+        <div class="how-icon">📱</div>
+        <h3>Sign Up</h3>
+        <p>Create your TapNPay+ profile in minutes. It's quick, easy, and completely free for college athletes over 18.</p>
+      </div>
+      <div class="how-card reveal reveal-delay-2">
+        <div class="how-num">02</div>
+        <div class="how-icon">🔗</div>
+        <h3>Share Your Link</h3>
+        <p>Send your unique TapNPay+ link to friends, family, and fans. Earn up-front support from your network.</p>
+      </div>
+      <div class="how-card reveal reveal-delay-3">
+        <div class="how-num">03</div>
+        <div class="how-icon">💰</div>
+        <h3>Earn Daily</h3>
+        <p>Every time your supporters shop at 300+ national brand partners, you earn real money. Every. Single. Day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-cell reveal">
+    <div class="stat-number"><span class="counter" data-target="300">0</span><span class="suffix">+</span></div>
+    <div class="stat-desc">Brand Partners</div>
+  </div>
+  <div class="stat-cell reveal reveal-delay-1">
+    <div class="stat-number"><span class="counter" data-target="70">0</span><span class="suffix">%</span></div>
+    <div class="stat-desc">Upfront Support</div>
+  </div>
+  <div class="stat-cell reveal reveal-delay-2">
+    <div class="stat-number">24<span class="suffix">/7</span></div>
+    <div class="stat-desc">Earning Potential</div>
+  </div>
+  <div class="stat-cell reveal reveal-delay-3">
+    <div class="stat-number">$<span class="counter" data-target="0">0</span></div>
+    <div class="stat-desc">Cost to Join</div>
+  </div>
+</div>
+
+<!-- WHY TAPNPAY+ -->
+<section class="section-pad" id="why">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Why TapNPay+</div>
+      <h2 class="section-title">BUILT FOR ATHLETES<br>WHO MEAN BUSINESS</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon-wrap">💵</div>
+        <h3>Earn Up-Front Support</h3>
+        <p>Most NIL platforms take a big cut. TapNPay+ athletes earn 70% of the up-front support selected by your followers, giving you more control over your NIL income and making sure your efforts pay off.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon-wrap">📈</div>
+        <h3>Daily NIL Earnings</h3>
+        <p>Most NIL deals make you wait weeks or months to see funds. With TapNPay+, you earn every single day on each in-store or online purchase by your supporters at our 300+ national brand partners.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon-wrap">♾️</div>
+        <h3>Unlimited Income</h3>
+        <p>No sponsorship contracts, no endless content creation, no selling products. Share your link and let everyday shopping turn into real earnings. Set it up once and keep earning with no extra effort. Plus, monthly NIL revenue share opportunities.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon-wrap">🏆</div>
+        <h3>Build Your Brand</h3>
+        <p>Your biggest supporters want to see you succeed. Every time they shop, a portion goes directly to you — so your community supports your journey while building your brand with 300+ partners. A true win-win.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND LOGOS -->
+<section class="brands-section" id="brands">
+  <div class="section-header reveal">
+    <div class="section-label">Partner Network</div>
+    <h2 class="section-title">300+ BRANDS.<br>REAL LOGOS. REAL EARNINGS.</h2>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="logo-marquee-wrap">
+    <div class="logo-marquee" id="row1"></div>
+  </div>
+  <!-- Row 2 -->
+  <div class="logo-marquee-wrap">
+    <div class="logo-marquee reverse" id="row2"></div>
+  </div>
+  <!-- Row 3 -->
+  <div class="logo-marquee-wrap">
+    <div class="logo-marquee slow" id="row3"></div>
+  </div>
+
+  <p class="brands-count reveal">And <strong>hundreds more</strong> national retailers — in-store and online.</p>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq">
+  <div class="faq-section">
+    <div class="section-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">GOT QUESTIONS?</h2>
+    </div>
+    <div class="faq-item open reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> How do I get paid?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>TapNPay+ will direct deposit your earnings biweekly into your chosen ACH deposit account.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> Do I have to sell anything?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>No! Just share your unique TapNPay+ link, and when people shop, you earn. It's that simple.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> Who can sign up?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>Any active college athlete over 18 years of age and a United States citizen.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-delay-3">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> How much can I earn?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>There's no limit! The more your network shops, the more you earn. Your earning potential is truly unlimited.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="cta-section" id="signup">
+  <div class="cta-content reveal">
+    <h2>TAKE CONTROL<br>OF YOUR NIL.<br><span class="green">START EARNING TODAY.</span></h2>
+    <p class="sub">No contracts. No hassle. Just daily earnings.</p>
+    <div class="ghl-embed">
+      <div class="embed-label">GoHighLevel Form</div>
+      <p>Form embed code goes here — includes terms & conditions with timestamp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="f-logo">TAPNPAY<span>+</span></div>
+      <p>400 Holiday Dr. Suite 210, Pittsburgh, PA 15241</p>
+      <p>(800) 793-1276 &nbsp;|&nbsp; &copy; 2026 TapNPay+</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.tapnpayplus.com/terms-of-use">Terms</a>
+      <a href="https://www.tapnpayplus.com/privacy-policy">Privacy</a>
+      <a href="https://www.tapnpayplus.com">Main Site</a>
+      <a href="https://www.tapnpayplus.com/contact-us">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/tapnpayplus/" class="social-icon" aria-label="Instagram">IG</a>
+      <a href="https://www.facebook.com/Tapnpay-100634918043539/" class="social-icon" aria-label="Facebook">FB</a>
+      <a href="https://www.linkedin.com/company/tapnpayplus/" class="social-icon" aria-label="LinkedIn">LI</a>
+      <a href="https://www.twitter.com/TapNPayPlus" class="social-icon" aria-label="Twitter">X</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== BRAND DATA WITH LOGO URLS =====
+const brands = [
+  // Row 1 - Major retail
+  { row: 1, name: 'Nike', domain: 'nike.com' },
+  { row: 1, name: 'Adidas', domain: 'adidas.com' },
+  { row: 1, name: 'Amazon', domain: 'amazon.com' },
+  { row: 1, name: 'Apple', domain: 'apple.com' },
+  { row: 1, name: 'Target', domain: 'target.com' },
+  { row: 1, name: 'Walmart', domain: 'walmart.com' },
+  { row: 1, name: 'Best Buy', domain: 'bestbuy.com' },
+  { row: 1, name: 'Starbucks', domain: 'starbucks.com' },
+  { row: 1, name: 'Home Depot', domain: 'homedepot.com' },
+  { row: 1, name: "Macy's", domain: 'macys.com' },
+  { row: 1, name: 'Under Armour', domain: 'underarmour.com' },
+  { row: 1, name: 'Nordstrom', domain: 'nordstrom.com' },
+  { row: 1, name: 'Sephora', domain: 'sephora.com' },
+  { row: 1, name: "Lowe's", domain: 'lowes.com' },
+  { row: 1, name: 'Old Navy', domain: 'oldnavy.com' },
+  { row: 1, name: 'Gap', domain: 'gap.com' },
+  // Row 2 - Food, delivery, lifestyle
+  { row: 2, name: 'DoorDash', domain: 'doordash.com' },
+  { row: 2, name: 'Uber Eats', domain: 'ubereats.com' },
+  { row: 2, name: "Kohl's", domain: 'kohls.com' },
+  { row: 2, name: 'Foot Locker', domain: 'footlocker.com' },
+  { row: 2, name: 'Puma', domain: 'puma.com' },
+  { row: 2, name: "Dick's Sporting", domain: 'dickssportinggoods.com' },
+  { row: 2, name: 'GameStop', domain: 'gamestop.com' },
+  { row: 2, name: 'Petco', domain: 'petco.com' },
+  { row: 2, name: 'Costco', domain: 'costco.com' },
+  { row: 2, name: 'Sam\'s Club', domain: 'samsclub.com' },
+  { row: 2, name: 'Walgreens', domain: 'walgreens.com' },
+  { row: 2, name: 'CVS', domain: 'cvs.com' },
+  { row: 2, name: 'Reebok', domain: 'reebok.com' },
+  { row: 2, name: 'New Balance', domain: 'newbalance.com' },
+  { row: 2, name: 'ASICS', domain: 'asics.com' },
+  { row: 2, name: 'Fanatics', domain: 'fanatics.com' },
+  // Row 3 - More brands
+  { row: 3, name: 'JCPenney', domain: 'jcpenney.com' },
+  { row: 3, name: 'T.J. Maxx', domain: 'tjmaxx.com' },
+  { row: 3, name: 'Marshalls', domain: 'marshalls.com' },
+  { row: 3, name: 'Bed Bath', domain: 'bedbathandbeyond.com' },
+  { row: 3, name: 'REI', domain: 'rei.com' },
+  { row: 3, name: 'Academy Sports', domain: 'academy.com' },
+  { row: 3, name: 'Finish Line', domain: 'finishline.com' },
+  { row: 3, name: 'Champs', domain: 'champssports.com' },
+  { row: 3, name: 'Converse', domain: 'converse.com' },
+  { row: 3, name: 'Crocs', domain: 'crocs.com' },
+  { row: 3, name: 'Lululemon', domain: 'lululemon.com' },
+  { row: 3, name: 'Brooks', domain: 'brooksrunning.com' },
+  { row: 3, name: 'Instacart', domain: 'instacart.com' },
+  { row: 3, name: 'Grubhub', domain: 'grubhub.com' },
+  { row: 3, name: 'Chipotle', domain: 'chipotle.com' },
+  { row: 3, name: "Wendy's", domain: 'wendys.com' },
+];
+
+function createBrandChip(brand) {
+  const chip = document.createElement('div');
+  chip.className = 'brand-chip';
+  chip.innerHTML = `
+    <img src="https://logo.clearbit.com/${brand.domain}" alt="${brand.name}" onerror="this.style.display='none'">
+    <span class="brand-name">${brand.name}</span>
+  `;
+  return chip;
+}
+
+function populateRow(rowId, rowNum) {
+  const track = document.getElementById(rowId);
+  const rowBrands = brands.filter(b => b.row === rowNum);
+  // Double it for seamless loop
+  [...rowBrands, ...rowBrands].forEach(b => track.appendChild(createBrandChip(b)));
+}
+
+populateRow('row1', 1);
+populateRow('row2', 2);
+populateRow('row3', 3);
+
+// ===== NAVBAR SCROLL =====
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ===== FAQ TOGGLE =====
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+
+// ===== SCROLL REVEAL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===== ANIMATED COUNTER =====
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      if (target === 0) { el.textContent = '0'; return; }
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current;
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// ===== PARTICLES =====
+(function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 4 + 2;
+    const isGreen = Math.random() > 0.5;
+    Object.assign(p.style, {
+      width: size + 'px', height: size + 'px',
+      left: Math.random() * 100 + '%',
+      background: isGreen ? 'rgba(0, 230, 118, 0.6)' : 'rgba(139, 92, 246, 0.5)',
+      animationDuration: (Math.random() * 10 + 8) + 's',
+      animationDelay: (Math.random() * 10) + 's',
+    });
+    container.appendChild(p);
+  }
+})();
+</script>
+
+</body>
+</html>
