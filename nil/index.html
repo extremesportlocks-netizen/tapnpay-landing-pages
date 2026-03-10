@@ -281,24 +281,43 @@
 
   /* ===== STATS COUNTER ===== */
   .stats-strip {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    border-top: 1px solid rgba(139, 92, 246, 0.08);
-    border-bottom: 1px solid rgba(139, 92, 246, 0.08);
-    background: rgba(18, 11, 46, 0.3);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    max-width: 1140px; margin: 0 auto;
+    padding: 60px 24px;
   }
   .stat-cell {
-    text-align: center; padding: 44px 20px;
-    border-right: 1px solid rgba(139, 92, 246, 0.06);
+    text-align: center; padding: 40px 20px;
+    background: rgba(18, 11, 46, 0.35);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    border-radius: 20px;
+    position: relative; overflow: hidden;
+    transition: all 0.4s;
   }
-  .stat-cell:last-child { border-right: none; }
+  .stat-cell::before {
+    content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.25), transparent);
+  }
+  .stat-cell:hover {
+    border-color: rgba(139, 92, 246, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(139, 92, 246, 0.08);
+  }
   .stat-number {
-    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
-    color: var(--green-neon); line-height: 1;
+    font-family: 'Bebas Neue', sans-serif; font-size: 68px;
+    background: linear-gradient(135deg, var(--purple-bright), var(--green-neon));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    line-height: 1;
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.2));
   }
-  .stat-number .suffix { font-size: 36px; color: var(--purple-glow); }
+  .stat-number .suffix {
+    font-size: 44px;
+    background: linear-gradient(135deg, var(--green-neon), var(--purple-glow));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
   .stat-desc {
-    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
-    color: rgba(255,255,255,0.35); margin-top: 6px; font-weight: 600;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 3px;
+    color: rgba(255,255,255,0.3); margin-top: 10px; font-weight: 700;
   }
 
   /* ===== WHY SECTION ===== */
@@ -563,8 +582,8 @@
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
     .how-cards { grid-template-columns: 1fr; }
-    .stats-strip { grid-template-columns: repeat(2, 1fr); }
-    .stat-cell { border-bottom: 1px solid rgba(139, 92, 246, 0.06); }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 40px 20px; }
+    .stat-cell { padding: 28px 16px; }
     .why-grid { grid-template-columns: 1fr; }
     .footer-inner { flex-direction: column; text-align: center; }
   }
