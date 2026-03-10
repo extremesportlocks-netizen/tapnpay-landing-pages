@@ -127,11 +127,18 @@
 
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 8px 24px; border-radius: 50px;
-    background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.15);
+    padding: 10px 28px; border-radius: 14px;
+    background: rgba(7, 31, 20, 0.35);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.12);
     font-size: 12px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 3px; color: var(--green-glow); margin-bottom: 32px;
     animation: fade-in-up 0.8s ease-out;
+    position: relative; overflow: hidden;
+  }
+  .hero-eyebrow::before {
+    content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
   }
   .shield { font-size: 16px; }
 
@@ -141,7 +148,11 @@
     line-height: 0.92; letter-spacing: -2px; margin-bottom: 10px;
     animation: fade-in-up 0.8s ease-out 0.12s both;
   }
-  .hero h1 .purple { color: var(--purple-bright); text-shadow: 0 0 50px rgba(124, 58, 237, 0.2); }
+  .hero h1 .purple {
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-soft));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 40px rgba(124, 58, 237, 0.25));
+  }
   .hero h1 .green { color: var(--green-mid); }
 
   .hero-sub {
@@ -154,20 +165,55 @@
   .hero-sub strong { color: var(--green-mid); font-weight: 600; }
 
   .hero-metrics {
-    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
     margin-bottom: 44px; animation: fade-in-up 0.8s ease-out 0.35s both;
   }
-  .metric { text-align: center; }
+  .metric {
+    text-align: center; padding: 28px 32px;
+    background: rgba(7, 31, 20, 0.35);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    border-radius: 20px; min-width: 150px;
+    position: relative; overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .metric::before {
+    content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.25), transparent);
+  }
+  .metric:nth-child(2)::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.25), transparent);
+  }
+  .metric:nth-child(3)::before {
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+  }
+  .metric:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.06);
+  }
   .metric-val {
-    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
     line-height: 1;
   }
-  .metric-val.green { color: var(--green-mid); }
-  .metric-val.purple { color: var(--purple-bright); }
-  .metric-val.gold { color: var(--gold); }
+  .metric-val.green {
+    background: linear-gradient(135deg, var(--green-mid), var(--green-glow));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.2));
+  }
+  .metric-val.purple {
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-soft));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(124, 58, 237, 0.2));
+  }
+  .metric-val.gold {
+    background: linear-gradient(135deg, var(--gold), #FDE68A);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.2));
+  }
   .metric-label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
-    color: rgba(255,255,255,0.35); margin-top: 4px; font-weight: 600;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+    color: rgba(255,255,255,0.3); margin-top: 8px; font-weight: 700;
   }
 
   .hero-cta-group {
@@ -647,7 +693,9 @@
     .nav-impact-badge { font-size: 8px; padding: 3px 7px; letter-spacing: 1.5px; }
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
-    .hero-metrics { gap: 28px; }
+    .hero-metrics { gap: 12px; }
+    .metric { min-width: 120px; padding: 20px 20px; }
+    .metric-val { font-size: 42px; }
     .timeline-grid { grid-template-columns: 1fr; gap: 24px; }
     .timeline-grid::before { display: none; }
     .benefit-grid { grid-template-columns: 1fr; }
