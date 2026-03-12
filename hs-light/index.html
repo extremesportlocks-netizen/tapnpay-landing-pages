@@ -23,7 +23,7 @@
     --gold: #FBBF24;
     --white: #FFFFFF;
     --dark: #F8FBF9; --true-dark: #0F1A14;
-    --dark-card: #071F14;
+    --dark-card: #F0FDF4;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,8 +47,8 @@
     transition: all 0.4s;
   }
   .navbar.scrolled {
-    background: rgba(2, 15, 9, 0.95);
-    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   }
   .nav-left { display: flex; align-items: center; gap: 12px; }
   .navbar-logo {
@@ -71,7 +71,7 @@
   .nav-links a:hover { color: #1A2E23; }
   .navbar-cta {
     background: linear-gradient(135deg, var(--purple-core), var(--purple-bright));
-    color: #1A2E23; font-weight: 700; font-size: 13px;
+    color: #FFFFFF; font-weight: 700; font-size: 13px;
     padding: 10px 26px; border-radius: 50px; border: none; cursor: pointer;
     text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s;
     text-decoration: none;
@@ -83,6 +83,7 @@
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     padding: 100px 24px 60px;
     position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 50%, #F5F3FF 80%, #ECFDF5 100%);
   }
 
   .hero-split {
@@ -172,7 +173,7 @@
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(16, 185, 129, 0.25);
     font-size: 12px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 3px; color: var(--green-core); margin-bottom: 32px;
+    letter-spacing: 3px; color: #047857; margin-bottom: 32px;
     animation: fade-in-up 0.8s ease-out;
     position: relative; overflow: hidden;
   }
@@ -264,7 +265,7 @@
     display: inline-flex; align-items: center; gap: 10px;
     padding: 18px 48px; border-radius: 60px;
     background: linear-gradient(135deg, var(--purple-core), #6D28D9);
-    color: #1A2E23; font-weight: 800; font-size: 16px;
+    color: #FFFFFF; font-weight: 800; font-size: 16px;
     text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
     transition: all 0.4s;
   }
@@ -274,7 +275,7 @@
   .cta-secondary {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 18px 36px; border-radius: 60px;
-    background: transparent; border: 1px solid rgba(255,255,255,0.12);
+    background: transparent; border: 1px solid rgba(26, 46, 35, 0.15);
     color: #1A2E23; font-weight: 600; font-size: 14px;
     text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
     transition: all 0.3s;
@@ -362,7 +363,7 @@
   }
   .tl-card:nth-child(1) .tl-dot {
     background: linear-gradient(135deg, var(--green-core), var(--green-mid));
-    box-shadow: 0 0 30px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 0 24px rgba(5, 150, 105, 0.2);
   }
   .tl-card:nth-child(2) .tl-dot {
     background: linear-gradient(135deg, var(--purple-core), var(--purple-bright));
@@ -506,11 +507,11 @@
   .brand-chip {
     flex-shrink: 0; display: flex; align-items: center; gap: 8px;
     padding: 10px 16px; border-radius: 10px;
-    background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.12);
     transition: all 0.3s;
   }
   .brand-chip:hover {
-    background: rgba(0,0,0,0.06);
+    background: rgba(16, 185, 129, 0.1);
     border-color: rgba(16, 185, 129, 0.15);
   }
   .brand-chip img {
@@ -667,7 +668,7 @@
     letter-spacing: 1.5px; color: rgba(26, 46, 35, 0.65);
   }
   .form-group input {
-    background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(16, 185, 129, 0.2);
     border-radius: 12px; padding: 14px 16px; color: #1A2E23;
     font-family: 'Outfit', sans-serif; font-size: 15px; outline: none;
     transition: all 0.3s;
@@ -698,7 +699,7 @@
   .form-submit {
     width: 100%; padding: 16px; border: none; border-radius: 14px;
     background: linear-gradient(135deg, var(--purple-core), #6D28D9);
-    color: #1A2E23; font-family: 'Bebas Neue', sans-serif;
+    color: #FFFFFF; font-family: 'Bebas Neue', sans-serif;
     font-size: 22px; letter-spacing: 2px; cursor: pointer;
     transition: all 0.4s;
   }
@@ -737,7 +738,7 @@
   .footer-social { display: flex; gap: 12px; }
   .social-icon {
     width: 36px; height: 36px; border-radius: 10px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.15);
     display: flex; align-items: center; justify-content: center;
     color: rgba(26, 46, 35, 0.5); font-size: 16px; text-decoration: none;
     transition: all 0.3s;
