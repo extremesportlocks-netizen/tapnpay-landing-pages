@@ -146,8 +146,8 @@
 
   /* ===== PROJECT CARDS ===== */
   .cards {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 24px; max-width: 820px; width: 100%; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; max-width: 1060px; width: 100%; padding: 0 24px;
     animation: fade-in-up 1s ease-out 0.7s both;
   }
 
@@ -192,12 +192,22 @@
     box-shadow: 0 24px 80px rgba(16, 185, 129, 0.1);
   }
 
+  /* HS Impact V2 card */
+  .card-hsimpact {
+    background: linear-gradient(160deg, rgba(251, 191, 36, 0.08), rgba(120, 80, 0, 0.25));
+  }
+  .card-hsimpact::after {
+    background: linear-gradient(160deg, rgba(251, 191, 36, 0.15), rgba(120, 80, 0, 0.35));
+    box-shadow: 0 24px 80px rgba(251, 191, 36, 0.08);
+  }
+
   .card-tag {
     font-size: 10px; font-weight: 800; text-transform: uppercase;
     letter-spacing: 3px; margin-bottom: 16px; position: relative; z-index: 2;
   }
   .card-nil .card-tag { color: var(--purple-glow); }
   .card-impact .card-tag { color: var(--green-glow); }
+  .card-hsimpact .card-tag { color: #FCD34D; }
 
   .card-name {
     font-family: 'Bebas Neue', sans-serif; font-size: 32px;
@@ -217,6 +227,7 @@
   }
   .card-nil .card-arrow { color: var(--purple-glow); }
   .card-impact .card-arrow { color: var(--green-glow); }
+  .card-hsimpact .card-arrow { color: #FCD34D; }
   .card:hover .card-arrow { gap: 14px; }
   .card-arrow svg {
     width: 18px; height: 18px; transition: transform 0.4s;
@@ -231,6 +242,7 @@
   }
   .card-nil .card-glow { background: rgba(109, 40, 217, 0.2); }
   .card-impact .card-glow { background: rgba(16, 185, 129, 0.15); }
+  .card-hsimpact .card-glow { background: rgba(251, 191, 36, 0.12); }
 
   /* ===== DETAILS STRIP ===== */
   .strip {
@@ -333,7 +345,17 @@
         <div class="card-glow"></div>
         <div class="card-tag">Parents &amp; Families</div>
         <div class="card-name">High School Impact</div>
-        <p class="card-desc">Targeting parents of high school athletes — turn everyday shopping into real team funding. Trust-building design with comparison sections and animated partner logos.</p>
+        <p class="card-desc">Original design — turn everyday shopping into real team funding. Comparison sections, benefit cards, and animated partner logos.</p>
+        <div class="card-arrow">
+          View Page
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="/hs-impact" class="card card-hsimpact">
+        <div class="card-glow"></div>
+        <div class="card-tag">IMPACT Program &bull; Updated</div>
+        <div class="card-name">HS Impact V2</div>
+        <p class="card-desc">Revised messaging — 4-step IMPACT program flow, community-driven support for travel, camps, and development. Expanded parent + student athlete form.</p>
         <div class="card-arrow">
           View Page
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -353,8 +375,8 @@
       <div class="strip-label">Live Logos</div>
     </div>
     <div class="strip-item">
-      <div class="strip-val">2</div>
-      <div class="strip-label">Markets</div>
+      <div class="strip-val">3</div>
+      <div class="strip-label">Pages</div>
     </div>
     <div class="strip-item">
       <div class="strip-val">GHL</div>

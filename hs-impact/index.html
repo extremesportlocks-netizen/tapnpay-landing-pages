@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TapNPay+ High School IMPACT | Support Your Athlete's Journey</title>
+<meta name="description" content="The TapNPay+ High School Athlete IMPACT Program helps families create ongoing support for travel, camps, campus visits, and development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep:#022C1A;--green-dark:#064E3B;--green-core:#059669;--green-mid:#10B981;
+    --green-bright:#34D399;--green-glow:#6EE7B7;--green-neon:#A7F3D0;
+    --purple-core:#7C3AED;--purple-bright:#8B5CF6;--purple-glow:#A78BFA;--purple-soft:#C4B5FD;
+    --gold:#FBBF24;--white:#FFFFFF;--dark:#020F09;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{font-family:'Outfit',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+
+  .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(2,15,9,0.7);backdrop-filter:blur(24px);border-bottom:1px solid rgba(16,185,129,0.08);transition:all 0.4s;}
+  .navbar.scrolled{background:rgba(2,15,9,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.4);}
+  .nav-left{display:flex;align-items:center;gap:12px;}
+  .navbar-logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;}.navbar-logo span{color:var(--green-mid);}
+  .nav-badge{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--green-mid);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);padding:4px 10px;border-radius:4px;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color 0.3s;}.nav-links a:hover{color:var(--white);}
+  .navbar-cta{background:linear-gradient(135deg,var(--purple-core),var(--purple-bright));color:var(--white);font-weight:700;font-size:13px;padding:10px 26px;border-radius:50px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:1.5px;transition:all 0.3s;text-decoration:none;}
+  .navbar-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,0.3);}
+
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 50% at 70% 35%,rgba(6,78,59,0.45) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 25% 60%,rgba(16,185,129,0.12) 0%,transparent 50%),radial-gradient(ellipse 40% 30% at 60% 80%,rgba(124,58,237,0.1) 0%,transparent 50%);animation:mesh-shift 14s ease-in-out infinite alternate;}
+  @keyframes mesh-shift{0%{filter:hue-rotate(0deg);transform:scale(1);}100%{filter:hue-rotate(8deg);transform:scale(1.04);}}
+  .hero-texture{position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(-55deg,transparent,transparent 50px,rgba(16,185,129,0.015) 50px,rgba(16,185,129,0.015) 52px);}
+  .field-lines{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+  .field-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,0.08),transparent);animation:sweep 8s linear infinite;opacity:0.5;}
+  @keyframes sweep{0%{transform:translateX(-100%);}100%{transform:translateX(200%);}}
+  .hero-content{position:relative;z-index:10;max-width:880px;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:10px 28px;border-radius:14px;background:rgba(7,31,20,0.35);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(16,185,129,0.12);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--green-glow);margin-bottom:32px;animation:fade-in-up 0.8s ease-out;position:relative;overflow:hidden;}
+  .hero-eyebrow::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,0.3),transparent);}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,10vw,116px);line-height:0.92;letter-spacing:-2px;margin-bottom:16px;animation:fade-in-up 0.8s ease-out 0.12s both;}
+  .hero h1 .purple{background:linear-gradient(135deg,var(--purple-bright),var(--purple-soft));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 40px rgba(124,58,237,0.25));}
+  .hero-desc{font-size:clamp(15px,2vw,18px);font-weight:400;color:rgba(255,255,255,0.55);max-width:640px;margin:0 auto 40px;line-height:1.75;animation:fade-in-up 0.8s ease-out 0.25s both;}
+  .hero-desc strong{color:var(--green-mid);font-weight:600;}
+  .hero-cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fade-in-up 0.8s ease-out 0.4s both;}
+  .cta-primary{display:inline-flex;align-items:center;gap:10px;padding:18px 48px;border-radius:60px;background:linear-gradient(135deg,var(--purple-core),#6D28D9);color:var(--white);font-weight:800;font-size:16px;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all 0.4s;}
+  .cta-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(124,58,237,0.35);}
+  .cta-primary svg{width:20px;height:20px;}
+  .cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:18px 36px;border-radius:60px;background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--white);font-weight:600;font-size:14px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:all 0.3s;}
+  .cta-secondary:hover{border-color:var(--green-mid);background:rgba(16,185,129,0.06);}
+  @keyframes fade-in-up{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
+
+  .section-pad{padding:100px 24px;}.section-header{text-align:center;margin-bottom:64px;}
+  .section-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:5px;color:var(--green-mid);margin-bottom:14px;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5.5vw,62px);line-height:0.95;}
+  .section-subtitle{font-size:15px;color:rgba(255,255,255,0.4);max-width:580px;margin:14px auto 0;line-height:1.7;}
+  .container{max-width:1100px;margin:0 auto;}
+
+  .glass{background:rgba(7,31,20,0.3);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(16,185,129,0.08);border-radius:24px;position:relative;overflow:hidden;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);}
+  .glass::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,0.25),transparent);}
+  .glass:hover{border-color:rgba(16,185,129,0.18);transform:translateY(-4px);box-shadow:0 20px 50px rgba(16,185,129,0.06);}
+
+  .community-card{max-width:860px;margin:0 auto;padding:56px 48px;text-align:center;}
+  .community-card::after{content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:300px;height:200px;border-radius:50%;background:rgba(16,185,129,0.04);filter:blur(50px);pointer-events:none;}
+  .community-card h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,4vw,46px);line-height:1;margin-bottom:16px;}
+  .community-card .green{color:var(--green-mid);}
+  .community-card p{font-size:16px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:600px;margin:0 auto 28px;}
+  .community-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:50px;background:linear-gradient(135deg,var(--green-core),var(--green-mid));color:var(--dark);font-weight:700;font-size:14px;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all 0.4s;}
+  .community-cta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(16,185,129,0.25);}
+
+  .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1060px;margin:0 auto;}
+  .step-card{text-align:center;padding:36px 20px 32px;}
+  .step-card.purple-accent::before{background:linear-gradient(90deg,transparent,rgba(124,58,237,0.25),transparent)!important;}
+  .step-card.gold-accent::before{background:linear-gradient(90deg,transparent,rgba(251,191,36,0.2),transparent)!important;}
+  .step-card.blue-accent::before{background:linear-gradient(90deg,transparent,rgba(6,182,212,0.2),transparent)!important;}
+  .step-card.purple-accent:hover{border-color:rgba(124,58,237,0.18)!important;box-shadow:0 20px 50px rgba(124,58,237,0.06)!important;}
+  .step-card.gold-accent:hover{border-color:rgba(251,191,36,0.15)!important;box-shadow:0 20px 50px rgba(251,191,36,0.04)!important;}
+  .step-card.blue-accent:hover{border-color:rgba(6,182,212,0.18)!important;box-shadow:0 20px 50px rgba(6,182,212,0.06)!important;}
+  .step-icon{width:64px;height:64px;margin:0 auto 16px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;}
+  .si-green{background:linear-gradient(135deg,var(--green-core),var(--green-mid));box-shadow:0 0 24px rgba(5,150,105,0.2);}
+  .si-purple{background:linear-gradient(135deg,var(--purple-core),var(--purple-bright));box-shadow:0 0 24px rgba(124,58,237,0.2);}
+  .si-gold{background:linear-gradient(135deg,#D97706,var(--gold));box-shadow:0 0 24px rgba(251,191,36,0.15);}
+  .si-blue{background:linear-gradient(135deg,#0891B2,#06B6D4);box-shadow:0 0 24px rgba(6,182,212,0.2);}
+  .step-num{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;color:rgba(255,255,255,0.2);margin-bottom:8px;}
+  .step-card h3{font-size:17px;font-weight:700;margin-bottom:10px;line-height:1.3;}
+  .step-card p{font-size:13px;line-height:1.65;color:rgba(255,255,255,0.4);}
+
+  .tagline-section{padding:80px 24px;text-align:center;}
+  .tagline{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;background:linear-gradient(135deg,var(--green-mid),var(--purple-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(16,185,129,0.15));margin-bottom:32px;}
+  .tagline-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;border-radius:50px;background:linear-gradient(135deg,var(--purple-core),#6D28D9);color:var(--white);font-weight:700;font-size:15px;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all 0.4s;}
+  .tagline-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(124,58,237,0.3);}
+
+  .brands-section{padding:80px 24px;overflow:hidden;}.brands-section .section-header{margin-bottom:48px;}
+  .logo-marquee-wrap{position:relative;overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);margin-bottom:14px;}
+  .logo-marquee{display:flex;gap:20px;animation:marquee 72s linear infinite;width:max-content;}
+  .logo-marquee.reverse{animation-direction:reverse;}.logo-marquee.fast{animation-duration:58s;}
+  @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  .brand-chip{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.04);transition:all 0.3s;}
+  .brand-chip:hover{background:rgba(255,255,255,0.06);border-color:rgba(16,185,129,0.15);}
+  .brand-chip img{width:24px;height:24px;border-radius:5px;object-fit:contain;background:white;padding:2px;}
+  .brand-chip .brand-name{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);white-space:nowrap;}
+  .brands-count{text-align:center;margin-top:28px;font-size:14px;color:rgba(255,255,255,0.25);}.brands-count strong{color:var(--green-mid);}
+
+  .cta-section{padding:120px 24px;text-align:center;position:relative;}
+  .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 55%,rgba(6,78,59,0.2),transparent),radial-gradient(ellipse 30% 30% at 40% 40%,rgba(124,58,237,0.06),transparent);pointer-events:none;}
+  .cta-content{position:relative;z-index:2;max-width:660px;margin:0 auto;}
+  .cta-content h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,64px);line-height:0.95;margin-bottom:10px;}
+  .cta-content .purple{color:var(--purple-bright);}.cta-content .green{color:var(--green-mid);}
+  .cta-content .sub{font-size:16px;color:rgba(255,255,255,0.45);margin-bottom:44px;}
+
+  .ghl-form{background:rgba(7,31,20,0.35);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(16,185,129,0.1);border-radius:24px;padding:48px 40px;text-align:left;position:relative;overflow:hidden;}
+  .ghl-form::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,0.3),transparent);}
+  .form-title{font-family:'Bebas Neue',sans-serif;font-size:28px;text-align:center;margin-bottom:6px;letter-spacing:1px;}
+  .form-sub{font-size:13px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:32px;}
+  .form-divider{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:rgba(255,255,255,0.25);margin:24px 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}.form-row.full{grid-template-columns:1fr;}
+  .form-group{display:flex;flex-direction:column;gap:6px;}
+  .form-group label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.5);}
+  .form-group input{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 16px;color:var(--white);font-family:'Outfit',sans-serif;font-size:15px;outline:none;transition:all 0.3s;}
+  .form-group input::placeholder{color:rgba(255,255,255,0.2);}
+  .form-group input:focus{border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.06);box-shadow:0 0 20px rgba(16,185,129,0.08);}
+  .consent-wrap{display:flex;gap:12px;align-items:flex-start;margin-top:24px;margin-bottom:28px;}
+  .consent-wrap input[type="checkbox"]{width:20px;height:20px;min-width:20px;margin-top:2px;accent-color:var(--green-mid);cursor:pointer;}
+  .consent-text{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.3);}
+  .consent-text a{color:rgba(16,185,129,0.7);text-decoration:none;border-bottom:1px solid rgba(16,185,129,0.2);transition:all 0.3s;}.consent-text a:hover{color:var(--green-mid);border-color:var(--green-mid);}
+  .form-submit{width:100%;padding:16px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--purple-core),#6D28D9);color:var(--white);font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;cursor:pointer;transition:all 0.4s;}
+  .form-submit:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(124,58,237,0.3);}.form-submit:active{transform:translateY(0);}
+  .form-links{text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,0.2);}
+  .form-links a{color:rgba(16,185,129,0.6);text-decoration:none;transition:color 0.3s;}.form-links a:hover{color:var(--green-mid);}
+
+  .footer{padding:48px 24px;border-top:1px solid rgba(16,185,129,0.05);background:rgba(2,15,9,0.8);}
+  .footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .footer-left .f-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:4px;}.footer-left .f-logo span{color:var(--green-mid);}
+  .footer-left p{font-size:12px;color:rgba(255,255,255,0.2);}
+  .footer-links{display:flex;gap:24px;}.footer-links a{font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.3s;}.footer-links a:hover{color:var(--green-mid);}
+  .footer-social{display:flex;gap:12px;}.social-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:16px;text-decoration:none;transition:all 0.3s;}.social-icon:hover{background:rgba(16,185,129,0.1);color:var(--green-mid);}
+
+  @media(max-width:768px){.navbar{padding:0 16px;height:56px;}.navbar-logo{font-size:22px;}.nav-badge{font-size:8px;padding:3px 7px;}.navbar-cta{font-size:11px;padding:7px 16px;}.nav-links{display:none;}.steps-grid{grid-template-columns:1fr 1fr;gap:14px;}.community-card{padding:40px 28px;}.footer-inner{flex-direction:column;text-align:center;}}
+  @media(max-width:520px){.steps-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.ghl-form{padding:32px 24px;}}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1);}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-left"><div class="navbar-logo">TAPNPAY<span>+</span></div><div class="nav-badge">HS Impact</div></div>
+  <div class="nav-links"><a href="#how">How It Works</a><a href="#brands">Partners</a><a href="#signup">Get Started</a></div>
+  <a href="#signup" class="navbar-cta">Get Started</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-texture"></div>
+  <div class="field-lines"><div class="field-line" style="top:20%;width:60%;left:10%;animation-delay:0s;"></div><div class="field-line" style="top:45%;width:50%;left:30%;animation-delay:2s;"></div><div class="field-line" style="top:70%;width:70%;left:5%;animation-delay:4s;"></div><div class="field-line" style="top:85%;width:40%;left:40%;animation-delay:6s;"></div></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">&#x1F6E1;&#xFE0F; High School Athlete IMPACT Program</div>
+    <h1>SUPPORT YOUR<br>ATHLETE'S <span class="purple">JOURNEY</span></h1>
+    <p class="hero-desc">The TapNPay+ High School Athlete IMPACT Program helps families create <strong>ongoing support</strong> for things like travel, camps, campus visits, and development. Parents sign up using the quick form below. Then supporters of their athlete can drive funds directly to their favorite athletes through the TapNPay+ App, all while earning cash back when they shop at our <strong>300+ National Partners</strong>. It's a simple and highly rewarding way to turn everyday spending into meaningful support for your student-athlete's journey.</p>
+    <div class="hero-cta-group">
+      <a href="#signup" class="cta-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Get Started</a>
+      <a href="#how" class="cta-secondary">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<section class="brands-section" id="brands">
+  <div class="section-header reveal"><div class="section-label">National Partners</div><h2 class="section-title">SHOP 300+ BRANDS.<br>SUPPORT YOUR ATHLETE.</h2></div>
+  <div class="logo-marquee-wrap"><div class="logo-marquee" id="row1"></div></div>
+  <div class="logo-marquee-wrap"><div class="logo-marquee reverse fast" id="row2"></div></div>
+  <div class="logo-marquee-wrap"><div class="logo-marquee" id="row3"></div></div>
+  <p class="brands-count reveal">And <strong>hundreds more</strong> — in-store and online, every day.</p>
+</section>
+
+<section class="section-pad">
+  <div class="community-card glass reveal">
+    <h2>SUPPORT FROM FAMILY,<br>FRIENDS, <span class="green">& FANS</span></h2>
+    <p>Bring your community together to support your athlete's journey. When supporters shop through TapNPay+, their everyday purchases help create ongoing impact that can go toward things like camps, travel, development, and college visits.</p>
+    <a href="#signup" class="community-cta">Get Started</a>
+  </div>
+</section>
+
+<section class="section-pad" id="how">
+  <div class="container">
+    <div class="section-header reveal"><div class="section-label">How It Works</div><h2 class="section-title">FOUR SIMPLE STEPS</h2><p class="section-subtitle">TapNPay+ helps families create ongoing support for things like travel, camps, campus visits, and development — all powered by everyday purchases.</p></div>
+    <div class="steps-grid">
+      <div class="step-card glass reveal"><div class="step-icon si-green">&#x1F4CB;</div><div class="step-num">STEP 01</div><h3>Parent Fills Out the Form</h3><p>Start by completing the interest form to receive more information about the TapNPay+ IMPACT program.</p></div>
+      <div class="step-card glass purple-accent reveal rd1"><div class="step-icon si-purple">&#x2709;&#xFE0F;</div><div class="step-num">STEP 02</div><h3>Receive an Invitation to Create an Account</h3><p>A parent or legal guardian sets up the TapNPay+ membership.</p></div>
+      <div class="step-card glass gold-accent reveal rd2"><div class="step-icon si-gold">&#x1F91D;</div><div class="step-num">STEP 03</div><h3>Share With Your Community</h3><p>Friends, family, and supporters activate their own memberships.</p></div>
+      <div class="step-card glass blue-accent reveal rd3"><div class="step-icon si-blue">&#x1F4B0;</div><div class="step-num">STEP 04</div><h3>They Shop. You Benefit.</h3><p>When supporters shop at participating brands, cashback generates ongoing impact for your athlete.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tagline-section">
+  <div class="reveal"><div class="tagline">SET IT UP ONCE.<br>KEEP EARNING DAILY.</div><a href="#signup" class="tagline-cta">Get Started</a></div>
+</section>
+
+<section class="cta-section" id="signup">
+  <div class="cta-content reveal">
+    <h2>READY TO <span class="green">GET STARTED</span>?</h2>
+    <p class="sub">Fill out the form to help your athlete start earning money tomorrow.</p>
+    <div class="ghl-form">
+      <div class="form-title">IMPACT PROGRAM SIGN UP</div>
+      <p class="form-sub">Our team will reach out within 24 hours.</p>
+      <div class="form-row"><div class="form-group"><label>Parent First Name *</label><input type="text" placeholder="First name" required></div><div class="form-group"><label>Parent Last Name *</label><input type="text" placeholder="Last name" required></div></div>
+      <div class="form-row"><div class="form-group"><label>Parent Email *</label><input type="email" placeholder="you@email.com" required></div><div class="form-group"><label>Parent Phone *</label><input type="tel" placeholder="(555) 000-0000" required></div></div>
+      <div class="form-divider">Student Athlete Information</div>
+      <div class="form-row"><div class="form-group"><label>Student's First Name *</label><input type="text" placeholder="First name" required></div><div class="form-group"><label>Student's Last Name *</label><input type="text" placeholder="Last name" required></div></div>
+      <div class="consent-wrap"><input type="checkbox" id="sms-consent" required><label for="sms-consent" class="consent-text">I agree to receive texts from TapNPay+ regarding my account and onboarding. Msg frequency varies; msg &amp; data rates may apply. Reply HELP for help, STOP to opt out. <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank">Terms</a> &amp; <a href="https://www.tapnpayplus.com/privacy-policy" target="_blank">Privacy Policy</a>.</label></div>
+      <button type="submit" class="form-submit">GET STARTED</button>
+      <div class="form-links"><a href="https://www.tapnpayplus.com/privacy-policy" target="_blank">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank">Terms of Service</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-left"><div class="f-logo">TAPNPAY<span>+</span></div><p>400 Holiday Dr. Suite 210, Pittsburgh, PA 15241</p><p>(800) 793-1276 &nbsp;|&nbsp; &copy; 2026 TapNPay+</p></div>
+  <div class="footer-links"><a href="https://www.tapnpayplus.com/terms-of-use">Terms</a><a href="https://www.tapnpayplus.com/privacy-policy">Privacy</a><a href="https://www.tapnpayplus.com">Main Site</a><a href="https://www.tapnpayplus.com/contact-us">Contact</a></div>
+  <div class="footer-social"><a href="https://www.instagram.com/tapnpayplus/" class="social-icon">IG</a><a href="https://www.facebook.com/Tapnpay-100634918043539/" class="social-icon">FB</a><a href="https://www.linkedin.com/company/tapnpayplus/" class="social-icon">LI</a><a href="https://www.twitter.com/TapNPayPlus" class="social-icon">X</a></div>
+</div></footer>
+
+<script>
+const brands=[
+  {row:1,name:'PlayStation',domain:'playstation.com'},{row:1,name:'Nike',domain:'nike.com'},{row:1,name:'North Face',domain:'thenorthface.com'},{row:1,name:'Longhorn',domain:'longhornsteakhouse.com'},{row:1,name:"Lowe's",domain:'lowes.com'},{row:1,name:'Home Depot',domain:'homedepot.com'},{row:1,name:"Dick's Sporting",domain:'dickssportinggoods.com'},{row:1,name:'Buffalo Wild Wings',domain:'buffalowildwings.com'},{row:1,name:'Ulta Beauty',domain:'ulta.com'},{row:1,name:'Southwest',domain:'southwest.com'},{row:1,name:'Starbucks',domain:'starbucks.com'},{row:1,name:'Ray-Ban',domain:'ray-ban.com'},{row:1,name:'Panda Express',domain:'pandaexpress.com'},{row:1,name:'AMC Theatres',domain:'amctheatres.com'},{row:1,name:'Target',domain:'target.com'},{row:1,name:'Amazon',domain:'amazon.com'},
+  {row:2,name:'Adidas',domain:'adidas.com'},{row:2,name:'Under Armour',domain:'underarmour.com'},{row:2,name:'Walmart',domain:'walmart.com'},{row:2,name:'Best Buy',domain:'bestbuy.com'},{row:2,name:"Macy's",domain:'macys.com'},{row:2,name:'Nordstrom',domain:'nordstrom.com'},{row:2,name:'Old Navy',domain:'oldnavy.com'},{row:2,name:'Gap',domain:'gap.com'},{row:2,name:'Sephora',domain:'sephora.com'},{row:2,name:'Foot Locker',domain:'footlocker.com'},{row:2,name:'Puma',domain:'puma.com'},{row:2,name:'Costco',domain:'costco.com'},{row:2,name:'Walgreens',domain:'walgreens.com'},{row:2,name:'CVS',domain:'cvs.com'},{row:2,name:'New Balance',domain:'newbalance.com'},{row:2,name:'Fanatics',domain:'fanatics.com'},
+  {row:3,name:'DoorDash',domain:'doordash.com'},{row:3,name:'Uber Eats',domain:'ubereats.com'},{row:3,name:"Kohl's",domain:'kohls.com'},{row:3,name:'GameStop',domain:'gamestop.com'},{row:3,name:'Petco',domain:'petco.com'},{row:3,name:'REI',domain:'rei.com'},{row:3,name:'Converse',domain:'converse.com'},{row:3,name:'Crocs',domain:'crocs.com'},{row:3,name:'Lululemon',domain:'lululemon.com'},{row:3,name:'Instacart',domain:'instacart.com'},{row:3,name:'Grubhub',domain:'grubhub.com'},{row:3,name:'Chipotle',domain:'chipotle.com'},{row:3,name:"Wendy's",domain:'wendys.com'},{row:3,name:'Champs',domain:'champssports.com'},{row:3,name:'Apple',domain:'apple.com'},{row:3,name:'Finish Line',domain:'finishline.com'}
+];
+function chip(b){const d=document.createElement('div');d.className='brand-chip';d.innerHTML='<img src="https://www.google.com/s2/favicons?domain='+b.domain+'&sz=128" alt="'+b.name+'" onerror="this.style.display=\'none\'"><span class="brand-name">'+b.name+'</span>';return d;}
+function fill(id,r){const t=document.getElementById(id);const rb=brands.filter(function(b){return b.row===r;});rb.concat(rb).forEach(function(b){t.appendChild(chip(b));});}
+fill('row1',1);fill('row2',2);fill('row3',3);
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);});
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+</script>
+</body>
+</html>
