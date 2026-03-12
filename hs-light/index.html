@@ -31,9 +31,57 @@
 
   body {
     font-family: 'Outfit', sans-serif;
-    background: var(--dark);
+    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 15%, #F5F3FF 30%, #ECFDF5 45%, #FFFFFF 60%, #FDF4FF 75%, #F0FDF4 90%, #FFFFFF 100%);
+    background-attachment: fixed;
     color: #1A2E23;
     overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Flowing blobs across entire page */
+  .page-blobs {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .page-blob {
+    position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+  }
+  .page-blob-1 {
+    width: 600px; height: 600px; top: 5%; right: -10%;
+    background: rgba(16, 185, 129, 0.1);
+    animation: pblob1 20s ease-in-out infinite alternate;
+  }
+  .page-blob-2 {
+    width: 500px; height: 500px; top: 25%; left: -8%;
+    background: rgba(124, 58, 237, 0.06);
+    animation: pblob2 24s ease-in-out infinite alternate;
+  }
+  .page-blob-3 {
+    width: 450px; height: 450px; top: 50%; right: 5%;
+    background: rgba(251, 191, 36, 0.05);
+    animation: pblob3 18s ease-in-out infinite alternate;
+  }
+  .page-blob-4 {
+    width: 550px; height: 550px; top: 70%; left: 10%;
+    background: rgba(16, 185, 129, 0.07);
+    animation: pblob4 22s ease-in-out infinite alternate;
+  }
+  .page-blob-5 {
+    width: 400px; height: 400px; top: 90%; right: -5%;
+    background: rgba(124, 58, 237, 0.05);
+    animation: pblob1 26s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes pblob1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-40px, 30px) scale(1.15); } }
+  @keyframes pblob2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px, -25px) scale(1.1); } }
+  @keyframes pblob3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-30px, -40px) scale(1.2); } }
+  @keyframes pblob4 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(35px, 20px) scale(0.9); } }
+
+  /* Dot texture across full page */
+  .page-dots {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.5;
   }
 
   /* ===== NAVBAR ===== */
@@ -83,7 +131,6 @@
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     padding: 100px 24px 60px;
     position: relative; overflow: hidden;
-    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 50%, #F5F3FF 80%, #ECFDF5 100%);
   }
 
   .hero-split {
@@ -110,41 +157,10 @@
 
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
-    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 40%, #F5F3FF 70%, #ECFDF5 100%);
   }
-  .hero-blob {
-    position: absolute; border-radius: 50%; filter: blur(80px);
-    pointer-events: none; z-index: 0;
-  }
-  .hero-blob-1 {
-    width: 500px; height: 500px; top: -10%; right: -5%;
-    background: rgba(16, 185, 129, 0.12);
-    animation: blob-drift 12s ease-in-out infinite alternate;
-  }
-  .hero-blob-2 {
-    width: 400px; height: 400px; bottom: -10%; left: -5%;
-    background: rgba(124, 58, 237, 0.08);
-    animation: blob-drift 16s ease-in-out infinite alternate-reverse;
-  }
-  .hero-blob-3 {
-    width: 300px; height: 300px; top: 30%; left: 40%;
-    background: rgba(251, 191, 36, 0.06);
-    animation: blob-drift 10s ease-in-out infinite alternate;
-  }
-  @keyframes blob-drift {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, -20px) scale(1.1); }
-    100% { transform: translate(-20px, 15px) scale(0.95); }
-  }
+  /* Hero blobs removed — page-level blobs handle ambient color */
 
-  /* Soft grid texture */
-  .hero-texture {
-    position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background-image:
-      radial-gradient(rgba(16, 185, 129, 0.07) 1px, transparent 1px);
-    background-size: 32px 32px;
-    mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0,0,0,0.3), transparent);
-  }
+  /* Hero texture removed — page-level dots handle it */
 
   /* Floating dots */
   .field-lines {
@@ -162,7 +178,7 @@
     100% { opacity: 0; transform: translateY(-100vh) scale(1); }
   }
 
-  .hero-content { position: relative; z-index: 10; }
+  .hero-content { position: relative; z-index: 2; }
   .hero-metrics { justify-content: flex-start; }
   .hero-cta-group { justify-content: flex-start; }
 
@@ -170,7 +186,7 @@
     display: inline-flex; align-items: center; gap: 10px;
     padding: 10px 28px; border-radius: 14px;
     background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 1;
     border: 1px solid rgba(16, 185, 129, 0.25);
     font-size: 12px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 3px; color: #047857; margin-bottom: 32px;
@@ -212,7 +228,7 @@
   .metric {
     text-align: center; padding: 28px 32px;
     background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 1;
     border: 1px solid rgba(16, 185, 129, 0.25);
     border-radius: 20px; min-width: 150px;
     position: relative; overflow: hidden;
@@ -288,7 +304,7 @@
   }
 
   /* ===== SECTION UTILITIES ===== */
-  .section-pad { padding: 100px 24px; }
+  .section-pad { padding: 100px 24px; position: relative; z-index: 1; }
   .section-header { text-align: center; margin-bottom: 64px; }
   .section-label {
     font-size: 12px; font-weight: 800; text-transform: uppercase;
@@ -320,7 +336,7 @@
   .tl-card {
     text-align: center; padding: 32px 20px 28px; position: relative; z-index: 1;
     background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 1;
     border: 1px solid rgba(16, 185, 129, 0.25);
     border-radius: 20px;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -387,7 +403,7 @@
   .benefit-card {
     padding: 36px 30px; border-radius: 24px;
     background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 1;
     border: 1px solid rgba(16, 185, 129, 0.25);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative; overflow: hidden;
@@ -482,7 +498,7 @@
   }
 
   /* ===== BRAND LOGOS ===== */
-  .brands-section { padding: 80px 24px; overflow: hidden; }
+  .brands-section { padding: 80px 24px; overflow: hidden; position: relative; z-index: 1; }
   .brands-section .section-header { margin-bottom: 48px; }
 
   .logo-marquee-wrap {
@@ -548,7 +564,7 @@
   /* Old Way card */
   .compare-col.old {
     background: rgba(255, 240, 240, 0.7);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 1;
     border: 1px solid rgba(239, 68, 68, 0.2);
   }
   .compare-col.old::before {
@@ -564,7 +580,7 @@
   /* TapNPay+ card */
   .compare-col.new {
     background: linear-gradient(160deg, rgba(209, 250, 229, 0.7), rgba(236, 253, 245, 0.8));
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 1;
     border: 1px solid rgba(16, 185, 129, 0.25);
   }
   .compare-col.new::before {
@@ -783,6 +799,15 @@
 <body>
 
 <!-- NAVBAR -->
+<div class="page-blobs">
+  <div class="page-blob page-blob-1"></div>
+  <div class="page-blob page-blob-2"></div>
+  <div class="page-blob page-blob-3"></div>
+  <div class="page-blob page-blob-4"></div>
+  <div class="page-blob page-blob-5"></div>
+</div>
+<div class="page-dots"></div>
+
 <nav class="navbar" id="navbar">
   <div class="nav-left">
     <div class="navbar-logo">TAPNPAY<span>+</span></div>
@@ -798,12 +823,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-blob hero-blob-3"></div>
-  </div>
-  <div class="hero-texture"></div>
+  
   <div class="field-lines" id="float-dots"></div>
   <div class="hero-split">
   <div class="hero-content">
