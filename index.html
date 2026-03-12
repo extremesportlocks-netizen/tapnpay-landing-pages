@@ -146,8 +146,8 @@
 
   /* ===== PROJECT CARDS ===== */
   .cards {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 20px; max-width: 1060px; width: 100%; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 20px; max-width: 940px; width: 100%; padding: 0 24px;
     animation: fade-in-up 1s ease-out 0.7s both;
   }
 
@@ -243,6 +243,19 @@
   .card-nil .card-glow { background: rgba(109, 40, 217, 0.2); }
   .card-impact .card-glow { background: rgba(16, 185, 129, 0.15); }
   .card-hsimpact .card-glow { background: rgba(251, 191, 36, 0.12); }
+
+  /* Light theme card */
+  .card-light {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(200, 220, 210, 0.15));
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+  .card-light::after {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.2), rgba(200, 220, 210, 0.25));
+    box-shadow: 0 24px 80px rgba(255, 255, 255, 0.06);
+  }
+  .card-light .card-tag { color: #A7F3D0; }
+  .card-light .card-arrow { color: #A7F3D0; }
+  .card-light .card-glow { background: rgba(255, 255, 255, 0.08); }
 
   /* ===== DETAILS STRIP ===== */
   .strip {
@@ -361,6 +374,16 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
+      <a href="/hs-light" class="card card-light">
+        <div class="card-glow"></div>
+        <div class="card-tag">IMPACT Program &bull; Light Theme</div>
+        <div class="card-name">HS Impact — Light</div>
+        <p class="card-desc">Same IMPACT messaging and glass design on a bright, clean white background. Fresh, modern, and high-contrast.</p>
+        <div class="card-arrow">
+          View Page
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -375,7 +398,7 @@
       <div class="strip-label">Live Logos</div>
     </div>
     <div class="strip-item">
-      <div class="strip-val">3</div>
+      <div class="strip-val">4</div>
       <div class="strip-label">Pages</div>
     </div>
     <div class="strip-item">

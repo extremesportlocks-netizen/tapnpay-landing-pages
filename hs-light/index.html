@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TapNPay+ High School Impact | Support Your Athlete's Journey — Light</title>
+<meta name="description" content="Turn everyday shopping into real funding for your student athlete's team. No selling, no fundraisers — just shop and support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #022C1A;
+    --green-dark: #064E3B;
+    --green-core: #059669;
+    --green-mid: #10B981;
+    --green-bright: #34D399;
+    --green-glow: #6EE7B7;
+    --green-neon: #A7F3D0;
+    --purple-core: #7C3AED;
+    --purple-bright: #8B5CF6;
+    --purple-glow: #A78BFA;
+    --purple-soft: #C4B5FD;
+    --gold: #FBBF24;
+    --white: #FFFFFF;
+    --dark: #F8FBF9; --true-dark: #0F1A14;
+    --dark-card: #071F14;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--dark);
+    color: #1A2E23;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 40px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+    transition: all 0.4s;
+  }
+  .navbar.scrolled {
+    background: rgba(2, 15, 9, 0.95);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  }
+  .nav-left { display: flex; align-items: center; gap: 12px; }
+  .navbar-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 30px;
+    letter-spacing: 2px; color: #1A2E23;
+  }
+  .navbar-logo span { color: #059669; }
+  .nav-impact-badge {
+    font-size: 10px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 2px; color: #059669;
+    background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.15);
+    padding: 4px 10px; border-radius: 4px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: rgba(26, 46, 35, 0.5);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: #1A2E23; }
+  .navbar-cta {
+    background: linear-gradient(135deg, var(--purple-core), var(--purple-bright));
+    color: #1A2E23; font-weight: 700; font-size: 13px;
+    padding: 10px 26px; border-radius: 50px; border: none; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s;
+    text-decoration: none;
+  }
+  .navbar-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 100px 24px 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-split {
+    position: relative; z-index: 10; max-width: 1100px; width: 100%;
+    display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: center;
+  }
+  .hero-phone {
+    display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .hero-phone img {
+    width: 100%; max-width: 320px; border-radius: 24px;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.08)) drop-shadow(0 0 40px rgba(16,185,129,0.1));
+    animation: phone-float 6s ease-in-out infinite; position: relative; z-index: 2;
+  }
+  .hero-phone::before {
+    content: ''; position: absolute; width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(16,185,129,0.1), transparent 70%);
+    filter: blur(40px); z-index: 0;
+  }
+  @keyframes phone-float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 70% 35%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 25% 60%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 30% at 60% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+    animation: mesh-shift 14s ease-in-out infinite alternate;
+  }
+  @keyframes mesh-shift {
+    0% { filter: hue-rotate(0deg); transform: scale(1); }
+    100% { filter: hue-rotate(8deg); transform: scale(1.04); }
+  }
+
+  /* Diagonal texture */
+  .hero-texture {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: repeating-linear-gradient(
+      -55deg, transparent, transparent 50px,
+      rgba(16, 185, 129, 0.03) 50px, rgba(16, 185, 129, 0.03) 52px
+    );
+  }
+
+  /* Field lines effect */
+  .field-lines {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    overflow: hidden;
+  }
+  .field-line {
+    position: absolute; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.12), transparent);
+    animation: sweep 8s linear infinite;
+    opacity: 0.5;
+  }
+  @keyframes sweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  .hero-content { position: relative; z-index: 10; }
+  .hero-metrics { justify-content: flex-start; }
+  .hero-cta-group { justify-content: flex-start; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 28px; border-radius: 14px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--green-core); margin-bottom: 32px;
+    animation: fade-in-up 0.8s ease-out;
+    position: relative; overflow: hidden;
+  }
+  .hero-eyebrow::before {
+    content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+  }
+  .shield { font-size: 16px; }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(50px, 10vw, 116px);
+    line-height: 0.92; letter-spacing: -2px; margin-bottom: 10px;
+    animation: fade-in-up 0.8s ease-out 0.12s both;
+  }
+  .hero h1 .purple {
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-soft));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 40px rgba(124, 58, 237, 0.25));
+  }
+  .hero h1 .green { color: #059669; }
+
+  .hero-sub {
+    font-size: clamp(16px, 2.2vw, 21px); font-weight: 300;
+    color: rgba(26, 46, 35, 0.6); margin-bottom: 40px;
+    max-width: 560px;
+    line-height: 1.6;
+    animation: fade-in-up 0.8s ease-out 0.25s both;
+  }
+  .hero-sub strong { color: #059669; font-weight: 600; }
+
+  .hero-metrics {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    margin-bottom: 44px; animation: fade-in-up 0.8s ease-out 0.35s both;
+  }
+  .metric {
+    text-align: center; padding: 28px 32px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 20px; min-width: 150px;
+    position: relative; overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .metric::before {
+    content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+  }
+  .metric:nth-child(2)::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.35), transparent);
+  }
+  .metric:nth-child(3)::before {
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.35), transparent);
+  }
+  .metric:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.06);
+  }
+  .metric-val {
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+    line-height: 1;
+  }
+  .metric-val.green {
+    background: linear-gradient(135deg, var(--green-mid), var(--green-glow));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.2));
+  }
+  .metric-val.purple {
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-soft));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(124, 58, 237, 0.2));
+  }
+  .metric-val.gold {
+    background: linear-gradient(135deg, var(--gold), #FDE68A);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.2));
+  }
+  .metric-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+    color: rgba(26, 46, 35, 0.35); margin-top: 8px; font-weight: 700;
+  }
+
+  .hero-cta-group {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fade-in-up 0.8s ease-out 0.5s both;
+  }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 18px 48px; border-radius: 60px;
+    background: linear-gradient(135deg, var(--purple-core), #6D28D9);
+    color: #1A2E23; font-weight: 800; font-size: 16px;
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+    transition: all 0.4s;
+  }
+  .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(124, 58, 237, 0.35); }
+  .cta-primary svg { width: 20px; height: 20px; }
+
+  .cta-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 18px 36px; border-radius: 60px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.12);
+    color: #1A2E23; font-weight: 600; font-size: 14px;
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s;
+  }
+  .cta-secondary:hover { border-color: #059669; background: rgba(16, 185, 129, 0.05); }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION UTILITIES ===== */
+  .section-pad { padding: 100px 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label {
+    font-size: 12px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 5px; color: #047857; margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(34px, 5.5vw, 62px); line-height: 0.95;
+  }
+  .section-subtitle {
+    font-size: 15px; color: rgba(26, 46, 35, 0.45);
+    max-width: 500px; margin: 14px auto 0; line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ===== HOW IT WORKS (Timeline) ===== */
+  .timeline-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    position: relative; max-width: 1060px; margin: 0 auto;
+  }
+  .timeline-grid::before {
+    content: ''; position: absolute;
+    top: 50px; left: 12%; right: 12%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-core), var(--purple-core), var(--gold), var(--green-core));
+    border-radius: 3px; z-index: 0;
+  }
+
+  .tl-card {
+    text-align: center; padding: 32px 20px 28px; position: relative; z-index: 1;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: 20px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+  .tl-card::before {
+    content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+  }
+  .tl-card:nth-child(2)::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.35), transparent);
+  }
+  .tl-card:nth-child(3)::before {
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.35), transparent);
+  }
+  .tl-card:nth-child(4)::before {
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.35), transparent);
+  }
+  .tl-card:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(16, 185, 129, 0.12);
+  }
+  .tl-card:nth-child(2):hover {
+    border-color: rgba(124, 58, 237, 0.35);
+    box-shadow: 0 20px 50px rgba(124, 58, 237, 0.1);
+  }
+  .tl-card:nth-child(3):hover {
+    border-color: rgba(251, 191, 36, 0.35);
+    box-shadow: 0 20px 50px rgba(251, 191, 36, 0.04);
+  }
+  .tl-card:nth-child(4):hover {
+    border-color: rgba(6, 182, 212, 0.35);
+    box-shadow: 0 20px 50px rgba(6, 182, 212, 0.06);
+  }
+  .tl-dot {
+    width: 72px; height: 72px; margin: 0 auto 20px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 28px; position: relative;
+  }
+  .tl-card:nth-child(1) .tl-dot {
+    background: linear-gradient(135deg, var(--green-core), var(--green-mid));
+    box-shadow: 0 0 30px rgba(5, 150, 105, 0.3);
+  }
+  .tl-card:nth-child(2) .tl-dot {
+    background: linear-gradient(135deg, var(--purple-core), var(--purple-bright));
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+  }
+  .tl-card:nth-child(3) .tl-dot {
+    background: linear-gradient(135deg, #D97706, var(--gold));
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
+  }
+  .tl-card:nth-child(4) .tl-dot {
+    background: linear-gradient(135deg, #0891B2, #06B6D4);
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+  }
+  .tl-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+  .tl-card p { font-size: 14px; line-height: 1.65; color: rgba(26, 46, 35, 0.5); }
+
+  /* ===== BENEFITS ===== */
+  .benefit-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  .benefit-card {
+    padding: 36px 30px; border-radius: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative; overflow: hidden;
+  }
+  .benefit-card::before {
+    content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
+  }
+  .benefit-card:nth-child(2)::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
+  }
+  .benefit-card:nth-child(3)::before {
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.35), transparent);
+  }
+  .benefit-card:nth-child(4)::before {
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.35), transparent);
+  }
+  .benefit-card::after {
+    content: ''; position: absolute; bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08), transparent);
+    pointer-events: none;
+  }
+  .benefit-card:nth-child(2)::after {
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08), transparent);
+  }
+  .benefit-card:nth-child(3)::after {
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.03), transparent);
+  }
+  .benefit-card:nth-child(4)::after {
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.04), transparent);
+  }
+  .benefit-card:hover {
+    transform: translateY(-6px);
+  }
+  .benefit-card:nth-child(1):hover { border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 20px 50px rgba(16, 185, 129, 0.12); }
+  .benefit-card:nth-child(2):hover { border-color: rgba(124, 58, 237, 0.4); box-shadow: 0 20px 50px rgba(124, 58, 237, 0.1); }
+  .benefit-card:nth-child(3):hover { border-color: rgba(251, 191, 36, 0.35); box-shadow: 0 20px 50px rgba(251, 191, 36, 0.04); }
+  .benefit-card:nth-child(4):hover { border-color: rgba(6, 182, 212, 0.2); box-shadow: 0 20px 50px rgba(6, 182, 212, 0.06); }
+  .b-icon {
+    width: 50px; height: 50px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 18px;
+  }
+  .b-green { background: linear-gradient(135deg, var(--green-core), var(--green-mid)); }
+  .b-purple { background: linear-gradient(135deg, var(--purple-core), var(--purple-bright)); }
+  .b-gold { background: linear-gradient(135deg, #D97706, var(--gold)); }
+  .b-blue { background: linear-gradient(135deg, #0891B2, #06B6D4); }
+  .benefit-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .benefit-card p { font-size: 14px; line-height: 1.7; color: rgba(26, 46, 35, 0.5); }
+
+  /* ===== FEATURED CALLOUT ===== */
+  .callout {
+    max-width: 800px; margin: 0 auto; text-align: center;
+    padding: 64px 40px; border-radius: 28px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    position: relative; overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .callout:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(16, 185, 129, 0.1);
+  }
+  .callout::before {
+    content: ''; position: absolute; top: -1px; left: 15%; right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--green-mid), transparent);
+  }
+  .callout::after {
+    content: ''; position: absolute; bottom: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 200px; border-radius: 50%;
+    background: rgba(16, 185, 129, 0.08); filter: blur(50px);
+    pointer-events: none;
+  }
+  .callout-quote {
+    font-size: clamp(18px, 2.5vw, 26px); font-weight: 300;
+    line-height: 1.6; color: rgba(255,255,255,0.75); font-style: italic;
+    position: relative; padding: 0 16px;
+  }
+  .callout-quote::before {
+    content: '"'; font-family: 'Bebas Neue', sans-serif; font-size: 120px;
+    color: rgba(16, 185, 129, 0.1); position: absolute;
+    top: -50px; left: -20px; line-height: 1;
+  }
+  .callout-attr {
+    margin-top: 20px; font-size: 13px; color: rgba(26, 46, 35, 0.35);
+    text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
+  }
+
+  /* ===== BRAND LOGOS ===== */
+  .brands-section { padding: 80px 24px; overflow: hidden; }
+  .brands-section .section-header { margin-bottom: 48px; }
+
+  .logo-marquee-wrap {
+    position: relative; overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    margin-bottom: 14px;
+  }
+  .logo-marquee {
+    display: flex; gap: 20px;
+    animation: marquee 72s linear infinite;
+    width: max-content;
+  }
+  .logo-marquee.reverse { animation-direction: reverse; }
+  .logo-marquee.fast { animation-duration: 58s; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .brand-chip {
+    flex-shrink: 0; display: flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 10px;
+    background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.3s;
+  }
+  .brand-chip:hover {
+    background: rgba(0,0,0,0.06);
+    border-color: rgba(16, 185, 129, 0.15);
+  }
+  .brand-chip img {
+    width: 24px; height: 24px; border-radius: 5px;
+    object-fit: contain; background: white; padding: 2px;
+  }
+  .brand-chip .brand-name {
+    font-size: 12px; font-weight: 600; color: rgba(26, 46, 35, 0.5);
+    white-space: nowrap;
+  }
+  .brands-count {
+    text-align: center; margin-top: 28px;
+    font-size: 14px; color: rgba(26, 46, 35, 0.3);
+  }
+  .brands-count strong { color: #059669; }
+
+  /* ===== COMPARISON STRIP ===== */
+  .compare-section {
+    padding: 100px 24px;
+  }
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    max-width: 860px; margin: 0 auto;
+  }
+  .compare-col {
+    padding: 40px 32px; border-radius: 24px;
+    position: relative; overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .compare-col::before {
+    content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+  }
+
+  /* Old Way card */
+  .compare-col.old {
+    background: rgba(255, 240, 240, 0.7);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .compare-col.old::before {
+    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.2), transparent);
+  }
+  .compare-col.old:hover {
+    border-color: rgba(239, 68, 68, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(239, 68, 68, 0.06);
+  }
+  .compare-col.old h3 { color: rgba(239, 68, 68, 0.5); }
+
+  /* TapNPay+ card */
+  .compare-col.new {
+    background: linear-gradient(160deg, rgba(209, 250, 229, 0.7), rgba(236, 253, 245, 0.8));
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+  .compare-col.new::before {
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+  }
+  .compare-col.new:hover {
+    border-color: rgba(16, 185, 129, 0.45);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(16, 185, 129, 0.08);
+  }
+  .compare-col.new h3 { color: #059669; }
+
+  .compare-col h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 30px;
+    margin-bottom: 24px; letter-spacing: 1px;
+  }
+
+  .compare-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px; font-size: 14px; color: rgba(26, 46, 35, 0.55);
+    border-radius: 10px; transition: all 0.3s;
+    margin-bottom: 4px;
+  }
+  .compare-item:hover { background: rgba(255,255,255,0.03); }
+
+  .compare-item .x {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: #EF4444; font-weight: 700; font-size: 12px; flex-shrink: 0;
+  }
+  .compare-item .check {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: #059669; font-weight: 700; font-size: 12px; flex-shrink: 0;
+  }
+
+  /* Glow orbs behind cards */
+  .compare-col.old::after {
+    content: ''; position: absolute; top: -40px; left: -40px;
+    width: 150px; height: 150px; border-radius: 50%;
+    background: rgba(239, 68, 68, 0.08); filter: blur(40px);
+    pointer-events: none;
+  }
+  .compare-col.new::after {
+    content: ''; position: absolute; bottom: -40px; right: -40px;
+    width: 150px; height: 150px; border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1); filter: blur(40px);
+    pointer-events: none;
+  }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    padding: 120px 24px; text-align: center; position: relative;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 50% 55%, rgba(16, 185, 129, 0.06), transparent),
+      radial-gradient(ellipse 30% 30% at 40% 40%, rgba(124, 58, 237, 0.04), transparent);
+    pointer-events: none;
+  }
+  .cta-content { position: relative; z-index: 2; max-width: 660px; margin: 0 auto; }
+  .cta-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 5.5vw, 64px); line-height: 0.95; margin-bottom: 14px;
+  }
+  .cta-content .purple { color: var(--purple-bright); }
+  .cta-content .green { color: #059669; }
+  .cta-content .sub {
+    font-size: 16px; color: rgba(26, 46, 35, 0.5); margin-bottom: 44px;
+  }
+
+  .ghl-form {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 24px; padding: 48px 40px;
+    text-align: left;
+    position: relative; overflow: hidden;
+  }
+  .ghl-form::before {
+    content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+  }
+  .form-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+    text-align: center; margin-bottom: 6px; letter-spacing: 1px;
+  }
+  .form-sub {
+    font-size: 13px; color: rgba(26, 46, 35, 0.4); text-align: center;
+    margin-bottom: 32px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1.5px; color: rgba(26, 46, 35, 0.5);
+  }
+  .form-group input {
+    background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px; padding: 14px 16px; color: #1A2E23;
+    font-family: 'Outfit', sans-serif; font-size: 15px; outline: none;
+    transition: all 0.3s;
+  }
+  .form-group input::placeholder { color: rgba(26, 46, 35, 0.25); }
+  .form-group input:focus {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.05);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);
+  }
+  .consent-wrap {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-top: 24px; margin-bottom: 28px;
+  }
+  .consent-wrap input[type="checkbox"] {
+    width: 20px; height: 20px; min-width: 20px; margin-top: 2px;
+    accent-color: #059669; cursor: pointer;
+  }
+  .consent-text {
+    font-size: 11px; line-height: 1.6; color: rgba(26, 46, 35, 0.35);
+  }
+  .consent-text a {
+    color: rgba(16, 185, 129, 0.7); text-decoration: none;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+    transition: all 0.3s;
+  }
+  .consent-text a:hover { color: #059669; border-color: #059669; }
+  .form-submit {
+    width: 100%; padding: 16px; border: none; border-radius: 14px;
+    background: linear-gradient(135deg, var(--purple-core), #6D28D9);
+    color: #1A2E23; font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 2px; cursor: pointer;
+    transition: all 0.4s;
+  }
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(124, 58, 237, 0.3);
+  }
+  .form-submit:active { transform: translateY(0); }
+  @media (max-width: 520px) {
+    .form-row { grid-template-columns: 1fr; }
+    .ghl-form { padding: 32px 24px; }
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 48px 24px; border-top: 1px solid rgba(16, 185, 129, 0.1);
+    background: rgba(248, 251, 249, 0.9);
+  }
+  .footer-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-left .f-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 2px; margin-bottom: 4px;
+  }
+  .footer-left .f-logo span { color: #059669; }
+  .footer-left p { font-size: 12px; color: rgba(26, 46, 35, 0.25); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 12px; color: rgba(26, 46, 35, 0.3);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: #059669; }
+  .footer-social { display: flex; gap: 12px; }
+  .social-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(26, 46, 35, 0.35); font-size: 16px; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .social-icon:hover { background: rgba(16, 185, 129, 0.1); color: #059669; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .navbar { padding: 0 16px; height: 56px; }
+    .navbar-logo { font-size: 22px; }
+    .nav-impact-badge { font-size: 8px; padding: 3px 7px; letter-spacing: 1.5px; }
+    .navbar-cta { font-size: 11px; padding: 7px 16px; }
+    .nav-links { display: none; }
+    .hero-split { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+    .hero-phone { order: -1; }
+    .hero-phone img { max-width: 220px; }
+    .hero-content { text-align: center; }
+    .hero-metrics { justify-content: center; }
+    .hero-cta-group { justify-content: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-metrics { gap: 12px; }
+    .metric { min-width: 120px; padding: 20px 20px; }
+    .metric-val { font-size: 42px; }
+    .timeline-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .timeline-grid::before { display: none; }
+    .benefit-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; gap: 16px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-left">
+    <div class="navbar-logo">TAPNPAY<span>+</span></div>
+    <div class="nav-impact-badge">IMPACT</div>
+  </div>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#brands">Partners</a>
+  </div>
+  <a href="#signup" class="navbar-cta">Join Today!</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="field-lines">
+    <div class="field-line" style="top:20%;width:60%;left:10%;animation-delay:0s;"></div>
+    <div class="field-line" style="top:45%;width:50%;left:30%;animation-delay:2s;"></div>
+    <div class="field-line" style="top:70%;width:70%;left:5%;animation-delay:4s;"></div>
+    <div class="field-line" style="top:85%;width:40%;left:40%;animation-delay:6s;"></div>
+  </div>
+  <div class="hero-split">
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="shield">🛡️</span> High School Athlete IMPACT Program</div>
+    <h1>SUPPORT YOUR<br>ATHLETE'S <span class="purple">JOURNEY</span></h1>
+    <p class="hero-sub">The TapNPay+ IMPACT Program helps families create <strong>ongoing support</strong> for travel, camps, campus visits, and development — all powered by everyday purchases at <strong>300+ National Partners</strong>.</p>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-val green"><span class="counter" data-target="300">0</span>+</div>
+        <div class="metric-label">Brand Partners</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val purple">~4%</div>
+        <div class="metric-label">Avg Cash Back</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val gold">$0</div>
+        <div class="metric-label">Extra Cost</div>
+      </div>
+    </div>
+    <div class="hero-cta-group">
+      <a href="#signup" class="cta-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Join Today!
+      </a>
+      <a href="#how" class="cta-secondary">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-phone">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAAAAAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAHbAXwDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAECAwQFBgcI/8QAQBAAAQMDAwIDBgQEBQMDBQAAAQACAwQFERIhMQZBE1FhByIycYGRFCNCoRVSsdEkM2KCwQgWkkNy8DRTc6Ky/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EACoRAQACAgEEAQQCAgMBAAAAAAABAgMREgQhMUETBSIyUUJxM2EUI5GB/9oADAMBAAIRAxEAPwChEFaYqsStMVhM1SBRtUgUpOCUJAnAIFCckCVABKgICBUIQoAhCVAAIwgJUCYRhKhAmEYSoQIhKhAiUJeyRAKCXhTqGXhTAr91Yj4VfurEfCspJ55QEd0oUoCAhKEAhCECpQkShAIQhAIQhAIShCBEJUIEQhCCN/dVXclWn8FVjyVAzIlbjVSJW41VomapAmNUgQKEqQJwQKEqQJQgVKkwlQASoRhQBCEqAAS4SBKgMIwhGUBhIlykQCEYS4QCAhACBFDLwVP2UMvCmBX7qxHwq/dWI+FZQ9CEKUBKkCVAIS9kmECpQkSgIBLhCEBhGEIQCEIwgEIwjCASJUIIn8FVnclWn8Ko4+8VAzoVajVWHhWmKrRYbwnhManjhA4JQmtTggclCEoQCVCEAlQhAIQgIFCEIUASYSoQIlQhAJUiVAiUIR5oE7KGbhT9lDLwphEq3dWI+FB3VhnCsqchKhTCAEJQhSAISjhCIAQEIQKhAQgEIQgUIQEIBCEKEkQhCCN/wqm/4irjz7qpv+IqBnw/CrcaqQq3GqtEzVIOEwBSBAoTkgShA5KEiUIFSoSoEQlQgRKEYShAiVCFAEI7ICACVCEAhCECJQhA7oE7KKXhTdlDLwVKJVu6sR8KAcqePhWhU9CEqtCAEIQgUIQEqBAlQhEAJUIQCEIQCEIQCEIwgEickRKF/wAJVR/xFW38FU3/ABFVFCHgK3GqkPwhW41VosBPHCjbwpW8IFCcEgSoFSgICUIFSgICEAlQhAJUiECoQEIDCAlSIBHZLhCBAhKhAiUd0IA5QHZQSjYqfsoZeCiJVgN1PFwocbqeLhXhU4pUd0KUBGEqECjhCAlQIlQhEBCEIBCMJUCJcISoEQlQgRInJOyJQP4Kpv8AiKuyDYqk8e8VEjPh+EK5GqcPAV2PlUaJmqZvCibypQgcEoSBOCBE8JE4IBKgICAQlCEAhCEChGEBKgRGEqECJeyEIECMJQlQIgIQgOyhl4KmUUvCIlW7qaPhRAbqePhXhQvdKEndKApAlCEYQKEIQgEIQiChCAgIFQhAQCMIS4QIjCcGp4YpEYal0qdsakESG1F8exVN8fvFbL4tlWdAMqNDmYOFcj5VKn4Cux8rNqnbypQo29lK3hAoTkgShAoTgmhOCBQlCQJUAlSJUAhCEAEqQJUAhCEAhCEAEqQJUAjugIQIopVMopOERKuOVNHwoQN1PENlpChe6Ep5QgAlSJUQEISoESpUIBCUJQ0lA1K0J7WFSNjQRBuSntYp2xYUjYwp0hC2P0UjY/RSYwlyB3Uo2QMAS7AJhkAULpwEEriMKuSMndRSVGx3VU1G/KDn4JGq9G4Fc9BVDzWhDVDzWLdtt3Clbws2KpBHKtMnB7oLQShRNkB7qRrggeEoSA5SjugUJUJQgAEYQEqBMIwlQgEIQgEIQgEYQjKBUIQgVCEIDsoZnsY3L3Bo8yVTut3htsJLnDXjjyXnNd1ZW3GuFNboZamdzsNbG0uJ+QHK2ri7crzqGFsnfjSNy9G/G0oO87fsVLFW0p2E7frsuHg6M9p1RGJorFMGu3xI5jD9nOBVKth64sAc662CqbEOX+CS0f7m5CtE4fG1f+3/AE9OaQ/dpDh6HKF5ZSda04cBNHLTP8xwuho+ropQPCr2P/0yYV4xVt+NlfltH5VdnhCxoOoGvAL42O9WOVyO70UmA5zmH/UNv2VZw3j0mM1J9rqEkUsE3+VNG/5OCnEfoVSazHlpyiUYCcGEqZsSlbHhQnaBsZ8lKyP0UwbhGrCI2aI8dk4NATTJtyo3TDzSBOSAm+IAqjqgBQuqvVSLrpvVQunA7rPkqs91WkqvVENB9TzuqslVzus6SsAzuqUtaN91G4TppSVWx3VU1mCd1lSVvO6pmt3O6rzWirObM5p5VqKrcFRcRqViBmpZtGrDWkK5HXjzWfFTktUhp3AZCDXjrQe6tR1g81zga9vdPbO9vOUHUsqgVOydpXLx1xHKtRV480HSB4KcHBYkdeP5lZjrQeSg0wUuVUbVNPcKVsrT3UiZCYHg904EHugVCEIBKgIQIlQlwgAhCEC5Vatqm0dK+Vx4GysgLjusrmKeB7dXusbkj1WuKnK3fwyy2mte3lzVRHc+seqILFbAX1FQ7DnZ2Y3uT6AL6S6J6As3RFuZFRQNkrHNAmq3tzJIe+/YegXA/wDT/wBMmC0VnU9XHmprnmOFzhuIwdyPmf6L2lZ5bzeyaVisaZNwv9LbbrR2+VkrpKr4SxuQP7/TyKfQ3623KcQU0+qVzXOax0bmlzWnSSMjfdWpbfST1AqJaaJ87W6RIWDUBzgHlRUFpo7a57qaMguAblzicNHDRngbk/MlZrqV06Q6cvQcLjZaGoLuXuhAcf8AcN/3XDXb2B9H1+p1H+Lt7zx4Umpo+jv7r1Rct7Q+qH9H9F1t2hYH1DcRwh3GtxwCfQcqYHkNw9gF/odTrH1DHMB8McwMZ+4yFzVZ0n7R7AHGps0tZE3l8GJM/wDjv+y5Ye0TrBtwfXN6iuAmecu/OOn5aeMemF1dp9vvWFvw2sNJcGDnxYtDj9W4/otYyXr4lS1K28wyB1U6km8G4UE9LKOQ9hBB+RwVr0fWdPgGO4OZj9Ljt+662D289N3iMQdR9LZaeSAydv2cAVoW7p72Qe0Od0FpYaWtI1eHC50L8ejTlv2C2jqrfyjbOenr67MKj6uke3OqGceYOP6LUg6opn4E0T2HzbuEy5f9OugufZeopIz+llTHx/ub/ZctXey72kWPUYImXCJvBhkDifocFTGXFbzGlPiyR4l3cd3o5h+XUNz5HYp7qgYznZeQ1F1vlncWXiyVMBby50bmj9xj91etvWFM9zWsndC49n8f2Vopjt+Mo5ZK/lD0mSpAVV9UseC6ePhkpa1zvhePhKjqKl8T3MeC1w2IKzvWaeWtbRbw1H1WM7qtJWAd1jzVv+pU5K31WXNeKtl9d6qpLW7ndZD631VSSsyTuqTkXijUlred1SkrRvus2SqJ7qu6Yu7rObrRVekrDg7qqak55KrF6ZlZ8k6ax+JaVEzVhZzviWnQchbqt2mpgQFYfSjfZOox7oV7AIUoZDqRV30nott0YURjB7IMJ1MewUZhe3hbpgHYKI02VCWQ0yNUjal7FedSeiidSeiBsda7uVajrsd1RdSEKPwHt81I22VwPdWo6tp7rmQZGKRtS9vKDqm1DTwVKJQVzEdcR3VyOv8AVBvB2U5ZLK4Y5VhlWD3QX0Ku2cEcp7ZM90E2EAJGuBCcAgjmkEED5CdmheUXsVPUXUNFZaX3pqydrflk4H07rvep68U1EY9QGRklQ+wiwm9dWXDqmpZmGjHhU+f/ALjhufo3/wDpb/hi/tz/AJ5P6e+Wa109ls1HbKVuIaWJsTducDn68q8hC5W4Uc0higkkDHPLWkhjRku9ApFj9TVNyp7O9top3TV07hDGQNoi7bW70HKmI3Okx3ZVo9oFuule2gfRXClqzJ4RZLTkhr+7S5uQPutfqLp639VWOotNzY59NMBnScOaRwQfMLxoVEFnslSJK+5Q3qCqeynjBfGyINd70rtsPLtzvnOQF0dF1JfLPBZqmuvsNVFUh09TTPY1zoacNzqLx34+pwuq/T+6NbYv05a8/wDTg8an2S+A+UVZHj/9m/2Xn139j3W1nJL7O+qjH66Rwl/Ybj7L2q3dV3S3Xi7XO7Pkcaqhjno7eD8Je8tjYB/MQBn5oHtGvdFBVOlZRVcdva1tVIQ5viTOO7I9O2Bxk+WVHw5PXdX4renzJVW6soXllVSTwOBwRJGW/wBV3nscstddfaHbaukheIKF5lqJh8LRgjGfM54X1BR1Ft6ht0Es9PTyGSJr3QTBr3R6hnBBV+koaSgiMVHSw08ZOS2KMNH7LKba3EwzmNJZJGRROkkcGsYC5zicAAclVKS72+4M10dXFUM1FmqI6hkcjKuPa17XMe0OaRggjIIUMFFS0rQ2np4omgkgMaGjfnhZEKVNdrLep5qOCrpKuWL/ADIgQ4t3xx81znUfso6S6khf4ltjpKk/DUUgDHA+ZxsfqFuxdNUVGyvkoW+BWVYf/icanMLvL0B3wuK6W9nnVfTnUUU8vWM9baW5LqeQOy49gckqfA8jr7Bcuh+pndPXOTxqeVuukqBsHj08vIjsV0EEDbzaTE52msp9opP5m9mn+67P25UcT7RY60tHjw3BrGu76XA5H7D7LgLZP4NTKQdiV6GOPlw93Hl+y+4c1UzyRSujkaWvYcOB5BVR9UStfquJv8QZUsGPGZ73q4LnSvMvE1mYd1J5V2kdMSeVGX5TEizXKXJmUuEmECZSZS4RhVTpsP8AiWpbxwst/wAS1Ld2XUydRRD3Qr+nZUqIe6FoY2UoRlqYQpi1MLVKEWEmlSaUaUSj0pDFlTaUYRCv+Hz2TDSg9ldATtIRLJfRZ4CrvoyM7Le0hMdCCoNudfSnyURhkZwSuidTj0Vd9O3B2Q2xmvlbypmVbm8qeWNoHCzpyBnCiUtOOvI7q3HXA91zBlLe6fHVOb3Vdjr46wY5VqOpBGSVyMdcR3V5taW0csxOzRgfNaY4520pknjWZct1zc3yvdTx5c+V2hgHP/zgL6N9nHTbeleh7fbi0CoLPFqD5yO3P24+i8B9nlmPWHtRhfI3xKG2/wCIlzwdJ2H1dhfUbG6snK06i27ajxCmGuq7n2mQmaXDhyTU8ctyudqkVG6Vz6CmbLHA6ZznhoABIHqcAnGyuCQd8hKCD3CQOLrbpY+oaqhZXunhZTT+KIJGgCR+SGhw553A+Sts6b6SrGyRU1NSsBqBJM2Ehut7DnDvMAnjhdI+mgkdqfDG53OS0ErGl6QtTntkgjfA8ZzpdqBB33Dsjnda849TML8oZnUHQ/8AF7068U1aIKttMIIQ5mWxnJ98eoBOPI7rOv8A7P7ZR9Lzus9oZUXSGICJxcdTncF2CcF2Mnfut2ew3imgpY7XeDGKdmkiVuoykncuP/zhIys6ko3PiqKWKpawZZM0f5gA3BxwSeFat7RrVvCYtPqXBT22no6ee7U9nqrVTWajLnPmyySrqSPd1EH3g0nPzK27dduoKfp2huYLhbaKJjS2pdiavcRguyckDJ90claF3ns1XeWPvUNa91K1uuFrnGm1c5LeHYO2Suwp5IK6jimjbmF4DmBzcfLYq1snaNwmbdu8M3pma6zUErrxTyw1TpS7S9zS0A7hrcdgNt985W2o4DKY8yta12TsDnZSLntO52znyRCVMkeyKJ0kjg1jQXOceAB3UIePe2e5MqLpZrM12TBqrZh5bFrPuS77Lzunk0knuVLe7u+/3243l+cVk2IQf0wt91g+wz9VWYcBe1hxxTFES83Pflfsr32XxGQjuMlYBC0rlJ4lQR2aMKhheLnmJyTp6eCuscI9KNKl0lAaVg1RafRJp9FPoKUMKqtpX0eiNHorIYUvhlErUnxLTt3ZZkvxLStvIXW53W0Q90LQxsqFDwFpY2UoRkJhU2NkwgKUI8IwnFIgTCAN0uEcIHBLhM1gd001DQOUEhwEx0gHdVZatozuqE1dgHcINGSoAzuqctY0A7rJluHO6z5q8uzgqNp01Zqsb7rMnqhvgqi+oe88qIgu5KztZMVTunJKcyXdV9GFI1pWfJppcZJlSdR1htdlbDkCQt1H5nhLa4fFq2l3wR++7PkFnuopus+u6CyRZLZpgZSP0s7n7A/dd/TRxpbJLkzfdeKQ9k9h/TRs3RH8RnZirur/ABiSNxGNmD+p+q9WaNLQFVo6eKmhip4WhkMLAxjR2AGAm3GtmomtdFRS1IOS7w+Rgbbd8lc29tl1RsqIZTKGSscYnaZAD8JwDg+WxH3WTB1PQySNjmZPTyO4bLHvzjsubl6Xffesq+etqtNkkbHK2mpp9HjSty0mXGDt5cbb8KB32xHmE3Q09kMa2NjWNADWjAA7BOQRuyzhyUOfjOnPyTT70mOwUhcGtJJw0DJPkgTxBwQQlDmngrIZ1Nap5Y4qao/EyPl8HTC0uIdzv5D1K1ixp/SoiYnwtNZr5gPijkGHsa4HsRlOAAGAMBN0EcOKQa2+TlKqQITA/wA9k4Pae6BVw3tVvTrZ0g+ip36aq5u/DMI5DTu8/wDjn7rucrwb2j3n+K9YVDWHNPbWfho/IyHd5+mw+636enPJEM8t+NZlxJY0ODWjDGANaPQIkeI4y49gnKrVuy0Rj5lel1OThjmXn4a/JkZzhqcSeScpuhThicGei8CZe3CAMTgxTBieGBVEAYl0KcMTgxQlXEadoU4Yl0KEq03xLStnxBZ0vxrRtp3XY53X0HwhaY4WZQ/C1aXZSgHCYQnFwCgkmDe6lBSEmoBVn1TRndVJa0Dug0HzAd1WkqQO6y5a/H6lRluGe6biENl9YAfiCpzXADO6xZKxzjsoHSPeeVTnC8Vloz3AnO6oyVTnHZRaSUoiJVJyLRQwue7kpoYd1YbEpBEs5svFVUR+ieI1YEScI8dlXa2lcR+ilbEFKG47KSKMyyNjHLjhKxudIntG5SSSC3WWWZxAdL3/ANIXVewPp908tz6sqme9I401MSPq8j9h91551XUSVc9PaaNpfLM9sMbG8nfA+5X090rYoumulrfZ4cYpoQ17h+p53cfqSV6Wf7Kxjj04cX3TOSfbejbhicoQ9zRjP7Jwm8x9lyt2TXWYuy+mfKXOflwdJkAemVmGy1oh1spY3Oz7zXO0POHauRsRnddWHtKUEHgoMSG1XGna3wrnIQcamyjUQMgnB+Wy23HDSVz16vVTTXBlNR6NTW6pNfBzwFPZ7rU3NkvjQNZ4Z06mnYlcdeuxWzThjzH/AI6LdNkjHGWfDWYQ1rnuOAOSVx9w6gdeqG+UlFPTRRiFkdLK6YN8Vz9Wd87bDZddVUkNbRvppw4xPADg1xaT9QuWvHS00tzrq2jIZG+lLRC1oJkkwW7Z4OnbO/K657xphWdTEuT6P6Rudv6iguF1Ao4YXgNL5RmZ5GA0YO/K9cXnbelb5QzUL4DEIIxGZREdTi4E5fg8u94n0wFNSV96tdycZIJZTWSmJ8lS0MaxwGI9x/pac+pCpjxxjjUNs/UWz25Wd8hcvS9XumZSPloJGMqHaGOaQQ5wyCB9QcZ5XTOdhmfNaMDPjk9Am1FTSUrA6pnhhadgZHhv9Vz3U/UD7RTxUtLJDHW1Ic7xpj7lPG34pHfLIAHckLim2yhvctaKSrpqqopYRLV3Gsi/FEZ3DRnYHAJwNhsuTN1cUyRirWbWn/yP7lpXHuOUz2eh9RXqCxdNVt2Dw9sUWYw05D3nZoHzJC+cp3SbNleXykmSVx/U9xy4/crWuckjBBTN008MmauWmgy2FwB/KfpyQHHc7Y7bLELtTi4nclez9Nnni+TWtvO622rcAqb/AH3kq24+4cclRBnosuuybtxhr0WPUcpQBicGeinEacGei893oAxLoU+n0S6VAhDfRLpUulLpUJQaUaVY8MeSXwlCdMib/MV+2uAIVCf4lNSSaF2OZ21FKA0bq86paGrl6es0tGSppLiMcqUNeWtAB3VCauaBysea4E5wVTdO9+cKJtELRWWnLX84Koy1jncKvh5Ke2AnlZTkXihhle/um6HHlW2QeikbD6Kk3WimlNsJUjYFcEXonti9FTktpVEOE4RfJW/CHklEY8lG1tKojCURjyVrQEmhQK+lGlWNGU3ThBDpViFwpqaaqI3aNLfmU0Nz23Wb1bXChtzaVhw8DH+4rs6WkTflPiHN1Fvt4x5ls+yGyHqX2iy3eduqktQ1tJGxkOzf+T9l9JLhPZF0z/230FSeKzTV13+Kmzz73wj6DH3Xd8K17Ta0zKta6jUDdA3RlH0VElwUmEdttiqzvxLHFzS1/wDpKiZ0Kdb0/SVszpi6SOVxyXNdnP0KuW6ijttM2FhLgCSXHknzQ+sMZAkjIOMk+SkbVQvaXNeMDnOy5qYMFMk5K1iLS1tnyWrwm3ZbEjT6JwIPCrBwcMgghLnbZdXZmzqmweLXvrqevq4J3HJAkyzgD4fomzsv8GTF+ErG5GGP9w4DTnfzLsfILVD3Dukklk8J/hhpfg6cnAyomdQOepa20Syh1xo4KStjkOWcgEHIORtnv6LoRNHUMa6J4ew92nK4aS1XOPW2SkL3SO/zBvuTyu0t1K2kpI4W8MaB8z3K83oeq6jNe0ZK6iHZ1WDFjrE0tuXlPtJprjW3W7x0T42zQ09LI3xcY8EOkLiM7fFj7BeU0fTHVT7TU1VPBVRUksZlmBeWCRo3yR3X0t1N0uL2YaulnbTXCAFrJHx62SMPLHt7t2B9CvNfaFDe6O0U1FcW29hrJvDYaWeTUWgZcdJAGAPU8hXtTq65+OGImtpjv+vET/fhhFsfDdvMPO6MSMtkJmke+WRrTlxyQ0fCPkApO+MZTpHh0pwMBuwCdGMnK+r7YsfbxDw++TITGW4SBql0oDV8/kvN7TL28dIrXSMNS6VLpShqz200hwlDVLpTgxV2nSIMThGpgxPDETpXEfonCP0VgMTtKhLkp3ZKbE8hSyQOJ4QylOV1c4c3FOyZ2Nk8eI8qWGlKux0m3Czm68UUGwEqZlKtFtNjspWwAdlnNl4qz2U26nbB6K4IgEaFG06VhDjsl8JWdKNAUJ0hazCdoUmlLpQRaUaVLhJhSItKQhSliTw0EOEaMqfw/RGgAIGwNawulf8ABGNR+fZc/YbS7rj2mUNtdl1Kx/jVJ8mN3P32H1Wnf6sW+0OGcOeNR+S7f2A9OGmstb1JUs/Pr3+HCSNxG07/AHP9AvRrHx4Yj3LhmeeSZ/T2aFgBwAA1owAOwUySMYb80qxXIWNPZNMXkU9CCIscO2U3jzCq3a809nihdNHNNJM/RFDAzU95wScD0AJUcHUlmqJXwtuEAlZL4LmPdpIk06tO/cDnyQXcA+RUboY3AgsG/OFZDWPGW4IPcJDF5FRMRIpfhNLXeFI5jjwfJJpqmEYc1wzvturmhw7Ju/kVXhHpGjY9ega8avROQhXSEcIQgUymNhc4+6Bk5XgXXd/kvfVVTMSPBoGfhIQONZ3efnwPovWutr4ywdL1dYT74YdDe5d2H1JAXz07XFC2OV2qQZklce73bn9129Hj3abT6c3U3401+yNdl2kbnkq7FGQz5qlQsLsyHl52+S2GRYaArdfl414R7U6HHytNp9IBGnCNTiNL4a8Xb19IAxLoU2hGlRtOkOhODFJoShqbDAxPDE4NS4Vdp0QNS6UoShRtbTKNHnsnR0fotYxDyQ2MK25U0qx0uOysiDHZTtYnhibNK3hnyRoKs6EhZspFfSk0qcsTdKCLSkIU2hJ4ZRCHCXCl0FLoQQ6UuhTaEaFIi0JNPoptKQjCCINTmxhzgDxyUFQV9QKS2TSk4Lhpb/ytsFJyZIhlnvwpMuQv/wCIv/UNHZ6TLpKmZsbAPInA/wCV9W2S1QWWz0VqpQBDSxNibjvgbn6leB+w6xfxnrCu6kqGZgoG+HBqH/qO/s3P3C+jYm7F3murLbduzmx1417qdzr56BsToaGWpa535nh/oaBz6n0VSPqi2un8GV0kDwS0+MwtAI9VcivVunukltiqo31UTNcjGuB07439VPLTU1XHiWKOVh/mAKyXLBVQVTdUEzJBjOWnKmWO7pu3tL307H08jozGHRuOwPO3HZQ/w280riKS4xmHPuxyR/CMjb9j90GrW26juUbGVtNFO2N4ewSNzpcOCPIrmZ/ZzZH7UpqaNhLnOjgk91xcA1x3ycloxse5PK68eqEHB1XS/UNthpW2WsbUGmhlc3x53MMk7zs9/OprW5ABPzWc7qTrexuc+utD6qlj8JhyAXkAAPeC3bdxxj1zwF6ahBxti6/hutXSUs1E+KSqcQxzJA9o+LGrgjOhx44xnldlgFVmW2hjqhVMo4GzgaRIIwHAfNWkDDG09k0xeRUqEEHhuHZJhWFnXKsZR0U9TI4MbG0nUe3r9OUHkftUu4rb5SWpjwYaYfiZx54OGD6uyf8AaF5nUPdKcZ96V2/y7q7X3F9zqqu5SZD66YuYD+mJuzB9t/qqVO3xapz+zPdH/K9np8fDHEPL6i/K/wDTdtdA+eKaVrfy6dgLj8zgK5pAXWdL21p6Znp5G4fVDV8v5VzkkOlxB5GxXjddk5ZOz1uipxx91XCMKbSlDfRcO3XpBpS6VPp9EaVG1tK+lKGqXSlDU2aRaQjSFNpSaFCUWEYUwjTxFtwgC0pWtKkIQArKBrU7SgJcKUE0oLdk7CMKRFpRpCk0pQ1BEGBGhS6UoCIQ6EafRSkJpRJmlGAlJTUDSEw7qTCdHBJNIGRsc9x7NGShpX0knAHK5Dra5ObEKSLOfgAHJJXbVLX0UL5Zo3M0tJAc0jK5XoizO6y9qFLFK3XR0R/Eznt7pyB9TgL0eljhinJ++zhzzzyRT9PePZt0yOluhrdQObipkb49R6yP3P2GB9F1ldLNTW+eWmg8eZjCWRatOo+WeykjGXZ7KTlZLPN7XrtFhvd1qKB0dLKCaKOoa3xi6TluRvpLiPVXZ6WssXTFhslDVyw3KonY0uYc/wCqTOewH/C7stBbggEeRCqzW+mnrI6x8Y/ExMcyOXuwO5x2Qc7X3670HU1FQ+FSvpqiURMiDiZntx70p7NA8lqV3UlDb7rHbpG1Ekzw0nwYi8R6jhurHGVmQ9IVVurqist15m8eoc3W6qjbI7AOTh3PG2OFjXO29T/jJrwyhpYKulikAlpXkuqs7Ny3/SN9+4Upd8yrpn1T6Vk8TqhgDnRB4LmjzI5CjuNfHbaN1RIC7GAGjklcl0JSVFPW3F7G1Zt8gYWy1sWiWSX9Z88fNT9W1viVUdI05bGNTseZXN1Wb4sc2jype2o21qbqi3TAeI98LvJ7dvuFqw1VPUN1QzRyD/S4FcBJaJ2NaQ5hJa0lucYJ4CrGCpp3Z8ORhB+Jv9wvPr1+an+SrKMsx5h6alXnlNfblTfDUOeB+mT3lrU/V8g2qaYEecZ/uumn1HDbz2WjLWXWoWRTdSW2o2MxiPlIMLUimjmZrie17fNpyuumWl/xnbSLRPgrjhpXmHtcvJprHHaIHls9e8REg7hvLj/4j916VPIGtJccNaMkr5062vLrx1XXVIOYqX/CwjP6uXn+jfouvp8fPJEKZb8KTLm53tLz4TfcYNLB6BWLPT+K+JmOT7ygjaA3BWvZGh1WAOy9LqcvxY5s8/pcXy5Iq9Zs0A/AxkDGlq5C7U/gXGdo41kj5HddtZWn8A0ei5bqNmm5k/zNBXzuXvG3vUjUzDC0+iA1SYRj0XO2M0o0qTCUNQRaECNTBqeGKRAI0oiKstjUrY1OkbVWwqYRDHCnDMJ+lNG2WkTyEmFZQgTwgBOa1SEwgBPwj6oG4SoSEoBNyhIoC5TeQnAJwbsiYRacpQ1Shuey0qS3g/nTDDBuB5pvSYrMzqFSjtz6l2p3uRDl39ldlrYLbGRA0MwNz3KdWV2lulmGtA2AXK1s5qatlOHfEcu9GjlZatlvFa+3XXHXFWb39KnW1/kNA3XISAzUG548l3XsJ6cda+kZr1UMxU3STU0kbiJpwPucn7LyCup5+rOsKCx0pJNTMGkj9Le5+gyV9X2+ihoaOnoqdgZBTxtjY0dmtGAvazRFIjHHp4VJ5TN59rjBpZjul1EctVWtqKinAMFMZtjnB4P/AMyoY7xATiZksB2B8RuAP7fVc7RohwKFGyWGXZj2u2B2PYp+PIkIFQk94eRRq8xhAOJDSQMkDhec3COr/FyzVUEjHPcSct2Xo4IKHNa8Yc0EeRC5eq6b54iN60penJ5lFVzxAaJTgdjuPLurbLtJp0yxhwwG5BxkA5/ddlU2O3VXx0zA7+Znun9lk1HSEZyaapcz0eMrzrdF1GP8J2xnHaPDEfUUdRUF/gtjaGk4fnDnE75I9OE4W2CVuYakH3RnG41E8fIBOqem7lT5LYhM3zjOf2WZJFLA7Esb4z5OBC5bxav+SiupjzB1TTuppTG4tJAB235Xd2Gj/A2mJrhh7xrf8yuOtFIbhdYo3ZLQdTz6Begv2aGhd303FG5y/wDyGmKvmXLddX1th6VrKsbylmmNv8zjs0fcj9187yMdFohc8vcwapHH9Tzu4/cr0T2p3kVvUFNbGOzBRN/ETAcF24YD9cleZyzYLnE7uOV9V0dONeX7c/VW3PGBPUiCIknjhdL01E+OJr5PjedRXD05Nxu0cXMbDqcvRrWwBoA2wvO+pdRytwh6f0zp+NJvPt6T05UNdHoPlhYnU8WLiDj9P/KsWdzmNBB4Tr7+c+KT0IK47d6OjxeXL+GfJHhlXvCCPDCx0vtSEZ8k4R+it+GEmlTo2gDPRPaz0UgangYVtK7Ma3HZPACdhKAp0gzCMKTCXSiGThJhPITcKFgAnhNCchoJEuEmECJE7GyA1BHhLhP07pwagYGqRrU4MzstCmoQG+JOMN50+ab0mI34Mo6PXiV4wwb4PdSVtXsQNgAlqq5rG6QAAPJYlTVgkkHK572mZduHHx7oaqoO5yuemqmwUlZWk7u/KjPkBuSrNzrCI/DZvI86Wj1XM9U1BighttPl0hxEAOSTz/Zen9OxRuck+IcX1PNPGMUe3e+wawurrvc+qahh0RD8PTF38x3cR8hgfVfQEeGsLnHA5JXM9EdPM6V6Ot1p0gSxRh05HeR27v7fRdO1zSMLS08pmXBEajStDc6Sc4EzWvzjS/3T+6nLYqiPdrJGO8xkFRz0NNUBwkhadRySBg5+apttUkErjTVDo4vD0tYSdneaqlNLaaaSQPGuMg59x2E2GkrIahv+ML4AclrhvjyymA3WF+kMikZkYJJyAtNAqEIQJpCTSRwSnIQJv3wk1jvsnIQCZJFHK3TJG14PZwylLR22+SAD5pMRPkV6e3UlJK+SngZG54wS1V7rXR0FBUVUjg1kTCckrQe7S1eX+1y7mO009khfiWvfofjszl5/8dv9ynHjiZitYRMxEbeR3G4SV8lTcJSfErpTLg8iPhg+39VzFwqw0EZWpdalokfp2aNmgdgFk2ehdeb1HDjLAcuXqZskYseo9OLDjnNk23+kbLPJH48jcGT3snsOy9ApKARYBJVqjt7KOkaxrQMBTNadYXzWS83vuX0dIitOMNWg/I0kfD+r5K3d6djqNsjDkg7/ACVelGAMqdzi6mkhfvhpwuifx05p8sBN1BKTyo1kk/UhNa0qVrE0g1oT8JwalAVkGgJwCcAjChJAEuEIyiGMhCAoXOATsJAlQGEISgKEEwgDCeAlwgYG5U0ML5X6WNyVPT0ckoDiNLPMq8SymZpZgAfcqJtpetJsZFTRUzdb8Ok/YKvUVmQRnhVauvIJwVmSVWQd91jNpmXXTFFYLVTlxIJWXPOGMJJT55tjuueudWS1zWk47q1abaTeIWaaRtRWy1b/APLpm5Ge7jwpvZnZT1Z7T2VUrddFa/8AEPJ4LwfcH/lv9Fj3Of8AhHTzYifzXjxHj1PAXtfsU6a/gfQrK2ZhFXdHeO8kbhnDR9t/qvbivxYIp7l8/lyfNmm/qOz0lrC4EoIxyCnh8cZbG57Q93AJ3KkWCVcHyKcJHD1UpY09k0xeRUBBKO4ITw5p4KiLHDtlNx57ILKRQBxHdPEp7hBKhMEjSngg8IBCFVuEtVDb5pKKETVIb+Ww8F3bO4QUKy118l1FbT3BzGe4DAcgYByfv8k+0uvHiytuTYfDAyxzOSSePp8vJUz1HNRxt/iFDKxxcR7g7Dvv5n1W+x4fC2TBAcM4IwQgjmkDQS44a0ZK+c+r7z/F+p7lcNeYoP8ACQb7Zzl5H12+i9j6/v38B6Tq6hp/PkboiHm47D9yF863F/4WlipdWp0bcvd5uO5P3Xb0dO83n05+ovqvGPbAudTqe4LsfZdbhKaitc39WAVwc7X1E4ZGC58jg1oHck4C9p6Gtn8MsLISQXanZcO+65uuyb7Ojoaa7t+ce7t2VIHL+VcnPulUv1rx/wCT148Nmj3YO6nqPdBcO7cFVqBw047qxVH/AAzj3wuyPxcc+WIWbpBGp8bZSLPQYGYTwMIRlAiVIjKjadFRlNykyo2HZRlMyhNjM0oDVOI04RJ3TtAGp4YpxGl0qdG0IjS6cKXshkT5X6WNyUEenfhX6WhOQ+UbDhqtU1HHTjW/3npZqkNBKrM6XrXaOepZFkd+yxausLid0V1VklYs1TgkkrCZmXbjrERss8+M5Kz5KnYqGoqSST2VF8+c7rStdIm20s1W45GVXpKX8XWsL/8ALZ77z6BT0dFPcKhsUTSSVo35tPYba+BjgZS38x3/AAuzpcfPJET4cfV5vjxz+5c7Db5us+vbfZI/glmDpSBnSwbk/RoK+s6aCOCKOGFgbFE0MY0dmgYAXh/sC6fMpufVVS33pXGmpifLl5H7D6Fe5NcWFdea/O8y8zHXjXSrcrLS3R7JJjI2WNpax7HYLcqhBZ7pRVDHRXR80DSSWSDBO5P9h6BbokHfZPDge6yXYAvFypXtbWW6RzC3JkYNg4522J2A7nC0bXdYLrC6SBj2hhAdqHfyV9NaxjC4taG6jk4GMlBHUVMNJA6ad4ZG3lxSQVVPVsLoZWSAc6TnCoXukq6ptOKdrXRsfre0nBP3RY6OeCKaoq42sqZ3ZcAOANgsPkv8vDXb9q7nemmY2n0TTGRwVnXm6Pt7Y2QBrp35cGu7gcp9puclyjkMlP4RYQPizlT81Ofx+08o3pbIcOQkBI4OCpZZY4Wa5XtY0d3HASt8OVupulw8wtdx4SjEjh3yntlHcIMQ7FNMbhxhSH5ZIMHBHkQiQ+6AO6hO3Kp3W4R2u1VNZK/THFGXZPZB5F7TryLj1RBb2uzS25n4iXy17hg/qfsvJLnOZ5XuJ+I5W7ca+Sohqa6bIqLjKZ3A8hnDB9G4+65yX3s5C9OI4Uirjmed9tboW1fxDqIVTxmKjHib93cN/uvWrKzw7bE3yaue6LtLbdYWPc3E1SfFd547D7Lp4ozDEGjgLxOpvyvL1umrqomIIKrNZqkU8hB2UlE1pnGruVy0jdnXM6qnp2OYAS0qWpcTSnPoFoy07WsBbwsyq92nI/1LrmNQ5IncqHZIglNysdrFSZQmkqNhdSTKalDUSVInhqXSgYAlwn4RhShBpwjCcUwlWCk4CYXdku5+aswUb34c/ZqrsiEMMD53bDDRyVrwQMgj2H180jSyNmkDACrVFWGggFRtpWp9RPgHCxqqqO+6ZVVuxGVi1NVqzusbW26aU0WqqsuO6zZn6wd0ySXJO6ge8Hkq1YWlBM7JwSprdap7hOGRjbu48AKa3299wqBG1u2dz5Bd1SU0VHTtiiaAANz5q8Syvfh2jyhoaKntFG7QBloy9/cryrqytnutzZQU+XzVEoja0dySvR+pa8UVsdvud1znscsR6i9oct2nbrpbWPEBPBkOzR/U/Ren08fHim3uXj5rTky6/T6A6VsMXTfTVus8QAFNCGuI/U/lx+pytzwhjYlJEOXLCnf1FRPL444qtuS4s1AZGTsNgRtjbf5rNZtljh2ym7jthZkfULW1IpqqlljnPAYC4HfHkN+T8lo09wpKprDHK0626mh2xIzjOCpDw5w4KeJT3H2TjG07jb5JhiI4IKgPEjT6fNOGCoNLhyMJN+xKAqqClrMfiIWyEcE8j5FJRUMFBCYadhawkuOTnJTxI4eqeJR3Crwry5a7o1DHv7KmR9OI4XyQMOt+gZyeMY+6f09RupqSSRzdBleSG4xho2Gy1w5p7pyyjDHyfJtHHvtn3OvkomwsgiE08r9LWZxt3Kdbq/8AHsl/L0mJ+gkHIJ9CnVVvjqZ2z63xzsY5jHtPw574TqCjbQUjYGuLyMlzzy4nkqYjJ8m58Hfad5wwry72t3b/AAFJYYn4fWv/ADcdoxu79tvqvTZ3tY0uccNaMkr5w6svhu3UV1uZdmKImjp/p8Z++30Xb09OV+/pGS3GrlbpUCesdp+AbNHorPTVid1B1BSW5p0tlfl7iNmtG5KyC/LsnuvQvZsG00tTWhhMxb4cZ7DzK3z5OMTMscGObTEQ7MUhppXQkAeEdGB6Jz8KQ5wcnJO5PmVWkduvBtPt7dYiI0ikxlPpG/mjfuoXlT0Zb4gzjnumPyX8OmhdmDTyse5jQA3zK26dmYct3x3WPeRuxw4yV1X/ABc1PLHJSJUoC52hEmE8BODVOkGBqcGp4alwrRCNmgITkiaCJuU7CTChKAqSKlfMdtm9yVYhpWgapD9FY1YGNgB2UTK0VRsgigGQNTvMpk1SGNySmzVDdJwQsepqgM7rO1m1KJKi6Fmd9vmqE1yDmnDlmVk7ZCQDuseWaVhO6z1MuiIiGpPWEk7qk+fIOTlZ5qHuOCUZefNNRC+kzpMqajo5a2obHGCc8+ifb7VVV7/cYQ3u48LtLfborfBojGXH4neavETLLJeK/wBloKGKggEcY94/E7zVtGFVuVSKOgklJwcYC2x05WisOHJfUTaXnvX931F8THbDYL2n2QdM/wDbnQFK6Vmmrr/8VNkbjPwj6Nx9SV4XYLQ7rf2j0NsILqYS+LUf/jbufvx9V9aiBrGhrBpaBgDyXp5p1qkeIefjiZjlPsjZNIwniVp5ymmNw75TMEc5CwaJXsimGHsY8DcZGcLOrLBQ1kniHXHIGBgdG7GGjOB+6uJweR3+6DCfZbpb2H+E1zneUdQ8loxwPtlacFTPSUL5rrLEzS7AcBjb+5VwSea8/wCprpJW3aSAO/IgOhrfM9yq2tqNr46c506CXrOhaSI4ZpPXAC5+t6quNQ8tic2nZnhgyfuspjARnklL4WPn5rnnJMuquKlfS1HfLtG7IrJP9266Kz9UNrJBT1obHKdmvGzXf2K5HSm+HlIvMJtjraHqnCUOI4K460dVupIm09cx0sbdmvHxAevmumo7tbbhgQVDdZ/QfdP2K6K2iXJbHaq8JD3AKUSNwU0xntumEEbOCso5T2h342HpGqnjP+Jm/Khb3L3bD9/6L50urhRwQULXZ8Jvvn+Zx3J+69H9qF7bcerIqBrs01rj8aTyMh2aPpuV47cqwzSveTkuK7sMcMe/25cs8rRWDqds1xuEFFSjMszw0enmV7pZLXDaaCOmhGQxoBd3ce5Xm/sutImqqm7TDaP8qPPn3K9QfOB7rSvM6vNyni9LpcPGNpJZcZAVQl2STjCmwS3LuVE4crj8uvwhJBOycAW7jspI42k8hSmMYIwtaU7KWu0bVc9DhHKfdOyt3eJslMXs3AOVzOfDmBBXQUdS2emdHIe2FrE9tMrV1O4YwalDU/TgkeRRhZ6DQ1OwlwjCnSCJEuEiASZSEphfhQk4lN1JhflMyo2lp6gIy4nZUqiqaIzhUa+sdT6m5/Ld3/lKx47iJXSQl3vDcbrGbenVWm+6xV1r26i0/NYz6t0jjklPrZTnSe6zydJKrLesJnuzuqz8O5Sl5PCZpLiidCOlDycBdXabJTsgbNUR6nu3aDwAsu3xBkLnEZC66Oqpza4p98t9xzR+ya77lW9rcdVOY0MAaxoaB2ASuc2MZkcGj1WVPew0ERjAWRUXN8hyXKZy+oZV6eZ72dHLdKaIHSNZ81yXWd7P8MwMNaQcAKKSsLjgHlcx1tOTLHTNPk1d/wBPrM2m8+nD18VrEUr7esf9PnTZhtVf1LUMPi1j/BgJ/kbyfqf6L164XWC3PjbI17nPBOG9gO5WZ0xSN6e6XtdsbCRHBTMbsP1Yy4/clazn0lWNMrWkjs8KMuSbxMUnUsqViJ3aNwtMeJGNeOHDISpBjG2MJVpHhmaY2ntj5Jjoz2OVTkr6ht1ZSsp8xnl5/daKit4tvXpG0Okg7heWVzg6sqn8Eyu+u69ZAXlXUdLLb7zOx4Ol7i+N2NiCq5fDowT90oKeTIwVZyCFl0swccLRacBcsOmSkgKGSbQn74LuyzKqbkZUWlasbSPqAc7pkdXpf5Y7rPLyTyjUfNREyvMQ9G6a6lcXNpKuTVGdmSOO7fQroL1co7ZaauulcGthjLsn5LyGmqXRP52Wt1JUV3UvSRtMU7Yw4hskhySWZ3Hzxt9V04cm+0uPNi13h41cLnNWsqKpwcam4TGZzQMnB2aPsrNp6Cqa/TUXSU0sJ38MDL3f2XZ0tlhtPvxwh8oGPFeMkD08lK6WaV2lrCc91t1HWzEcaQrg6KJnneVqiZTW+lZRW+FsMTeGtHJ8z6rRhic33pDv5KnSNbTty7d57+SlfUled57y7ZmI7V8LxkHmoTKO6hZN4gPml3J3C0rG2UylY7fKttOeVSbseVZiO4W1ezOe6vPGQ7IUtDUmKYDflSTM1HKqQj/E7earML1ncaX3nU9x8ykwl53QpZSMJEpOFG5yJKSoy5IXKMlQk5zlETlKkwoSRJunYRhRoYb6gVLix++diFgV8UlDUsnYctBwT6Kbx3Nkzur9TE2qoiedt1yxDv8ADLragOEcjTt3VTUXuJTJQTA5vdiSBwMQd5qV4SgHspGA53UOvCnYfdyi0LjakRREdsJzLg/8E+IE4duR8lkVNRgaBySnxvIamtprqDxXCQbnBTHT5HKzpxomJaeUwT4O6rEaWmdw0WygOGfNY3WrHNrWT4ywOBBVwSgjYq9PTRXy1+CT+fG3BHcjsV6v069fuxz7eP8AU8cxxyR6fTthuUF5sFBcadwdFUwMkBHbI3H0OQrklLDIDqYPmF84ezz2jVXs+abPe4ZaizF5dFNGMugJ528vRe72PrTpzqNgNqu9LUPP/p69L/8AxO60yYpjtaHHW++8S2IqdsJcWknOwBPCw5a69WsvkqKdtXE52GCM7tycAcevl2XQ5yhUiIiNQtvflkM6johUmnqRJTSBjXHxW4buOM+nG61o5GSxiSN7XscMhzTkFRT0tPVMLZ4WSNIxhzcp8MMdPAyGFjWRsAa1rRsAFKDyubdaqm8SVEF2iHgjJicCMtOdsFWq1t8p6yaoo3RTwOxogdtjbzUlpulZWyyQ1dukppIx7z3EaXb9lS1OUx38H+3B3PpC52qYy0zDV0+eYx7wHqP7KtqIb7wc09w4YK9cwuG63pDHUwVbW+48aHH1HCzvjiI3Dpx5ZtOpc7LKPw5APZYc7tzurssnuYBVCRuVyzLrr2Q907sgBLpRJAcFX6OqMTsZ2KziMFPa/CROu6JjcN+WNssfiMG3cLHnY5sh2wPRW6Ks0+647FTVMIcC5q2nV4Yx9s6llB5HdIXZRKwscUxY6002lgkw5XmuBWdGPeVtr8bLSk6hSywFNA/dVmuGFJEd1pEs2sIw5oJVFkIbO93qrsBy1QVBDXYHzUyiDS7CYXqMvTc5UbNJC9NLspoTsKEmownYQgbhJhOJTCUSEJpcm5UDgnyhrtjlaNFOTGWngrKqBpGrGymt9WDv5bFcr0tbMrYxHVkY92QLMjeYnmMn4SujroW1NNrZ8bPe+a5aoJ/GkDyCmY7KxPfTQb76lL/DjKrxO0syVXq5z4bsFQvsjXfiKgu/SFc1ANwqVIMM27+S16ax3GrGqOne1p/U/wB0fuhtlSt1vUEkeAurZ0pKxgdU1MbHE40tGpa1P07bIG/mRmof5vO32TSvyRDz2JjnO0taXHyAytqistyOJWxOi7hzvdXaCOlomF0MEUf/ALWgJaWmkuBEsuoR5y1vn81ekTFvt8oveLVncdnNG21050PpGzg8uaR+6zLt0fS0gZUTtNMZD7skRwAfXyXqEccVOzGAB5BZd5kjnopoyAQCHYK9OOttWurd3kf8Gtrbp2cfa+oOt+nQ02rqB9XTt4gq/wAxpHlk7j6ELqovbZWSUE1B1LZKulEsZjNZa5MOZnbU3PBHzK4OG13F1xkhtbg8Bpf4LnY29E+arq6E6LjRyR9suacH6rpx2wZo3HZzZMebDbU93o9j6uqpdI6d6+org3tQ36Lw5QPISDGT6ldazr6520D/ALi6Vr6aPvVUJFVCfXLd/wBl4DLS2i4+9JEwOP6gMH9letk3UNgdrsPUVVBHz4L3a4z82nb9lNuln+Ms46iv8uz6PtHWXTt92t13pZZM4MRfpeD5aTg5W6vmWXreSsIb1f0bQXQDb8ZRDwZh65H/ABhb9l6sshwzp3ru42SQcUF8Z40I/wBIc7j6OJXPbHavmG0Wi3h72uO6jtFVBbaudtW6WJztckThxvnI9VBZ+oervxVPDcbPQXGklcGm42mqBY0Hu5jtwPqumvlYyhs9RM+MSDGkMPBJ23WdvC9fLyoRMDTuFUlj3VkUlQ4k+I3c/ZNfSvb8Uu/ovPmHo7US3CblWDD/AKsqJzMd0TFkRTRsU9RuVZWSNdg7FX6epJbocVmNO6ka4tOQprbjKLVi0NCWIPGVUMJaVcppRJs5W3Uoc3IXTERaNwwmZr2lkiPAynjYq4acgYwoHRkFOGkRbZGZypmc7KNrTjhT0497cJEIlp0+0eT5KnUO1SnyVtpxGVSdu4lTKIR4SgJyRVAjKEiRAXUm6kJMKQZSIQoSbhJhOyjKjaVEWe3xsLTB4nmXnKrOt1ujJLaVjf8A27LYqyGsyFi1FRg4WM9nVXv3KKWhO2ZGfIrMl6Xtj6gzfjqhpd+nS3ZPkmJ4KgMzyq7lfUftYPTNA9oH4+fHo0ZUkfTtljx4jJZyD/6j9vsFXZVODcJfxTj3Ubk1H7bkRooGaKemhjA391gTXVrnRPkB+E4WUypIeCeCMKIVZEc8J89QUTMymIiF261Zb4bmnYPaVIKr3zvsVhVU5moX5O7U6Kodpac9lELTDZrptVK7HK1qC4xigjIxkNwVyzqgmMg75VaKvfTksOS0+SvS3GUWpFq6dZNWE5OpYddX5ZKNXLcKjLcJ5Noonuz6Kk+KXDnTuAJ30g/1S9plamOI7tKwztjvUcj/AIdLgfsuxM9HMwtM0ZB/TJheYzVv4Z2GH3vRVnXKocT+YVFbWr4MuGuSdy9Bq+mbNcCcQMjf/NTu0n9lztX0XcaVznW2vbM0cR1A0n/yCxqe7VUBy2R2Vu27qKvkdu3xP/cunF1mWkuPL0GO0dmVObtbv/rbfK1o/W0a2/cKnJLbq8HxoY3Z5y1d+y5zaNUlNpHfDlVkisdzcWVEMbJT3xpP3C7a/Uo8XhwX+mW80cVQw1Nrl8ax3asoHg5HgynT9l2dr6+6uqtFovElLX0k2G+Po0SMxwdufqqVT0TE4F9DWPZ5Nk3H3CzmWm92utikfAZomvBLojq2+S2tkw5azrywpTNjtES79krsIc4kFRQyte0OxyM4KlL2EbABeTp6e1Vx5ULjyppHDthV3O9FRaCYymOCcHbJDvndRK8SiBwU8FMcAE1pVV1mGQsfyt+kna+P1XNNOCtKkm0t3K1xW1LLJXcN8RMkBIUElFkk4RR1IcNj91oskB5wuvy5fDK/BFoJTBHoPkt3SHNPBWZUQ6ZNlEpiUeS2A5VQlWptoSFUKzWLlCRCAS4QhAiRKSmZQL2TUZTSVWVgSk1JpKRVSjrptscBc/USZPKtVVTlpyVlulDist7l0V7QdlBKj1BAcPNTo2UkpmopxKYTlRo2USHhRyvIc2QcjY+oSEIPwqNLRYjXAh7c7OCSNxEQHko9mFOMgATityOM2AUyNw1EndV3SBuXPcAPVV33KJmzMuKtqE1tLUNS8AjOAs2trSxpa3OT3VcV+p3vnfyykqsSNBHko1C/OVIvLzknJT2KIA5Ts6OSiOUrtNF40oYO67W20DIIW+7g8riqCYNnBJXY01dmnGTspjsrbctCqma2ItAXK3Fx16mnB9FpVNXlpGVkSnxCqW7tsf2+HUdK3B9VTvppjlzRqaV0I4XLdL05ZNJIOA3C6poWuPw4uoiPk7K7iGylpHKUOjxwmVo06X427qBszQFZjCSQt7BQO3CHS6lC5xHdUlaAThMDkxzz5poco0tCR26aGk8IBynB2FVpBAMd1ZhdgcquHZKkacBK9pRLTpptDh5Lbhla9m2MrmI34WlSTjYFdVLue9W0yYsfgnbyRMNbshU/EPOdlPDKHnGVeZUiFeqPutCreanqnYkx5KsXKiSpE0uTNSjYlyjKj1JC5EnkpmU3UkyoNHZTUmUqhJEidhJgqNDiqiqLjgFQMkyeVX8eF53dg+RUrGhwyx4WcQ6U4elDxhQF0kexAcPNROmY44zv5BSLheoZKmOIZe8AeqpmZznFrXHA9VjVwLK5rnEkPHcpBpuOutMONR+QTBdonHAjefnsslrQ4J8bcOVdr8YaEtY4sc6NmD6lYktzrS4tMpHyGFsNaPCd8lhStzUvB7K9P9piIROdNIcue4n1KcxkpPxFThikaCDwp5LHU9tMvvOeQrn4BrW4bI8fMp1NLhuFI+XdUmdkKElNLHuJAQqzhK44KuzSHhRgZCiJbRNf0rsEkZyAStiir58CNzHYTqSjaQHP3ytEQMbjACra3ZpXjPlbbZrlPG2RsGWuGQdQViDpute8eIxsY7kuW703cGupvwUoBGfcJ5BWu5ulxaexwtaRE124M1747zClQ0LKGnETDk8ud5lXAEIytNacszMzuSSMEkbmnuFjnLCWubxstjKoV8GS2QEjscKslZUXOPZhTCSRuCnFrx8Lwfqo3+MOQspaQZndOyAE33u4SYJKbTCVuCNk13Ce1uB2SOGyhpCJrsFTMOQoO6ex2CphErbD2VuHUFnsO6uRk4G6vWVZhpMkc1u4yFZp5B4g81TgkIGMZU7BiQPbtvutmMwSrdmocq+VPU/571XUbQMpEpSAKAJMJ4CUBEo9KNKl0o0Jo2jDU4NUgYnhqmIRtEGFLpU2AmqVdvNn+DN/mRtUX4GmOS0vZ8nFKnDhZRDpixPwjQN5ZHD1cmSMjgic5oyQFLk4TZhmB/yUStEs+B2Tv3Ud0g10/iNGXMOQnxfEFckAMJyOyrC0+WPTEPYCO4VprN1SodpHjsHnC1ABhFt6OYzLMZWNPEW17xhbkSpVDQa523YKYIlDFASN0r4w0cK40ARqRrGuG4BU1rtE30zI3OBOymOoqYtaHHYJ5aNPCia6TFtqEjSSlYzdWy0Hslja3J2Tity7JoXlrB6K2yUkKCMDTwrkDRqGyiaL48ktiwxSPqmvA2buSusLi4knkqjbI2R0DCxoBPKuhWpHGHJnvN7DKRCFowGEHcYKVIeCgw6+kPjvMbyw8+izz+Oi7aguhrGgsJxvhZbnuzyspaR4VWVLz7r2YKkbJk77JJO6jHIUSvVba8HhI9EQGhD+FVeEOEo5QhBMwq5C7hUWcK1CVaqstWAZCtAYAVKmJ23WgPgC3hjKrMcyuUac/wCMpqhUiAE4JwRJoCcGpwT2qYhWZNDSnhqcE1SjZcJEiQKYCpuE5Cgf/9k=" alt="TapNPay+ App showing cash earned">
+  </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-pad" id="how">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">FOUR SIMPLE STEPS</h2>
+      <p class="section-subtitle">TapNPay+ helps families create ongoing support for travel, camps, campus visits, and development — all powered by everyday purchases.</p>
+    </div>
+    <div class="timeline-grid">
+      <div class="tl-card reveal">
+        <div class="tl-dot">📋</div>
+        <h3>Parent Fills Out the Form</h3>
+        <p>Start by completing the interest form below to receive more information about the TapNPay+ IMPACT program.</p>
+      </div>
+      <div class="tl-card reveal reveal-d1">
+        <div class="tl-dot">✉️</div>
+        <h3>Receive an Invitation</h3>
+        <p>A parent or legal guardian receives an invite and sets up the TapNPay+ membership.</p>
+      </div>
+      <div class="tl-card reveal reveal-d2">
+        <div class="tl-dot">🤝</div>
+        <h3>Share With Your Community</h3>
+        <p>Friends, family, and supporters activate their own memberships to start driving funds.</p>
+      </div>
+      <div class="tl-card reveal reveal-d3">
+        <div class="tl-dot">💰</div>
+        <h3>They Shop. You Benefit.</h3>
+        <p>When supporters shop at participating brands, cashback generates ongoing impact for your athlete.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section-pad" id="benefits">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Why Families Choose TapNPay+</div>
+      <h2 class="section-title">SUPPORT THEIR JOURNEY,<br>ONE TAP AT A TIME</h2>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card reveal">
+        <div class="b-icon b-green">🚫</div>
+        <h3>No Selling Required</h3>
+        <p>Forget the candy bars and car washes. Your everyday purchases at 300+ national brands automatically generate funds for travel, camps, campus visits, and development.</p>
+      </div>
+      <div class="benefit-card reveal reveal-d1">
+        <div class="b-icon b-purple">💳</div>
+        <h3>Cash Back For You Too</h3>
+        <p>Earn an average of 4% unlimited instant cash back on everyday purchases while supporting your athlete. It literally pays to participate.</p>
+      </div>
+      <div class="benefit-card reveal reveal-d2">
+        <div class="b-icon b-gold">📅</div>
+        <h3>Year-Round Support</h3>
+        <p>No seasonal fundraisers or one-time events. TapNPay+ generates consistent daily revenue for your team — all season, every season, year after year.</p>
+      </div>
+      <div class="benefit-card reveal reveal-d3">
+        <div class="b-icon b-blue">🛡️</div>
+        <h3>Safe & Transparent</h3>
+        <p>Funds go directly to the program. No middlemen, no fine print. Parents stay informed about how their everyday shopping makes an impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Difference</div>
+      <h2 class="section-title">OLD FUNDRAISING<br>VS. TAPNPAY+</h2>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="compare-col old">
+        <h3>Old Way</h3>
+        <div class="compare-item"><span class="x">✕</span> Bake sales & car washes</div>
+        <div class="compare-item"><span class="x">✕</span> Door-to-door selling</div>
+        <div class="compare-item"><span class="x">✕</span> One-time seasonal events</div>
+        <div class="compare-item"><span class="x">✕</span> Hours of volunteer time</div>
+        <div class="compare-item"><span class="x">✕</span> Guilt-driven purchases</div>
+      </div>
+      <div class="compare-col new">
+        <h3>TapNPay+</h3>
+        <div class="compare-item"><span class="check">✓</span> Shop brands you already love</div>
+        <div class="compare-item"><span class="check">✓</span> Earn cash back for yourself</div>
+        <div class="compare-item"><span class="check">✓</span> Daily, year-round funding</div>
+        <div class="compare-item"><span class="check">✓</span> Zero extra time or effort</div>
+        <div class="compare-item"><span class="check">✓</span> Everyone wins — parents & teams</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND LOGOS -->
+<section class="brands-section" id="brands">
+  <div class="section-header reveal">
+    <div class="section-label">Partner Network</div>
+    <h2 class="section-title">SHOP 300+ BRANDS<br>YOU ALREADY LOVE</h2>
+  </div>
+  <div class="logo-marquee-wrap"><div class="logo-marquee" id="row1"></div></div>
+  <div class="logo-marquee-wrap"><div class="logo-marquee reverse fast" id="row2"></div></div>
+  <div class="logo-marquee-wrap"><div class="logo-marquee" id="row3"></div></div>
+  <p class="brands-count reveal">And <strong>hundreds more</strong> — in-store and online, every day.</p>
+</section>
+
+<!-- COMMUNITY CALLOUT -->
+<section class="section-pad">
+  <div class="callout reveal">
+    <div class="callout-quote">
+      Bring your community together to support your athlete's journey. When supporters shop through TapNPay+, their everyday purchases help create ongoing impact that can go toward things like camps, travel, development, and college visits.
+    </div>
+    <div class="callout-attr">Support From Family, Friends, & Fans</div>
+  </div>
+</section>
+
+<!-- TAGLINE -->
+<section style="padding:40px 24px 80px;text-align:center;">
+  <div class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;background:linear-gradient(135deg,var(--green-mid),var(--purple-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(16,185,129,0.15));margin-bottom:28px;">SET IT UP ONCE.<br>KEEP EARNING DAILY.</div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="cta-section" id="signup">
+  <div class="cta-content reveal">
+    <h2>READY TO <span class="green">GET STARTED</span>?</h2>
+    <p class="sub">Fill out the form to help your athlete start earning money tomorrow.</p>
+    <div class="ghl-form">
+      <div class="form-title">IMPACT PROGRAM SIGN UP</div>
+      <p class="form-sub">Our team will reach out within 24 hours.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Parent First Name *</label>
+          <input type="text" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+          <label>Parent Last Name *</label>
+          <input type="text" placeholder="Last name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Parent Email *</label>
+          <input type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Parent Phone *</label>
+          <input type="tel" placeholder="(555) 000-0000" required>
+        </div>
+      </div>
+
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:rgba(255,255,255,0.25);margin:24px 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06);">Student Athlete Information</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Student's First Name *</label>
+          <input type="text" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+          <label>Student's Last Name *</label>
+          <input type="text" placeholder="Last name" required>
+        </div>
+      </div>
+
+      <div class="consent-wrap">
+        <input type="checkbox" id="sms-consent-impact" required>
+        <label for="sms-consent-impact" class="consent-text">
+          I agree to receive texts from TapNPay+ regarding my account and onboarding. Msg frequency varies; msg &amp; data rates may apply. Reply HELP for help, STOP to opt out.
+          <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank">Terms</a> &amp; <a href="https://www.tapnpayplus.com/privacy-policy" target="_blank">Privacy Policy</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="form-submit">GET STARTED</button>
+      <div style="text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,0.2);"><a href="https://www.tapnpayplus.com/privacy-policy" target="_blank" style="color:rgba(16,185,129,0.6);text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank" style="color:rgba(16,185,129,0.6);text-decoration:none;">Terms of Service</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="f-logo">TAPNPAY<span>+</span></div>
+      <p>400 Holiday Dr. Suite 210, Pittsburgh, PA 15241</p>
+      <p>(800) 793-1276 &nbsp;|&nbsp; &copy; 2026 TapNPay+</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.tapnpayplus.com/terms-of-use">Terms</a>
+      <a href="https://www.tapnpayplus.com/privacy-policy">Privacy</a>
+      <a href="https://www.tapnpayplus.com">Main Site</a>
+      <a href="https://www.tapnpayplus.com/contact-us">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/tapnpayplus/" class="social-icon" aria-label="Instagram">IG</a>
+      <a href="https://www.facebook.com/Tapnpay-100634918043539/" class="social-icon" aria-label="Facebook">FB</a>
+      <a href="https://www.linkedin.com/company/tapnpayplus/" class="social-icon" aria-label="LinkedIn">LI</a>
+      <a href="https://www.twitter.com/TapNPayPlus" class="social-icon" aria-label="Twitter">X</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== BRAND DATA =====
+const brands = [
+  { row:1, name:'Nike', domain:'nike.com' },
+  { row:1, name:'Adidas', domain:'adidas.com' },
+  { row:1, name:'Amazon', domain:'amazon.com' },
+  { row:1, name:'Target', domain:'target.com' },
+  { row:1, name:'Walmart', domain:'walmart.com' },
+  { row:1, name:'Apple', domain:'apple.com' },
+  { row:1, name:'Best Buy', domain:'bestbuy.com' },
+  { row:1, name:'Starbucks', domain:'starbucks.com' },
+  { row:1, name:'Home Depot', domain:'homedepot.com' },
+  { row:1, name:"Macy's", domain:'macys.com' },
+  { row:1, name:'Under Armour', domain:'underarmour.com' },
+  { row:1, name:'Nordstrom', domain:'nordstrom.com' },
+  { row:1, name:'Old Navy', domain:'oldnavy.com' },
+  { row:1, name:'Gap', domain:'gap.com' },
+  { row:1, name:'Sephora', domain:'sephora.com' },
+  { row:1, name:"Lowe's", domain:'lowes.com' },
+
+  { row:2, name:'DoorDash', domain:'doordash.com' },
+  { row:2, name:'Uber Eats', domain:'ubereats.com' },
+  { row:2, name:"Kohl's", domain:'kohls.com' },
+  { row:2, name:'Foot Locker', domain:'footlocker.com' },
+  { row:2, name:'Puma', domain:'puma.com' },
+  { row:2, name:"Dick's Sporting", domain:'dickssportinggoods.com' },
+  { row:2, name:'Costco', domain:'costco.com' },
+  { row:2, name:'Walgreens', domain:'walgreens.com' },
+  { row:2, name:'CVS', domain:'cvs.com' },
+  { row:2, name:'New Balance', domain:'newbalance.com' },
+  { row:2, name:'Reebok', domain:'reebok.com' },
+  { row:2, name:'GameStop', domain:'gamestop.com' },
+  { row:2, name:'Petco', domain:'petco.com' },
+  { row:2, name:"Sam's Club", domain:'samsclub.com' },
+  { row:2, name:'Fanatics', domain:'fanatics.com' },
+  { row:2, name:'ASICS', domain:'asics.com' },
+
+  { row:3, name:'JCPenney', domain:'jcpenney.com' },
+  { row:3, name:'T.J. Maxx', domain:'tjmaxx.com' },
+  { row:3, name:'REI', domain:'rei.com' },
+  { row:3, name:'Academy Sports', domain:'academy.com' },
+  { row:3, name:'Finish Line', domain:'finishline.com' },
+  { row:3, name:'Converse', domain:'converse.com' },
+  { row:3, name:'Crocs', domain:'crocs.com' },
+  { row:3, name:'Lululemon', domain:'lululemon.com' },
+  { row:3, name:'Brooks', domain:'brooksrunning.com' },
+  { row:3, name:'Instacart', domain:'instacart.com' },
+  { row:3, name:'Grubhub', domain:'grubhub.com' },
+  { row:3, name:'Chipotle', domain:'chipotle.com' },
+  { row:3, name:"Wendy's", domain:'wendys.com' },
+  { row:3, name:'Marshalls', domain:'marshalls.com' },
+  { row:3, name:'Champs', domain:'champssports.com' },
+  { row:3, name:'Bath & Body', domain:'bathandbodyworks.com' },
+];
+
+function chip(b) {
+  const d = document.createElement('div');
+  d.className = 'brand-chip';
+  d.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${b.domain}&sz=128" alt="${b.name}" onerror="this.style.display='none'"><span class="brand-name">${b.name}</span>`;
+  return d;
+}
+function fill(id, r) {
+  const t = document.getElementById(id);
+  const rb = brands.filter(b => b.row === r);
+  [...rb, ...rb].forEach(b => t.appendChild(chip(b)));
+}
+fill('row1', 1); fill('row2', 2); fill('row3', 3);
+
+// ===== NAV SCROLL =====
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ===== SCROLL REVEAL =====
+const ro = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ===== COUNTER =====
+const co = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, t = +el.dataset.target;
+    let c = 0; const s = Math.ceil(t / 35);
+    const iv = setInterval(() => {
+      c += s; if (c >= t) { c = t; clearInterval(iv); }
+      el.textContent = c;
+    }, 28);
+    co.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => co.observe(el));
+</script>
+
+</body>
+</html>
