@@ -19,6 +19,10 @@
       "source": "/:path*",
       "has": [{ "type": "host", "value": "impact.tapnpayplus.com" }],
       "destination": "/hs-light/:path*"
+    },
+    {
+      "source": "/",
+      "destination": "/hub/index.html"
     }
   ]
 }
