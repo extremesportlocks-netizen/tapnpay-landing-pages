@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "nil.tapnpayplus.com" }],
+      "destination": "/nil/$1"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "nil.tapnpayplus.com" }],
+      "destination": "/nil/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "impact.tapnpayplus.com" }],
+      "destination": "/hs-light/$1"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "impact.tapnpayplus.com" }],
+      "destination": "/hs-light/index.html"
+    }
+  ]
+}
