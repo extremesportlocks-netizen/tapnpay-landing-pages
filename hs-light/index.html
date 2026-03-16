@@ -955,41 +955,41 @@
   <div class="cta-content reveal">
     <h2>READY TO <span class="green">GET STARTED</span>?</h2>
     <p class="sub">Fill out the form to help your athlete start earning money tomorrow.</p>
-    <div class="ghl-form">
+    <div class="ghl-form" id="impact-form">
       <div class="form-title">IMPACT PROGRAM SIGN UP</div>
       <p class="form-sub">Our team will reach out within 24 hours.</p>
 
       <div class="form-row">
         <div class="form-group">
           <label>Parent First Name *</label>
-          <input type="text" placeholder="First name" required>
+          <input type="text" id="impact-pfirst" placeholder="First name" required>
         </div>
         <div class="form-group">
           <label>Parent Last Name *</label>
-          <input type="text" placeholder="Last name" required>
+          <input type="text" id="impact-plast" placeholder="Last name" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>Parent Email *</label>
-          <input type="email" placeholder="you@email.com" required>
+          <input type="email" id="impact-email" placeholder="you@email.com" required>
         </div>
         <div class="form-group">
           <label>Parent Phone *</label>
-          <input type="tel" placeholder="(555) 000-0000" required>
+          <input type="tel" id="impact-phone" placeholder="(555) 000-0000" required>
         </div>
       </div>
 
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:rgba(255,255,255,0.25);margin:24px 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06);">Student Athlete Information</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#3D5347;margin:24px 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(16,185,129,0.15);">Student Athlete Information</div>
 
       <div class="form-row">
         <div class="form-group">
           <label>Student's First Name *</label>
-          <input type="text" placeholder="First name" required>
+          <input type="text" id="impact-sfirst" placeholder="First name" required>
         </div>
         <div class="form-group">
           <label>Student's Last Name *</label>
-          <input type="text" placeholder="Last name" required>
+          <input type="text" id="impact-slast" placeholder="Last name" required>
         </div>
       </div>
 
@@ -1001,8 +1001,9 @@
         </label>
       </div>
 
-      <button type="submit" class="form-submit">GET STARTED</button>
-      <div style="text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,0.2);"><a href="https://www.tapnpayplus.com/privacy-policy" target="_blank" style="color:rgba(16,185,129,0.6);text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank" style="color:rgba(16,185,129,0.6);text-decoration:none;">Terms of Service</a></div>
+      <button type="button" class="form-submit" id="impact-submit" onclick="submitImpact()">GET STARTED</button>
+      <div id="impact-success" style="display:none;text-align:center;padding:20px 0;font-size:16px;font-weight:600;color:#047857;">Thank you! Our team will reach out within 24 hours.</div>
+      <div style="text-align:center;margin-top:16px;font-size:12px;color:rgba(26,46,35,0.4);"><a href="https://www.tapnpayplus.com/privacy-policy" target="_blank" style="color:rgba(5,150,105,0.8);text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank" style="color:rgba(5,150,105,0.8);text-decoration:none;">Terms of Service</a></div>
     </div>
   </div>
 </section>
@@ -1123,6 +1124,32 @@ const co = new IntersectionObserver(es => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(el => co.observe(el));
+
+function submitImpact(){
+  var pf=document.getElementById('impact-pfirst').value.trim();
+  var pl=document.getElementById('impact-plast').value.trim();
+  var em=document.getElementById('impact-email').value.trim();
+  var ph=document.getElementById('impact-phone').value.trim();
+  var sf=document.getElementById('impact-sfirst').value.trim();
+  var sl=document.getElementById('impact-slast').value.trim();
+  var consent=document.getElementById('sms-consent-impact').checked;
+  if(!pf||!pl||!em||!ph||!sf||!sl){alert('Please fill out all fields.');return;}
+  if(!consent){alert('Please agree to the SMS consent.');return;}
+  var btn=document.getElementById('impact-submit');
+  btn.textContent='SUBMITTING...';btn.disabled=true;
+  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/c756afeb-2206-4f68-ba9e-4597fcfed3e8',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({parent_first_name:pf,parent_last_name:pl,email:em,phone:ph,student_first_name:sf,student_last_name:sl,sms_consent:true,source:'impact.tapnpayplus.com',form:'HS Impact Landing Form'})
+  }).then(function(){
+    document.getElementById('impact-form').querySelectorAll('input').forEach(function(i){i.value='';});
+    document.getElementById('sms-consent-impact').checked=false;
+    btn.style.display='none';
+    document.getElementById('impact-success').style.display='block';
+  }).catch(function(){
+    btn.textContent='GET STARTED';btn.disabled=false;
+    alert('Something went wrong. Please try again or contact us directly.');
+  });
+}
 </script>
 
 </body>
