@@ -1014,6 +1014,15 @@
         </label>
       </div>
 
+      <div class="consent-wrap">
+        <input type="checkbox" id="guardian-consent-impact" required>
+        <label for="guardian-consent-impact" class="consent-text">
+          I confirm that I am the parent or legal guardian of the student-athlete listed and that I am at least 18 years of age. I understand the TapNPay+ High School Athlete IMPACT Program is a parent-led support program (not a charitable donation platform or high school NIL endorsement program). I agree to the <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank">Terms of Use</a> and <a href="https://www.tapnpayplus.com/privacy-policy" target="_blank">Privacy Policy</a> and acknowledge that program earnings may be taxable to me.
+        </label>
+      </div>
+
+      <p style="font-size:11px;line-height:1.6;color:#4A6355;margin:-8px 0 24px;padding:0 4px;">By activating this membership, you confirm that you are the authorized adult account holder and understand that TapNPay+ membership purchases are non-refundable once processed.</p>
+
       <button type="button" class="form-submit" id="impact-submit" onclick="submitImpact()">GET STARTED</button>
       <div id="impact-success" style="display:none;text-align:center;padding:20px 0;font-size:16px;font-weight:600;color:#047857;">Thank you! Our team will reach out within 24 hours.</div>
       <div style="text-align:center;margin-top:16px;font-size:12px;color:rgba(26,46,35,0.4);"><a href="https://www.tapnpayplus.com/privacy-policy" target="_blank" style="color:rgba(5,150,105,0.8);text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank" style="color:rgba(5,150,105,0.8);text-decoration:none;">Terms of Service</a></div>
@@ -1146,16 +1155,19 @@ function submitImpact(){
   var sf=document.getElementById('impact-sfirst').value.trim();
   var sl=document.getElementById('impact-slast').value.trim();
   var consent=document.getElementById('sms-consent-impact').checked;
+  var guardian=document.getElementById('guardian-consent-impact').checked;
   if(!pf||!pl||!em||!ph||!sf||!sl){alert('Please fill out all fields.');return;}
   if(!consent){alert('Please agree to the SMS consent.');return;}
+  if(!guardian){alert('Please confirm you are the parent or legal guardian.');return;}
   var btn=document.getElementById('impact-submit');
   btn.textContent='SUBMITTING...';btn.disabled=true;
   fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/c756afeb-2206-4f68-ba9e-4597fcfed3e8',{
     method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({parent_first_name:pf,parent_last_name:pl,email:em,phone:ph,student_first_name:sf,student_last_name:sl,sms_consent:true,source:'impact.tapnpayplus.com',form:'HS Impact Landing Form'})
+    body:JSON.stringify({parent_first_name:pf,parent_last_name:pl,email:em,phone:ph,student_first_name:sf,student_last_name:sl,sms_consent:true,guardian_consent:true,source:'impact.tapnpayplus.com',form:'HS Impact Landing Form'})
   }).then(function(){
     document.getElementById('impact-form').querySelectorAll('input').forEach(function(i){i.value='';});
     document.getElementById('sms-consent-impact').checked=false;
+    document.getElementById('guardian-consent-impact').checked=false;
     btn.style.display='none';
     document.getElementById('impact-success').style.display='block';
   }).catch(function(){
