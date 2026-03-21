@@ -135,6 +135,34 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text-dark)
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}.reveal-d4{transition-delay:0.4s;}
 
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress{position:fixed;top:72px;left:0;height:2px;background:linear-gradient(90deg,var(--green-primary),var(--purple-primary));z-index:1001;transition:width 0.1s linear;width:0;}
+
+/* ===== MOUSE GLOW ON CARDS ===== */
+.glass-card,.step-card,.cb-card{position:relative;overflow:hidden;}
+.card-glow{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s;}
+
+/* ===== 3D TILT ===== */
+.tilt-card{transition:transform 0.3s ease;transform-style:preserve-3d;}
+
+/* ===== BUTTON RIPPLE ===== */
+.btn-green,.btn-purple{position:relative;overflow:hidden;}
+.btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:ripple-out 0.6s ease-out;pointer-events:none;}
+@keyframes ripple-out{to{transform:scale(4);opacity:0;}}
+
+/* ===== ACTIVE NAV ===== */
+.nav-links a.active{color:var(--text-dark)!important;}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green-primary);border-radius:1px;}
+.nav-links a{position:relative;}
+
+/* ===== ANIMATED COUNTER ===== */
+.cb-num{font-variant-numeric:tabular-nums;}
+
+/* ===== HERO PARALLAX ===== */
+.hero-content{transition:transform 0.1s linear;}
+
+.section-pad,.brands-section{scroll-margin-top:80px;}
+
 @media(max-width:768px){
   .navbar{padding:0 16px;}.nav-links{display:none;}
   .steps-grid,.cashback-grid{grid-template-columns:1fr;}
@@ -147,6 +175,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text-dark)
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8B6W6R7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- BACKGROUND ELEMENTS -->
 <div class="blob blob-1"></div>
@@ -300,6 +330,104 @@ function toggleFaq(el){var item=el.closest('.faq-item');document.querySelectorAl
 
 var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+// ===== SCROLL PROGRESS BAR =====
+var progressBar=document.getElementById('scrollProgress');
+window.addEventListener('scroll',function(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  var pct=h>0?(window.scrollY/h)*100:0;
+  progressBar.style.width=pct+'%';
+});
+
+// ===== ACTIVE NAV TRACKING =====
+var navSections=['how','cashback','brands','faq','download'];
+function updateActiveNav(){
+  var scrollPos=window.scrollY+200;
+  navSections.forEach(function(id){
+    var el=document.getElementById(id);
+    var link=document.querySelector('.nav-links a[href="#'+id+'"]');
+    if(el&&link){
+      if(scrollPos>=el.offsetTop&&scrollPos<el.offsetTop+el.offsetHeight){
+        link.classList.add('active');
+      }else{
+        link.classList.remove('active');
+      }
+    }
+  });
+}
+window.addEventListener('scroll',updateActiveNav);
+
+// ===== MOUSE GLOW ON CARDS =====
+document.querySelectorAll('.glass-card,.step-card,.cb-card').forEach(function(card){
+  var glow=document.createElement('div');
+  glow.className='card-glow';
+  card.appendChild(glow);
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    glow.style.left=(e.clientX-rect.left)+'px';
+    glow.style.top=(e.clientY-rect.top)+'px';
+    glow.style.opacity='1';
+  });
+  card.addEventListener('mouseleave',function(){glow.style.opacity='0';});
+});
+
+// ===== 3D TILT ON CARDS =====
+document.querySelectorAll('.step-card,.cb-card,.glass-card').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    var x=(e.clientX-rect.left)/rect.width-0.5;
+    var y=(e.clientY-rect.top)/rect.height-0.5;
+    card.style.transform='perspective(800px) rotateY('+x*6+'deg) rotateX('+(-y*6)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform='perspective(800px) rotateY(0) rotateX(0) translateY(0)';
+  });
+});
+
+// ===== ANIMATED COUNTERS =====
+var counterObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      var el=entry.target;
+      var txt=el.textContent;
+      var num=parseInt(txt);
+      if(isNaN(num)||el.dataset.counted)return;
+      el.dataset.counted='1';
+      var suffix=txt.replace(String(num),'');
+      var current=0;
+      var step=Math.ceil(num/35);
+      var timer=setInterval(function(){
+        current+=step;
+        if(current>=num){current=num;clearInterval(timer);}
+        el.textContent=current+suffix;
+      },25);
+      counterObs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.cb-num').forEach(function(el){counterObs.observe(el);});
+
+// ===== BUTTON RIPPLE EFFECT =====
+document.querySelectorAll('.btn-green,.btn-purple').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    var rect=btn.getBoundingClientRect();
+    var ripple=document.createElement('span');
+    ripple.className='btn-ripple';
+    ripple.style.left=(e.clientX-rect.left)+'px';
+    ripple.style.top=(e.clientY-rect.top)+'px';
+    ripple.style.width=ripple.style.height=Math.max(rect.width,rect.height)+'px';
+    btn.appendChild(ripple);
+    setTimeout(function(){ripple.remove();},600);
+  });
+});
+
+// ===== HERO PARALLAX =====
+var heroContent=document.querySelector('.hero-content');
+window.addEventListener('scroll',function(){
+  if(window.scrollY<window.innerHeight&&heroContent){
+    heroContent.style.transform='translateY('+window.scrollY*0.12+'px)';
+  }
+});
 </script>
 </body>
 </html>

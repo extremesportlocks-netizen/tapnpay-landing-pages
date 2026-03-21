@@ -157,6 +157,44 @@
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}.reveal-d4{transition-delay:0.4s;}
 
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress{position:fixed;top:72px;left:0;height:2px;background:linear-gradient(90deg,var(--green-neon),var(--purple-bright));z-index:1001;transition:width 0.1s linear;width:0;}
+
+/* ===== NOISE GRAIN TEXTURE ===== */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:128px 128px;}
+
+/* ===== MOUSE GLOW ON CARDS ===== */
+.glow-card,.earn-card,.comp-card,.timeline-step{position:relative;overflow:hidden;}
+.card-glow{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,230,118,0.08) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s;}
+
+/* ===== 3D TILT ON HOVER ===== */
+.tilt-card{transition:transform 0.3s ease;transform-style:preserve-3d;will-change:transform;}
+
+/* ===== ANIMATED CONIC GRADIENT BORDER ===== */
+.spin-border{position:relative;z-index:0;}
+.spin-border::after{content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from var(--angle,0deg),transparent 40%,var(--green-neon) 50%,var(--purple-bright) 60%,transparent 70%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px;animation:spin-border 4s linear infinite;z-index:-1;}
+@keyframes spin-border{to{--angle:360deg;}}
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
+
+/* ===== BUTTON RIPPLE ===== */
+.btn-primary,.btn-secondary{position:relative;overflow:hidden;}
+.btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:ripple-out 0.6s ease-out;pointer-events:none;}
+@keyframes ripple-out{to{transform:scale(4);opacity:0;}}
+
+/* ===== ACTIVE NAV ===== */
+.nav-links a.active{color:var(--white)!important;}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green-neon);border-radius:1px;}
+.nav-links a{position:relative;}
+
+/* ===== ANIMATED COUNTER ===== */
+.earn-pct{font-variant-numeric:tabular-nums;}
+
+/* ===== HERO PARALLAX DEPTH ===== */
+.hero-content{transition:transform 0.1s linear;}
+
+/* ===== SMOOTH SCROLL SNAPPING HINT ===== */
+.section-pad,.brands-section,.cta-section{scroll-margin-top:80px;}
+
 @media(max-width:768px){
   .navbar{padding:0 16px;}.nav-links,.nav-badge{display:none;}
   .timeline::before{left:20px;}.timeline-num{width:40px;height:40px;font-size:20px;}.timeline-step{gap:20px;}
@@ -164,12 +202,15 @@
   .earn-pct{font-size:64px;}.section-pad{padding:80px 16px;}
   .hero{padding:100px 16px 60px;}.hero-h1{font-size:48px;}
   .glow-card{padding:24px;}
+  body::after{display:none;}
 }
 </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8B6W6R7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <nav class="navbar" id="navbar">
   <div class="nav-left">
@@ -231,7 +272,7 @@
         <div class="timeline-body">
           <h3>Enter Your Invitation Code</h3>
           <p>Complete registration inside the app. When prompted for your invitation code, enter:</p>
-          <div class="code-box" style="margin-top:16px;margin-left:0;">
+          <div class="code-box spin-border" style="margin-top:16px;margin-left:0;border-radius:16px;">
             <div class="code-label">Your Invitation Code</div>
             <div class="code">NILSPRING</div>
           </div>
@@ -407,6 +448,106 @@ var revealObs=new IntersectionObserver(function(entries){entries.forEach(functio
 document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 
 (function(){var c=document.getElementById('particles');for(var i=0;i<28;i++){var p=document.createElement('div');p.className='particle';var size=Math.random()*4+1.5;p.style.width=size+'px';p.style.height=size+'px';p.style.left=Math.random()*100+'%';p.style.background=Math.random()>0.4?'rgba(0,230,118,0.6)':'rgba(139,92,246,0.5)';p.style.animationDuration=(Math.random()*12+8)+'s';p.style.animationDelay=(Math.random()*12)+'s';c.appendChild(p);}})();
+
+// ===== SCROLL PROGRESS BAR =====
+var progressBar=document.getElementById('scrollProgress');
+window.addEventListener('scroll',function(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  var pct=h>0?(window.scrollY/h)*100:0;
+  progressBar.style.width=pct+'%';
+});
+
+// ===== ACTIVE NAV TRACKING =====
+var navSections=['steps','earnings','brands','compliance','cta'];
+function updateActiveNav(){
+  var scrollPos=window.scrollY+200;
+  navSections.forEach(function(id){
+    var el=document.getElementById(id);
+    var link=document.querySelector('.nav-links a[href="#'+id+'"]');
+    if(el&&link){
+      if(scrollPos>=el.offsetTop&&scrollPos<el.offsetTop+el.offsetHeight){
+        link.classList.add('active');
+      }else{
+        link.classList.remove('active');
+      }
+    }
+  });
+}
+window.addEventListener('scroll',updateActiveNav);
+
+// ===== MOUSE GLOW ON CARDS =====
+document.querySelectorAll('.glow-card,.earn-card,.comp-card').forEach(function(card){
+  var glow=document.createElement('div');
+  glow.className='card-glow';
+  card.appendChild(glow);
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    glow.style.left=(e.clientX-rect.left)+'px';
+    glow.style.top=(e.clientY-rect.top)+'px';
+    glow.style.opacity='1';
+  });
+  card.addEventListener('mouseleave',function(){glow.style.opacity='0';});
+});
+
+// ===== 3D TILT ON CARDS =====
+document.querySelectorAll('.glow-card,.earn-card').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    var x=(e.clientX-rect.left)/rect.width-0.5;
+    var y=(e.clientY-rect.top)/rect.height-0.5;
+    card.style.transform='perspective(800px) rotateY('+x*8+'deg) rotateX('+(-y*8)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform='perspective(800px) rotateY(0) rotateX(0) translateY(0)';
+  });
+});
+
+// ===== ANIMATED EARNINGS COUNTERS =====
+var counterObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      var el=entry.target;
+      var txt=el.textContent;
+      var num=parseInt(txt);
+      if(isNaN(num)||el.dataset.counted)return;
+      el.dataset.counted='1';
+      var suffix=txt.replace(String(num),'');
+      var current=0;
+      var step=Math.ceil(num/35);
+      var timer=setInterval(function(){
+        current+=step;
+        if(current>=num){current=num;clearInterval(timer);}
+        el.textContent=current+suffix;
+      },25);
+      counterObs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.earn-pct').forEach(function(el){counterObs.observe(el);});
+
+// ===== BUTTON RIPPLE EFFECT =====
+document.querySelectorAll('.btn-primary,.btn-secondary').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    var rect=btn.getBoundingClientRect();
+    var ripple=document.createElement('span');
+    ripple.className='btn-ripple';
+    ripple.style.left=(e.clientX-rect.left)+'px';
+    ripple.style.top=(e.clientY-rect.top)+'px';
+    ripple.style.width=ripple.style.height=Math.max(rect.width,rect.height)+'px';
+    btn.appendChild(ripple);
+    setTimeout(function(){ripple.remove();},600);
+  });
+});
+
+// ===== HERO PARALLAX =====
+var heroContent=document.querySelector('.hero-content');
+var heroSection=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY<window.innerHeight&&heroContent){
+    heroContent.style.transform='translateY('+window.scrollY*0.15+'px)';
+    heroSection.querySelector('.hero-grid').style.transform='translateY('+window.scrollY*0.05+'px)';
+  }
+});
 </script>
 </body>
 </html>
