@@ -339,35 +339,34 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       <h2 class="section-title reveal">HOW FANS PAY WITH TAPNPAY+</h2>
       <p class="section-subtitle reveal">TapNPay+ delivers an instant digital gift card in the exact amount of the purchase — right to the fan's phone at checkout. Scan. Pay. Done.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:900px;margin:0 auto;align-items:stretch;">
-      <div class="glow-card reveal" style="text-align:center;padding:28px 20px;border-radius:16px 0 0 16px;position:relative;">
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">1</div>
-        <h3 style="font-size:15px;margin-bottom:6px;">Fan Opens App</h3>
-        <p style="font-size:12px;">Enters purchase amount at checkout</p>
-        <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:3;width:24px;height:24px;border-radius:50%;background:var(--dark-card2);border:1px solid rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="reveal" style="max-width:800px;margin:0 auto;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;position:relative;padding-top:20px;">
+        <!-- connector line -->
+        <div style="position:absolute;top:38px;left:calc(12.5%);right:calc(12.5%);height:2px;background:linear-gradient(90deg,var(--green-neon),var(--purple-bright));z-index:0;"></div>
+        <!-- step 1 -->
+        <div style="flex:1;text-align:center;position:relative;z-index:1;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 0 20px rgba(0,230,118,0.35);">1</div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Fan Opens App</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;">Enters purchase<br>amount at checkout</div>
         </div>
-      </div>
-      <div class="glow-card reveal reveal-d1" style="text-align:center;padding:28px 20px;border-radius:0;border-left:none;position:relative;">
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">2</div>
-        <h3 style="font-size:15px;margin-bottom:6px;">Digital Gift Card</h3>
-        <p style="font-size:12px;">Delivered instantly to their phone</p>
-        <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:3;width:24px;height:24px;border-radius:50%;background:var(--dark-card2);border:1px solid rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- step 2 -->
+        <div style="flex:1;text-align:center;position:relative;z-index:1;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 0 20px rgba(0,230,118,0.35);">2</div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Digital Gift Card</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;">Delivered instantly<br>to their phone</div>
         </div>
-      </div>
-      <div class="glow-card reveal reveal-d2" style="text-align:center;padding:28px 20px;border-radius:0;border-left:none;position:relative;">
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">3</div>
-        <h3 style="font-size:15px;margin-bottom:6px;">Fan Scans &amp; Pays</h3>
-        <p style="font-size:12px;">At any of 300+ brand partners</p>
-        <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:3;width:24px;height:24px;border-radius:50%;background:var(--dark-card2);border:1px solid rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- step 3 -->
+        <div style="flex:1;text-align:center;position:relative;z-index:1;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 0 20px rgba(0,230,118,0.35);">3</div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Fan Scans &amp; Pays</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;">At any of 300+<br>brand partners</div>
         </div>
-      </div>
-      <div class="glow-card reveal reveal-d3" style="text-align:center;padding:28px 20px;border-radius:0 16px 16px 0;border-left:none;">
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">4</div>
-        <h3 style="font-size:15px;margin-bottom:6px;">Earnings Activate</h3>
-        <p style="font-size:12px;">Credited to your NIL account</p>
+        <!-- step 4 -->
+        <div style="flex:1;text-align:center;position:relative;z-index:1;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--green-neon);color:#000;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 0 20px rgba(0,230,118,0.35);">4</div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Earnings Activate</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;">Credited to your<br>NIL account</div>
+        </div>
       </div>
     </div>
   </div>
