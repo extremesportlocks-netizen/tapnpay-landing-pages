@@ -55,9 +55,7 @@
 .particle{position:absolute;border-radius:50%;animation:float-up linear infinite;opacity:0;}
 @keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:0.8;}90%{opacity:0.3;}100%{transform:translateY(-20vh) scale(1.5);opacity:0;}}
 .hero-content{position:relative;z-index:2;max-width:800px;}
-.hero-eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:4px;color:var(--green-neon);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:10px;opacity:0;animation:fade-up 0.8s 0.2s forwards;}
-.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green-neon);box-shadow:0 0 12px rgba(0,230,118,0.6);animation:pulse-dot 2s infinite;}
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,0.4);}50%{box-shadow:0 0 0 10px rgba(0,230,118,0);}}
+.hero-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--green-neon);margin-bottom:28px;display:inline-block;padding:10px 24px;border-radius:50px;background:rgba(0,230,118,0.06);border:1px solid rgba(0,230,118,0.15);opacity:0;animation:fade-up 0.8s 0.2s forwards;}
 .hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,96px);letter-spacing:3px;line-height:0.92;margin-bottom:28px;opacity:0;animation:fade-up 0.8s 0.4s forwards;}
 .gradient-text{background:linear-gradient(135deg,var(--green-neon) 0%,var(--green-bright) 40%,var(--purple-glow) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:17px;color:rgba(255,255,255,0.6);line-height:1.75;max-width:640px;margin:0 auto 36px;opacity:0;animation:fade-up 0.8s 0.6s forwards;}
@@ -211,22 +209,25 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   .earnings-grid,.compliance-grid{grid-template-columns:1fr;}
   [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
   .earn-pct{font-size:64px;}.section-pad{padding:80px 16px;}
-  .hero{padding:100px 16px 60px;}.hero-h1{font-size:clamp(34px,10vw,48px);}
+  .hero{padding:110px 20px 60px;min-height:auto;}.hero-h1{font-size:clamp(34px,10vw,48px);letter-spacing:1px;}
+  .hero-sub{font-size:15px;line-height:1.65;margin-bottom:28px;}
+  .hero-eyebrow{font-size:10px;letter-spacing:2px;padding:8px 18px;}
   .glow-card{padding:24px 20px;}
   .code-box{padding:28px 20px;}.code-box .code{font-size:36px;letter-spacing:4px;}
   .earn-card{padding:28px 20px;}
   .hero-pills{flex-wrap:wrap;justify-content:center;gap:8px;}
+  .pill{font-size:12px;padding:6px 14px;}
+  .hero-cta{margin-top:28px;}
   .brands-section{padding:60px 0;}
   .cta-section{padding:80px 16px;}
   body::after{display:none;}
 }
 @media(max-width:420px){
   [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;}
-  .hero-h1{font-size:32px;}
-  .hero-pills{flex-wrap:wrap;justify-content:center;gap:8px;}
-  .pill{flex:0 0 auto;}
-  .hero-sub{font-size:15px;margin-bottom:24px;}
-  .hero-cta{margin-top:28px;}
+  .hero-h1{font-size:32px;letter-spacing:0;}
+  .hero-sub{font-size:14px;}
+  .hero-pills{flex-direction:column;align-items:center;}
+  .pill{width:100%;justify-content:center;max-width:220px;}
   .timeline-step{gap:12px;padding:12px 0;}
   .earn-pct{font-size:52px;}
   .section-title{font-size:clamp(28px,8vw,40px);}
@@ -263,7 +264,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
   <div class="particles" id="particles"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow"><span class="live-dot"></span> NIL Athlete Program — You're Registered &amp; Ready</div>
+    <div class="hero-eyebrow">NIL Athlete Program — You're Registered &amp; Ready</div>
     <h1 class="hero-h1">YOU'RE IN.<br><span class="gradient-text">NOW GET PAID.</span></h1>
     <p class="hero-sub">Your fans shop every day. TapNPay+ turns that into <strong>$21–$700 per fan activation</strong> plus <strong>10% ongoing cash back</strong> — automatically.</p>
     <div class="hero-pills">
