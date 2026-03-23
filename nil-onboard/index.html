@@ -199,10 +199,15 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   .navbar{padding:0 16px;}.nav-links,.nav-badge{display:none;}
   .timeline::before{left:20px;}.timeline-num{width:40px;height:40px;font-size:20px;}.timeline-step{gap:20px;}
   .earnings-grid,.compliance-grid{grid-template-columns:1fr;}
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
   .earn-pct{font-size:64px;}.section-pad{padding:80px 16px;}
-  .hero{padding:100px 16px 60px;}.hero-h1{font-size:48px;}
-  .glow-card{padding:24px;}
+  .hero{padding:100px 16px 60px;}.hero-h1{font-size:clamp(34px,10vw,48px);}
+  .glow-card{padding:24px 20px;}
   body::after{display:none;}
+}
+@media(max-width:420px){
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;}
+  .hero-h1{font-size:32px;}
 }
 </style>
 </head>
