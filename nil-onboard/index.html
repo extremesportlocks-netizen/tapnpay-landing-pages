@@ -27,7 +27,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Outfit',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
 
 /* NAVBAR */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,2,15,0.6);backdrop-filter:blur(30px);border-bottom:1px solid rgba(139,92,246,0.08);transition:all 0.5s;}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,5,28,0.55);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border-bottom:1px solid rgba(139,92,246,0.18);box-shadow:0 1px 32px rgba(0,0,0,0.35);transition:all 0.4s;}
 .navbar.scrolled{background:rgba(6,2,15,0.95);box-shadow:0 4px 40px rgba(0,0,0,0.4);}
 .nav-left{display:flex;align-items:center;gap:14px;}
 .navbar-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--white);text-decoration:none;}
@@ -212,6 +212,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
   .earn-pct{font-size:64px;}.section-pad{padding:80px 16px;}
   .hero{padding:100px 16px 60px;}.hero-h1{font-size:clamp(34px,10vw,48px);}
+  .hero-sub{font-size:15px;margin-bottom:24px;}
+  .hero-cta{margin-top:28px;}
   .glow-card{padding:24px 20px;}
   .code-box{padding:28px 20px;}.code-box .code{font-size:36px;letter-spacing:4px;}
   .earn-card{padding:28px 20px;}
@@ -223,8 +225,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 @media(max-width:420px){
   [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;}
   .hero-h1{font-size:32px;}
-  .hero-pills{flex-direction:column;align-items:center;}
-  .pill{width:100%;justify-content:center;max-width:220px;}
+  .hero-pills{flex-wrap:wrap;justify-content:center;gap:8px;}
+  .pill{flex:0 0 auto;}
   .timeline-step{gap:12px;padding:12px 0;}
   .earn-pct{font-size:52px;}
   .section-title{font-size:clamp(28px,8vw,40px);}
@@ -263,7 +265,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="live-dot"></span> NIL Athlete Program — You're Registered &amp; Ready</div>
     <h1 class="hero-h1">YOU'RE IN.<br><span class="gradient-text">NOW GET PAID.</span></h1>
-    <p class="hero-sub">Your fans already pay for things every single day. TapNPay+ turns that shopping into real earnings for you! NIL Athletes can earn a range from <strong>$21 to $700 per fan activation</strong>, plus 10% of the overall cash back earned on every payment your fans make within our app. <strong>Automatic. Instant. Every Day!</strong></p>
+    <p class="hero-sub">Your fans shop every day. TapNPay+ turns that into <strong>$21–$700 per fan activation</strong> plus <strong>10% ongoing cash back</strong> — automatically.</p>
     <div class="hero-pills">
       <div class="pill"><strong>70%</strong> of Fan Activations</div>
       <div class="pill"><strong>10%</strong> of Fan Cash Back</div>
