@@ -174,7 +174,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .photo-bg.light-overlay::after{background:linear-gradient(135deg,rgba(0,60,30,0.72) 0%,rgba(6,2,15,0.88) 100%);}
 
 /* ===== MOUSE GLOW ON CARDS ===== */
-.glow-card,.earn-card,.comp-card,.timeline-step{position:relative;overflow:hidden;}
+.glow-card,.earn-card,.comp-card{position:relative;overflow:hidden;}
 .card-glow{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,230,118,0.08) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s;}
 
 /* ===== 3D TILT ON HOVER ===== */
@@ -481,7 +481,7 @@ function chip(b){var d=document.createElement('div');d.className='brand-chip';d.
 function fill(id,r){var t=document.getElementById(id);var rb=brands.filter(function(b){return b.row===r;});[].concat(rb,rb).forEach(function(b){t.appendChild(chip(b));});}
 fill('row1',1);fill('row2',2);fill('row3',3);
 
-window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);});
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
 var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
@@ -578,15 +578,18 @@ document.querySelectorAll('.btn-primary,.btn-secondary').forEach(function(btn){
   });
 });
 
-// ===== HERO PARALLAX =====
+// ===== HERO PARALLAX — desktop only =====
 var heroContent=document.querySelector('.hero-content');
 var heroSection=document.querySelector('.hero');
-window.addEventListener('scroll',function(){
-  if(window.scrollY<window.innerHeight&&heroContent){
-    heroContent.style.transform='translateY('+window.scrollY*0.15+'px)';
-    heroSection.querySelector('.hero-grid').style.transform='translateY('+window.scrollY*0.05+'px)';
-  }
-});
+var isTouchDevice=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+if(!isTouchDevice){
+  window.addEventListener('scroll',function(){
+    if(window.scrollY<window.innerHeight&&heroContent){
+      heroContent.style.transform='translateY('+window.scrollY*0.15+'px)';
+      heroSection.querySelector('.hero-grid').style.transform='translateY('+window.scrollY*0.05+'px)';
+    }
+  },{passive:true});
+}
 </script>
 </body>
 </html>
