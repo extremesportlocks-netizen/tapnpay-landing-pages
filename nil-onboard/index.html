@@ -121,7 +121,7 @@
 .brand-name{font-size:13px;font-weight:600;white-space:nowrap;color:rgba(255,255,255,0.7);}
 
 /* COMPLIANCE */
-.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}
+.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}@media(max-width:900px) and (min-width:769px){.compliance-grid{grid-template-columns:repeat(2,1fr);}}
 .comp-card{background:var(--dark-card);border-radius:20px;padding:28px;border:1px solid rgba(139,92,246,0.08);transition:all 0.4s;}
 .comp-card:hover{border-color:rgba(0,230,118,0.2);transform:translateY(-4px);}
 .comp-icon{width:40px;height:40px;border-radius:12px;background:rgba(0,230,118,0.06);border:1px solid rgba(0,230,118,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:16px;}
@@ -163,6 +163,12 @@
 /* ===== NOISE GRAIN TEXTURE ===== */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:128px 128px;}
 
+/* ===== DUOTONE PHOTO SYSTEM ===== */
+.photo-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.photo-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(100%) brightness(0.22) contrast(1.4);display:block;}
+.photo-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,29,150,0.78) 0%,rgba(6,2,15,0.88) 100%);}
+.photo-bg.light-overlay::after{background:linear-gradient(135deg,rgba(0,60,30,0.72) 0%,rgba(6,2,15,0.88) 100%);}
+
 /* ===== MOUSE GLOW ON CARDS ===== */
 .glow-card,.earn-card,.comp-card,.timeline-step{position:relative;overflow:hidden;}
 .card-glow{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,230,118,0.08) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s;}
@@ -197,17 +203,27 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 @media(max-width:768px){
   .navbar{padding:0 16px;}.nav-links,.nav-badge{display:none;}
-  .timeline::before{left:20px;}.timeline-num{width:40px;height:40px;font-size:20px;}.timeline-step{gap:20px;}
+  .timeline::before{left:20px;}.timeline-num{width:40px;height:40px;font-size:20px;}.timeline-step{gap:16px;padding:14px 0;}
   .earnings-grid,.compliance-grid{grid-template-columns:1fr;}
   [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
   .earn-pct{font-size:64px;}.section-pad{padding:80px 16px;}
   .hero{padding:100px 16px 60px;}.hero-h1{font-size:clamp(34px,10vw,48px);}
   .glow-card{padding:24px 20px;}
+  .code-box{padding:28px 20px;}.code-box .code{font-size:36px;letter-spacing:4px;}
+  .earn-card{padding:28px 20px;}
+  .hero-pills{flex-wrap:wrap;justify-content:center;gap:8px;}
+  .brands-section{padding:60px 0;}
+  .cta-section{padding:80px 16px;}
   body::after{display:none;}
 }
 @media(max-width:420px){
   [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;}
   .hero-h1{font-size:32px;}
+  .hero-pills{flex-direction:column;align-items:center;}
+  .pill{width:100%;justify-content:center;max-width:220px;}
+  .timeline-step{gap:12px;padding:12px 0;}
+  .earn-pct{font-size:52px;}
+  .section-title{font-size:clamp(28px,8vw,40px);}
 }
 </style>
 </head>
@@ -233,6 +249,9 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 <!-- HERO -->
 <section class="hero">
+  <div class="photo-bg">
+    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1600&q=80&auto=format&fit=crop" alt="" loading="eager" onerror="this.parentElement.style.display='none'">
+  </div>
   <div class="hero-mesh"></div>
   <div class="hero-grid"></div>
   <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
@@ -341,7 +360,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 <div class="section-divider"></div>
 
 <!-- EARNINGS -->
-<section class="section-pad" id="earnings">
+<section class="section-pad" id="earnings" style="position:relative;overflow:hidden;">
+  <div class="photo-bg" style="opacity:0.5;">
+    <img src="https://images.unsplash.com/photo-1546519638405-a9d1e0cbadf5?w=1400&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.parentElement.style.display='none'">
+  </div>
+  <div style="position:relative;z-index:1;">
   <div class="container">
     <div class="section-header">
       <div class="section-label reveal">Your Two Earning Streams</div>
@@ -369,6 +392,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     </div>
     <p class="reveal" style="text-align:center;margin-top:28px;font-size:11px;color:rgba(255,255,255,0.2);max-width:700px;margin-left:auto;margin-right:auto;">Earnings depend on fan membership activations and payment activity within the TapNPay+ platform. Individual results vary.</p>
   </div>
+  </div><!-- /z-index wrapper -->
 </section>
 
 <!-- BRANDS -->
@@ -393,11 +417,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       <p class="section-subtitle reveal">Screenshot this section and share it with your athletic department or compliance officer.</p>
     </div>
     <div class="compliance-grid">
-      <div class="comp-card reveal"><div class="comp-icon">🛡️</div><h3>Fan Payment Platform</h3><p>TapNPay+ is a fan payment platform — not a brand endorsement deal. Your fans activate a membership and pay at stores they already use.</p></div>
-      <div class="comp-card reveal reveal-d1"><div class="comp-icon">💰</div><h3>Fan-Generated Earnings</h3><p>Every dollar you earn comes directly from fan membership activations and their everyday purchases — not from corporate sponsors.</p></div>
-      <div class="comp-card reveal reveal-d2"><div class="comp-icon">✅</div><h3>300+ Permitted Brands</h3><p>No gambling. No alcohol. No tobacco. No prohibited categories under NCAA or institutional policy.</p></div>
-      <div class="comp-card reveal reveal-d3"><div class="comp-icon">📋</div><h3>NILGO &amp; NCAA Aligned</h3><p>Built for eligibility across all NCAA divisions — D1, D2, and D3. NILGO guidelines applied.</p></div>
-      <div class="comp-card reveal reveal-d4"><div class="comp-icon">📄</div><h3>Compliance Documentation</h3><p>Every registered D1 athlete receives a pre-filled NILGO form and compliance letter for their school.</p></div>
+      <div class="comp-card reveal"><div class="comp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Fan Payment Platform</h3><p>TapNPay+ is a fan payment platform — not a brand endorsement deal. Your fans activate a membership and pay at stores they already use.</p></div>
+      <div class="comp-card reveal reveal-d1"><div class="comp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Fan-Generated Earnings</h3><p>Every dollar you earn comes directly from fan membership activations and their everyday purchases — not from corporate sponsors.</p></div>
+      <div class="comp-card reveal reveal-d2"><div class="comp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3>300+ Permitted Brands</h3><p>No gambling. No alcohol. No tobacco. No prohibited categories under NCAA or institutional policy.</p></div>
+      <div class="comp-card reveal reveal-d3"><div class="comp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg></div><h3>NILGO &amp; NCAA Aligned</h3><p>Built for eligibility across all NCAA divisions — D1, D2, and D3. NILGO guidelines applied.</p></div>
+      <div class="comp-card reveal reveal-d4"><div class="comp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Compliance Documentation</h3><p>Every registered D1 athlete receives a pre-filled NILGO form and compliance letter for their school.</p></div>
     </div>
     <div class="badge-row reveal">
       <div class="badge"><span class="check">✓</span> NILGO Guidelines Applied</div>
