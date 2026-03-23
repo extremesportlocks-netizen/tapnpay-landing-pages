@@ -794,11 +794,19 @@
     .hero-metrics { gap: 12px; }
     .metric { min-width: 120px; padding: 20px 20px; }
     .metric-val { font-size: 42px; }
-    .timeline-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .timeline-grid { grid-template-columns: 1fr; gap: 14px; }
     .timeline-grid::before { display: none; }
     .benefit-grid { grid-template-columns: 1fr; }
     .compare-grid { grid-template-columns: 1fr; gap: 16px; }
     .footer-inner { flex-direction: column; text-align: center; }
+    /* Netlify content grids — mobile */
+    [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: repeat(2,1fr) !important; border-radius: 16px !important; }
+    [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 420px) {
+    [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
+    .hero-metrics { flex-direction: column; align-items: center; }
   }
 
   /* ===== SCROLL REVEAL ===== */
@@ -847,7 +855,7 @@
   <div class="hero-split">
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="shield">⭐</span> Welcome to the TapNPay+ Fan Payment Platform</div>
-    <h1>WELCOME TO THE<br><span class="purple">TAPNPAY+ FAN<br>PAYMENT PLATFORM</span></h1>
+    <h1>RALLY AROUND<br><span class="purple">YOUR ATHLETE</span></h1>
     <p class="hero-sub">Every time you pay at our 300+ national brand partners, you earn instant cash back. You will get an average of 4% back instantly, and every payment you make directly generates funds for athlete!</p>
     <div class="hero-metrics">
       <div class="metric">
@@ -881,30 +889,32 @@
 <section class="section-pad" id="how">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-title">FOUR SIMPLE STEPS</h2>
-      <p class="section-subtitle">Download the app, link to your athlete, shop at brands you already love — and every purchase directly supports them.</p>
+      <div class="section-label">Get Started Today</div>
+      <h2 class="section-title">JOIN THE JOURNEY<br>IN 3 STEPS</h2>
+      <p class="section-subtitle">Download the app, activate your membership, select your athlete. Every payment after that earns automatically.</p>
     </div>
-    <div class="timeline-grid">
+    <div class="timeline-grid" style="grid-template-columns:repeat(3,1fr);">
       <div class="tl-card reveal">
-        <div class="tl-dot">📋</div>
-        <h3>Download TapNPay+</h3>
-        <p>Free on iPhone and Android. Takes 60 seconds to install and set up your account.</p>
+        <div class="tl-dot" style="background:var(--green-core);">1</div>
+        <h3>Download the TapNPay+ App</h3>
+        <p>Free on iPhone and Android. Takes 60 seconds to install.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+          <a href="https://apps.apple.com/us/app/tapnpay/id1521871802" style="display:inline-block;background:#000;color:#fff;font-size:11px;font-weight:700;padding:8px 14px;border-radius:8px;text-decoration:none;letter-spacing:0.5px;">APP STORE</a>
+          <a href="https://play.google.com/store/apps/details?id=com.tapnpay.app" style="display:inline-block;background:#000;color:#fff;font-size:11px;font-weight:700;padding:8px 14px;border-radius:8px;text-decoration:none;letter-spacing:0.5px;">GOOGLE PLAY</a>
+        </div>
       </div>
       <div class="tl-card reveal reveal-d1">
-        <div class="tl-dot">✉️</div>
-        <h3>Select Your Athlete</h3>
-        <p>When you register, search for the athlete who invited you and select them. This links your activity to theirs.</p>
+        <div class="tl-dot" style="background:var(--purple-core);">2</div>
+        <h3>Enter Your Invitation Code</h3>
+        <p>Complete registration inside the app. When prompted for your invitation code, enter:</p>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:var(--green-core);margin:12px 0;padding:10px 16px;border:1.5px solid rgba(5,150,105,0.3);border-radius:10px;text-align:center;">NILSPRING</div>
+        <p style="font-size:12px;color:rgba(26,46,35,0.5);font-style:italic;">Your membership activation is what powers everything — instant cash back on every payment, all year long.</p>
       </div>
       <div class="tl-card reveal reveal-d2">
-        <div class="tl-dot">🤝</div>
-        <h3>Shop &amp; Earn Cash Back</h3>
-        <p>Pay at 300+ national brands using TapNPay+ digital gift cards. Earn an average of 4% instant cash back on every purchase.</p>
-      </div>
-      <div class="tl-card reveal reveal-d3">
-        <div class="tl-dot">💰</div>
-        <h3>Support Your Athlete</h3>
-        <p>Every payment through TapNPay+ automatically generates NIL earnings for your athlete. No extra cost to you — ever.</p>
+        <div class="tl-dot" style="background:#F59E0B;">3</div>
+        <h3>Select Athlete &amp; Activate</h3>
+        <p>During registration, search for and select the athlete who invited you. From that moment forward, every payment earns cash back for you and counts for your athlete. Automatically. Every day.</p>
+        <p style="font-size:12px;padding:8px 12px;background:rgba(5,150,105,0.06);border-left:3px solid var(--green-core);border-radius:0 6px 6px 0;margin-top:10px;color:rgba(26,46,35,0.7);"><strong>Don't skip the athlete selection step.</strong> This is what connects your everyday payments to the athlete who brought you in.</p>
       </div>
     </div>
   </div>
@@ -914,29 +924,78 @@
 <section class="section-pad" id="benefits">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Why Fans Choose TapNPay+</div>
-      <h2 class="section-title">EARN WHILE YOU<br>SUPPORT YOUR ATHLETE</h2>
+      <div class="section-label">What You Get</div>
+      <h2 class="section-title">REAL CASH BACK.<br>EVERY PAYMENT. INSTANTLY.</h2>
+      <p class="section-subtitle">TapNPay+ is a fan payment platform — not a rewards card, not a points program. Real cash back the moment you pay. No waiting. No minimums. No redemption hoops.</p>
     </div>
     <div class="benefit-grid">
       <div class="benefit-card reveal">
-        <div class="b-icon b-green">🚫</div>
-        <h3>Earn Real Cash Back</h3>
-        <p>Get an average of 4% instant cash back on every purchase at 300+ brands. Apply it to future purchases or redeem by check. Not quarterly — instantly.</p>
+        <div class="b-icon b-green" style="font-family:'Bebas Neue',sans-serif;font-size:28px;font-weight:400;letter-spacing:1px;width:auto;height:auto;padding:4px 12px;border-radius:8px;">4%</div>
+        <h3>Average Cash Back on Every Purchase</h3>
+        <p>Earn an average of 4% cash back every time you pay at any of 300+ national brand partners. Groceries, restaurants, gas, retail, travel — your everyday payments, paying you back.</p>
       </div>
       <div class="benefit-card reveal reveal-d1">
-        <div class="b-icon b-purple">💳</div>
-        <h3>Cash Back For You Too</h3>
-        <p>Earn an average of 4% unlimited instant cash back on everyday purchases while supporting your athlete. It literally pays to participate.</p>
+        <div class="b-icon b-purple">⚡</div>
+        <h3>Instant — Right at Checkout</h3>
+        <p>TapNPay+ delivers a digital gift card in the exact amount of your purchase directly to your phone. Scan it to pay. Cash back activates the moment the transaction is complete. No delays.</p>
       </div>
       <div class="benefit-card reveal reveal-d2">
-        <div class="b-icon b-gold">📅</div>
-        <h3>Year-Round Support</h3>
-        <p>No seasonal fundraisers or one-time events. TapNPay+ generates consistent daily revenue for your team — all season, every season, year after year.</p>
+        <div class="b-icon b-gold" style="font-family:'Bebas Neue',sans-serif;font-size:24px;font-weight:400;letter-spacing:1px;width:auto;height:auto;padding:4px 12px;border-radius:8px;">300+</div>
+        <h3>National Brand Partners</h3>
+        <p>From your weekly grocery run to travel, restaurants, retail, gas, entertainment and more. Brands you already love every day.</p>
       </div>
       <div class="benefit-card reveal reveal-d3">
-        <div class="b-icon b-blue">🛡️</div>
-        <h3>Safe & Transparent</h3>
-        <p>Funds go directly to the program. No middlemen, no fine print. Parents stay informed about how their everyday shopping makes an impact.</p>
+        <div class="b-icon b-blue">🏅</div>
+        <h3>Be Part of Their Journey</h3>
+        <p>Every payment you make during their college career counts. You're not just a fan — you're a daily part of what makes their NIL possible. Your impact is real, it's direct, and it shows up for them every single day.</p>
+      </div>
+    </div>
+
+    <!-- YOU PAY / YOUR ATHLETE WINS section -->
+    <div style="margin-top:80px;">
+      <div class="section-header reveal" style="margin-bottom:48px;">
+        <div class="section-label">How TapNPay+ Works</div>
+        <h2 class="section-title">YOU PAY. YOU EARN.<br>YOUR ATHLETE WINS TOO.</h2>
+        <p class="section-subtitle">Every payment you make does two things at once — puts instant cash back in your pocket and directly counts for the athlete who invited you. Simple. Easy. Rewarding.</p>
+      </div>
+      <!-- 4-step payment flow -->
+      <div class="timeline-grid reveal" style="grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:32px;">
+        <div style="background:rgba(5,150,105,0.04);border:1px solid rgba(5,150,105,0.1);border-radius:16px 0 0 16px;padding:24px 20px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--green-core);margin-bottom:8px;">01</div>
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:6px;">Open App</h4>
+          <p style="font-size:12px;color:rgba(26,46,35,0.5);">Enter your purchase amount</p>
+        </div>
+        <div style="background:rgba(124,58,237,0.04);border:1px solid rgba(124,58,237,0.1);border-left:none;padding:24px 20px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--purple-core);margin-bottom:8px;">02</div>
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:6px;">Order a Digital Gift Card</h4>
+          <p style="font-size:12px;color:var(--purple-core);font-weight:600;">In exact amount of your purchase</p>
+        </div>
+        <div style="background:rgba(5,150,105,0.04);border:1px solid rgba(5,150,105,0.1);border-left:none;padding:24px 20px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--green-core);margin-bottom:8px;">03</div>
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:6px;">Scan &amp; Pay</h4>
+          <p style="font-size:12px;color:rgba(26,46,35,0.5);">At any of 300+ brand partners</p>
+        </div>
+        <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-left:none;border-radius:0 16px 16px 0;padding:24px 20px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#D97706;margin-bottom:8px;">04</div>
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:6px;">Cash Back</h4>
+          <p style="font-size:12px;color:rgba(26,46,35,0.5);">Activates instantly in your account</p>
+        </div>
+      </div>
+      <div style="padding:16px 20px;background:rgba(5,150,105,0.05);border-left:3px solid var(--green-core);border-radius:0 12px 12px 0;margin-bottom:40px;" class="reveal">
+        <p style="font-size:14px;color:rgba(26,46,35,0.75);"><strong>⚡ Every payment counts for your athlete too.</strong> When you pay, a portion of the cash back generated goes directly to the athlete you selected — automatically, every single time.</p>
+      </div>
+      <!-- YOU EARN / YOUR ATHLETE EARNS dual cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="reveal">
+        <div class="benefit-card" style="text-align:center;padding:40px 32px;">
+          <div style="font-size:40px;margin-bottom:16px;">👤</div>
+          <h3 style="font-size:22px;color:var(--green-core);text-transform:uppercase;letter-spacing:2px;">You Earn</h3>
+          <p>Avg. 4% instant cash back on every payment at 300+ brands. In your pocket the moment you pay.</p>
+        </div>
+        <div class="benefit-card" style="text-align:center;padding:40px 32px;">
+          <div style="font-size:40px;margin-bottom:16px;">🏆</div>
+          <h3 style="font-size:22px;color:#D97706;text-transform:uppercase;letter-spacing:2px;">Your Athlete Earns</h3>
+          <p>Every digital gift card payment you make generates earnings for the athlete you selected. Every day you pay, they win.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -955,18 +1014,16 @@
 </section>
 
 <!-- COMMUNITY CALLOUT -->
-<section class="section-pad">
-  <div class="callout reveal">
-    <div class="callout-quote">
-      Every time you shop at a brand you already use, you earn instant cash back AND directly support your athlete. No extra cost, no extra effort — just smarter shopping.
-    </div>
-    <div class="callout-attr">Support From Family, Friends, & Fans</div>
+<section class="section-pad" style="padding:60px 24px;">
+  <div style="background:linear-gradient(135deg,#F97316,#EA580C);border-radius:20px;padding:48px 40px;text-align:center;max-width:900px;margin:0 auto;" class="reveal">
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:#fff;letter-spacing:2px;margin-bottom:16px;">YOU'RE PART OF THEIR JOURNEY.</h2>
+    <p style="font-size:18px;color:rgba(255,255,255,0.9);max-width:600px;margin:0 auto;line-height:1.6;">Now every payment you make moves your athlete forward — and puts cash back in your pocket.</p>
   </div>
 </section>
 
 <!-- TAGLINE -->
 <section style="padding:40px 24px 80px;text-align:center;">
-  <div class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;background:linear-gradient(135deg,var(--green-mid),var(--purple-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(16,185,129,0.15));margin-bottom:28px;">DOWNLOAD ONCE.<br>SUPPORT EVERY DAY.</div>
+  <div class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;background:linear-gradient(135deg,var(--green-mid),var(--purple-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(16,185,129,0.15));margin-bottom:28px;">JOIN THE<br>JOURNEY.</div>
 </section>
 
 <!-- CTA / FORM -->
@@ -1149,7 +1206,7 @@ const co = new IntersectionObserver(es => {
     }, 28);
     co.unobserve(el);
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.1 });
 document.querySelectorAll('.counter').forEach(el => co.observe(el));
 
 function submitImpact(){
