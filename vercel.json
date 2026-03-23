@@ -22,6 +22,16 @@
     },
     {
       "source": "/",
+      "has": [{ "type": "host", "value": "athletes.tapnpayplus.com" }],
+      "destination": "/nil-onboard/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "athletes.tapnpayplus.com" }],
+      "destination": "/nil-onboard/:path*"
+    },
+    {
+      "source": "/",
       "destination": "/hub/index.html"
     }
   ]
