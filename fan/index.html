@@ -215,6 +215,15 @@
   }
   .shield { font-size: 16px; }
 
+  .live-dot {
+    width: 8px; height: 8px; background: #00E676;
+    border-radius: 50%; animation: pulse-dot 2s infinite; flex-shrink: 0;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6); }
+    50% { box-shadow: 0 0 0 6px rgba(0, 230, 118, 0); }
+  }
+
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(50px, 10vw, 116px);
@@ -672,7 +681,7 @@
   }
 
   .ghl-form {
-    background: rgba(14, 8, 34, 0.45);
+    background: rgba(18, 11, 46, 0.35);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(139, 92, 246, 0.12);
@@ -682,14 +691,14 @@
   }
   .ghl-form::before {
     content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
   }
   .form-title {
     font-family: 'Bebas Neue', sans-serif; font-size: 28px;
     text-align: center; margin-bottom: 6px; letter-spacing: 1px;
   }
   .form-sub {
-    font-size: 13px; color: rgba(255, 255, 255, 0.65); text-align: center;
+    font-size: 13px; color: rgba(255, 255, 255, 0.35); text-align: center;
     margin-bottom: 32px;
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
@@ -697,19 +706,19 @@
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group label {
     font-size: 12px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 1.5px; color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 1.5px; color: rgba(255, 255, 255, 0.5);
   }
   .form-group input {
-    background: rgba(6, 2, 15, 0.7); border: 1px solid rgba(139, 92, 246, 0.15);
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px; padding: 14px 16px; color: #FFFFFF;
     font-family: 'Outfit', sans-serif; font-size: 15px; outline: none;
     transition: all 0.3s;
   }
-  .form-group input::placeholder { color: rgba(255, 255, 255, 0.35); }
+  .form-group input::placeholder { color: rgba(255, 255, 255, 0.2); }
   .form-group input:focus {
-    border-color: rgba(139, 92, 246, 0.28);
-    background: rgba(16, 185, 129, 0.05);
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);
+    border-color: rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.06);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
   }
   .consent-wrap {
     display: flex; gap: 12px; align-items: flex-start;
@@ -807,7 +816,102 @@
   @media (max-width: 420px) {
     [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
     .hero-metrics { flex-direction: column; align-items: center; }
+    body::after { display: none; }
   }
+
+  /* ===== SCROLL PROGRESS BAR ===== */
+  .scroll-progress {
+    position: fixed; top: 72px; left: 0; height: 2px;
+    background: linear-gradient(90deg, #00E676, var(--purple-bright));
+    z-index: 1001; transition: width 0.1s linear; width: 0;
+  }
+
+  /* ===== NOISE GRAIN TEXTURE ===== */
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 128px 128px;
+  }
+
+  /* ===== HERO GRADIENT MESH ===== */
+  .hero-mesh {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(74, 29, 150, 0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 30%, rgba(109, 40, 217, 0.2) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 50% at 50% 80%, rgba(0, 230, 118, 0.06) 0%, transparent 50%);
+    animation: mesh-drift 12s ease-in-out infinite alternate;
+  }
+  @keyframes mesh-drift {
+    0% { filter: hue-rotate(0deg); transform: scale(1); }
+    100% { filter: hue-rotate(10deg); transform: scale(1.05); }
+  }
+  .hero-grid-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background-image:
+      linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 50% at 50% 45%, black, transparent);
+    -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 45%, black, transparent);
+  }
+
+  /* ===== HERO PARTICLES ===== */
+  .particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .particle {
+    position: absolute; border-radius: 50%;
+    animation: float-particle linear infinite; opacity: 0;
+  }
+  @keyframes float-particle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  /* ===== SOCIAL PROOF BAR ===== */
+  .proof-bar {
+    padding: 20px 24px; text-align: center;
+    border-top: 1px solid rgba(139, 92, 246, 0.06);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.06);
+    background: rgba(18, 11, 46, 0.5);
+    position: relative; z-index: 1;
+  }
+  .proof-bar p {
+    font-size: 13px; color: rgba(255,255,255,0.35);
+    text-transform: uppercase; letter-spacing: 3px; font-weight: 600;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    border: 1px solid rgba(139, 92, 246, 0.08); border-radius: 14px;
+    margin-bottom: 10px; overflow: hidden; transition: all 0.3s;
+    background: rgba(14, 8, 34, 0.4);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  }
+  .faq-item:hover { border-color: rgba(139, 92, 246, 0.18); }
+  .faq-q {
+    padding: 20px 24px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    font-weight: 600; font-size: 16px;
+  }
+  .faq-q .faq-label {
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    color: #00E676; margin-right: 12px;
+  }
+  .faq-toggle {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--purple-glow); font-size: 18px; flex-shrink: 0; transition: all 0.3s;
+  }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: rgba(0, 230, 118, 0.1); color: #00E676; }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: all 0.4s ease; padding: 0 24px;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+  .faq-a p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
 
   /* ===== SCROLL REVEAL ===== */
   .reveal {
@@ -824,6 +928,8 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8B6W6R7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- NAVBAR -->
 <div class="page-blobs">
@@ -844,17 +950,20 @@
     <a href="#how">How It Works</a>
     <a href="#benefits">Benefits</a>
     <a href="#brands">Partners</a>
+    <a href="#faq">FAQ</a>
   </div>
   <a href="https://apps.apple.com/us/app/tapnpay/id1521871802" class="navbar-cta">Download Now</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  
+  <div class="hero-mesh"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="particles" id="particles"></div>
   <div class="field-lines" id="float-dots"></div>
   <div class="hero-split">
   <div class="hero-content">
-    <div class="hero-eyebrow"><span class="shield">⭐</span> Welcome to the TapNPay+ Fan Payment Platform</div>
+    <div class="hero-eyebrow"><span class="live-dot"></span> Welcome to the TapNPay+ Fan Payment Platform</div>
     <h1>RALLY AROUND<br><span class="purple">YOUR ATHLETE</span></h1>
     <p class="hero-sub">Every time you pay at our 300+ national brand partners, you earn instant cash back. You will get an average of 4% back instantly, and every payment you make directly generates funds for athlete!</p>
     <div class="hero-metrics">
@@ -884,6 +993,11 @@
   </div>
   </div>
 </section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar">
+  <p>Trusted by Fans Nationwide &nbsp;•&nbsp; 300+ Brand Partners &nbsp;•&nbsp; Pittsburgh, PA</p>
+</div>
 
 <!-- HOW IT WORKS -->
 <section class="section-pad" id="how">
@@ -1024,6 +1138,38 @@
 <!-- TAGLINE -->
 <section style="padding:40px 24px 80px;text-align:center;">
   <div class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;background:linear-gradient(135deg,var(--green-mid),var(--purple-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(16,185,129,0.15));margin-bottom:28px;">JOIN THE<br>JOURNEY.</div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq" style="padding:80px 24px 60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">GOT QUESTIONS?</h2>
+    </div>
+    <div class="faq-section">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What is TapNPay+?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>TapNPay+ is a fan payment platform. You shop at 300+ national brands using digital gift cards delivered instantly to your phone, earn ~4% cash back on every purchase, and a portion of the cash back goes directly to the athlete you selected.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> Does it cost me anything extra?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>No! You pay the exact same price you'd normally pay. The cash back is generated from the digital gift card transaction — there's zero extra cost to you.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How do I earn cash back?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>Open the app, enter your purchase amount, receive a digital gift card instantly on your phone, and scan it to pay at checkout. Cash back activates the moment the transaction completes.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d3">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How does my athlete earn?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>When you register, you select the athlete who invited you. Every digital gift card payment you make generates cash back — and 10% of the overall cash back goes directly to that athlete's NIL earnings. Automatically, every time.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What brands are available?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>300+ national brands including grocery, restaurants, gas, retail, travel, entertainment, and more. Nike, Target, Starbucks, Amazon, DoorDash — brands you already use every day.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- CTA / FORM -->
@@ -1233,6 +1379,40 @@ function submitImpact(){
     document.getElementById('impact-success').style.display='block';
   },800);
 }
+
+// ===== SCROLL PROGRESS BAR =====
+window.addEventListener('scroll', function() {
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var scrollPercent = (scrollTop / docHeight) * 100;
+  document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+});
+
+// ===== FAQ TOGGLE =====
+function toggleFaq(el) {
+  var item = el.closest('.faq-item');
+  document.querySelectorAll('.faq-item').forEach(function(i) { if (i !== item) i.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+
+// ===== PARTICLES =====
+(function createParticles() {
+  var container = document.getElementById('particles');
+  if (!container) return;
+  for (var i = 0; i < 20; i++) {
+    var p = document.createElement('div');
+    p.className = 'particle';
+    var size = Math.random() * 4 + 2;
+    var isGreen = Math.random() > 0.5;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.background = isGreen ? 'rgba(0, 230, 118, 0.6)' : 'rgba(139, 92, 246, 0.5)';
+    p.style.animationDuration = (Math.random() * 10 + 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    container.appendChild(p);
+  }
+})();
 </script>
 
 </body>
