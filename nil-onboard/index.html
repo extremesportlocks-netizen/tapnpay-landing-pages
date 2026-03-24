@@ -232,6 +232,37 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   .earn-pct{font-size:52px;}
   .section-title{font-size:clamp(28px,8vw,40px);}
 }
+
+/* STATS STRIP */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto;padding:60px 24px;}
+.stat-cell{text-align:center;padding:40px 20px;background:rgba(14,8,34,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(139,92,246,0.1);border-radius:20px;position:relative;overflow:hidden;transition:all 0.4s;}
+.stat-cell::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);}
+.stat-cell:hover{border-color:rgba(139,92,246,0.2);transform:translateY(-4px);box-shadow:0 16px 48px rgba(139,92,246,0.08);}
+.stat-number{font-family:'Bebas Neue',sans-serif;font-size:68px;background:linear-gradient(135deg,var(--purple-bright),var(--green-neon));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;filter:drop-shadow(0 0 20px rgba(139,92,246,0.2));}
+.stat-number .suffix{font-size:44px;background:linear-gradient(135deg,var(--green-neon),var(--purple-glow));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.stat-desc{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,0.3);margin-top:10px;font-weight:700;}
+
+/* PROOF BAR */
+.proof-bar{padding:20px 24px;text-align:center;border-top:1px solid rgba(139,92,246,0.06);border-bottom:1px solid rgba(139,92,246,0.06);background:rgba(18,11,46,0.5);position:relative;z-index:1;}
+.proof-bar p{font-size:13px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:3px;font-weight:600;}
+
+/* FAQ */
+.faq-section{max-width:720px;margin:0 auto;}
+.faq-item{border:1px solid rgba(139,92,246,0.08);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:all 0.3s;background:var(--dark-card);}
+.faq-item:hover{border-color:rgba(139,92,246,0.18);}
+.faq-q{padding:20px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:16px;}
+.faq-q .faq-label{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green-neon);margin-right:12px;}
+.faq-toggle{width:28px;height:28px;border-radius:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.15);display:flex;align-items:center;justify-content:center;color:var(--purple-glow);font-size:18px;flex-shrink:0;transition:all 0.3s;}
+.faq-item.open .faq-toggle{transform:rotate(45deg);background:rgba(0,230,118,0.1);color:var(--green-neon);}
+.faq-a{max-height:0;overflow:hidden;transition:all 0.4s ease;padding:0 24px;}
+.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px;}
+.faq-a p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.5);}
+
+@media(max-width:768px){
+  .stats-strip{grid-template-columns:repeat(2,1fr);padding:40px 16px;gap:12px;}
+  .stat-number{font-size:48px;}
+  .stat-cell{padding:28px 16px;}
+}
 </style>
 </head>
 <body>
@@ -250,6 +281,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     <a href="#earnings">Earnings</a>
     <a href="#brands">Brands</a>
     <a href="#compliance">Compliance</a>
+    <a href="#faq">FAQ</a>
   </div>
   <a href="#cta" class="btn-primary">Activate Now</a>
 </nav>
@@ -277,6 +309,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     </div>
   </div>
 </section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <p>NIL Athlete Program &nbsp;•&nbsp; 300+ Brand Partners &nbsp;•&nbsp; Pittsburgh, PA</p>
+</div>
 
 <!-- STEPS -->
 <section class="section-pad" id="steps">
@@ -329,6 +366,26 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     </div>
   </div>
 </section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-cell reveal">
+    <div class="stat-number"><span class="counter" data-target="300">0</span><span class="suffix">+</span></div>
+    <div class="stat-desc">Brand Partners</div>
+  </div>
+  <div class="stat-cell reveal reveal-d1">
+    <div class="stat-number">70<span class="suffix">%</span></div>
+    <div class="stat-desc">Fan Activations</div>
+  </div>
+  <div class="stat-cell reveal reveal-d2">
+    <div class="stat-number">10<span class="suffix">%</span></div>
+    <div class="stat-desc">Cash Back Share</div>
+  </div>
+  <div class="stat-cell reveal reveal-d3">
+    <div class="stat-number">$<span class="counter" data-target="0">0</span></div>
+    <div class="stat-desc">Cost to Join</div>
+  </div>
+</div>
 
 <div class="section-divider"></div>
 
@@ -442,6 +499,38 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     <div class="reveal" style="margin-top:32px;text-align:center;padding:20px 28px;background:rgba(0,230,118,0.03);border:1px solid rgba(0,230,118,0.08);border-radius:16px;max-width:560px;margin-left:auto;margin-right:auto;">
       <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:10px;">Questions from your compliance office? We're here.</p>
       <p style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.7);"><a href="tel:8007931276" style="color:var(--green-neon);text-decoration:none;">(800) 793-1276</a> &nbsp;·&nbsp; <a href="mailto:support@tapnpayplus.com" style="color:var(--green-neon);text-decoration:none;">support@tapnpayplus.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq" style="padding:80px 24px 60px;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label reveal">FAQ</div>
+      <h2 class="section-title reveal">GOT QUESTIONS?</h2>
+    </div>
+    <div class="faq-section">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How do I get paid?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>TapNPay+ will direct deposit your earnings biweekly into your chosen ACH deposit account.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> Do I have to sell anything?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>No! Just share your unique TapNPay+ link, and when people shop, you earn. It's that simple.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How much can I earn?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>There's no limit! Fan memberships range from $30–$1,000 and you earn 70% of every activation. Plus 10% of all ongoing cash back from your fans' daily purchases. The more your network shops, the more you earn.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d3">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> Is this NCAA compliant?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>Yes. TapNPay+ is a fan payment platform, not a brand endorsement. Built for eligibility across NCAA D1, D2, and D3 with NILGO guidelines applied. Every registered D1 athlete receives compliance documentation.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What do I need to stay active?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>Just one share activation per month using the in-app Share button. That's it — no performance obligations, no appearances, no brand deals. One tap keeps you fully active and eligible.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -593,6 +682,33 @@ if(!isTouchDevice){
     }
   },{passive:true});
 }
+
+// ===== FAQ TOGGLE =====
+function toggleFaq(el){
+  var item=el.closest('.faq-item');
+  document.querySelectorAll('.faq-item').forEach(function(i){if(i!==item)i.classList.remove('open');});
+  item.classList.toggle('open');
+}
+
+// ===== STATS STRIP COUNTER =====
+var statsObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(!entry.isIntersecting)return;
+    var el=entry.target;
+    var target=parseInt(el.dataset.target);
+    if(isNaN(target)){statsObs.unobserve(el);return;}
+    if(target===0){el.textContent='0';statsObs.unobserve(el);return;}
+    var current=0;
+    var step=Math.ceil(target/35);
+    var timer=setInterval(function(){
+      current+=step;
+      if(current>=target){current=target;clearInterval(timer);}
+      el.textContent=current;
+    },28);
+    statsObs.unobserve(el);
+  });
+},{threshold:0.5});
+document.querySelectorAll('.counter').forEach(function(el){statsObs.observe(el);});
 </script>
 </body>
 </html>
