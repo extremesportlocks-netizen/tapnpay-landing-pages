@@ -329,7 +329,7 @@
   }
 
   /* ===== SECTION UTILITIES ===== */
-  .section-pad { padding: 100px 24px; position: relative; z-index: 1; }
+  .section-pad { padding: 80px 24px; position: relative; z-index: 1; }
   .section-header { text-align: center; margin-bottom: 64px; }
   .section-label {
     font-size: 12px; font-weight: 800; text-transform: uppercase;
@@ -357,6 +357,8 @@
     background: linear-gradient(90deg, var(--green-core), var(--purple-core), var(--gold), var(--green-core));
     border-radius: 3px; z-index: 0;
   }
+  .payment-flow::before { display: none; }
+  .payment-flow > div { transition: all 0.3s; }
 
   .tl-card {
     text-align: center; padding: 32px 20px 28px; position: relative; z-index: 1;
@@ -660,7 +662,7 @@
 
   /* ===== CTA / FORM ===== */
   .cta-section {
-    padding: 120px 24px; text-align: center; position: relative;
+    padding: 80px 24px; text-align: center; position: relative;
   }
   .cta-section::before {
     content: ''; position: absolute; inset: 0;
@@ -805,6 +807,7 @@
     .metric-val { font-size: 42px; }
     .timeline-grid { grid-template-columns: 1fr; gap: 14px; }
     .timeline-grid::before { display: none; }
+    .payment-flow > div { border-radius: 16px !important; border-left: 1px solid rgba(139,92,246,0.1) !important; }
     .benefit-grid { grid-template-columns: 1fr; }
     .compare-grid { grid-template-columns: 1fr; gap: 16px; }
     .footer-inner { flex-direction: column; text-align: center; }
@@ -815,6 +818,7 @@
   }
   @media (max-width: 420px) {
     [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
+    .payment-flow > div { border-radius: 16px !important; border-left: 1px solid rgba(139,92,246,0.1) !important; }
     .hero-metrics { flex-direction: column; align-items: center; }
     body::after { display: none; }
   }
@@ -1066,14 +1070,14 @@
     </div>
 
     <!-- YOU PAY / YOUR ATHLETE WINS section -->
-    <div style="margin-top:80px;">
+    <div style="margin-top:60px;">
       <div class="section-header reveal" style="margin-bottom:48px;">
         <div class="section-label">How TapNPay+ Works</div>
         <h2 class="section-title">YOU PAY. YOU EARN.<br>YOUR ATHLETE WINS TOO.</h2>
         <p class="section-subtitle">Every payment you make does two things at once — puts instant cash back in your pocket and directly counts for the athlete who invited you. Simple. Easy. Rewarding.</p>
       </div>
       <!-- 4-step payment flow -->
-      <div class="timeline-grid reveal" style="grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:32px;">
+      <div class="timeline-grid payment-flow reveal" style="grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:32px;">
         <div style="background:rgba(5,150,105,0.04);border:1px solid rgba(5,150,105,0.1);border-radius:16px 0 0 16px;padding:24px 20px;text-align:center;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--green-core);margin-bottom:8px;">01</div>
           <h4 style="font-size:14px;font-weight:700;margin-bottom:6px;">Open App</h4>
@@ -1128,7 +1132,7 @@
 </section>
 
 <!-- COMMUNITY CALLOUT -->
-<section class="section-pad" style="padding:60px 24px;">
+<section class="section-pad" style="padding:40px 24px;">
   <div style="background:linear-gradient(135deg,#F97316,#EA580C);border-radius:20px;padding:48px 40px;text-align:center;max-width:900px;margin:0 auto;" class="reveal">
     <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:#fff;letter-spacing:2px;margin-bottom:16px;">YOU'RE PART OF THEIR JOURNEY.</h2>
     <p style="font-size:18px;color:rgba(255,255,255,0.9);max-width:600px;margin:0 auto;line-height:1.6;">Now every payment you make moves your athlete forward — and puts cash back in your pocket.</p>
@@ -1136,40 +1140,8 @@
 </section>
 
 <!-- TAGLINE -->
-<section style="padding:40px 24px 80px;text-align:center;">
+<section style="padding:20px 24px 40px;text-align:center;">
   <div class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;background:linear-gradient(135deg,var(--green-mid),var(--purple-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(16,185,129,0.15));margin-bottom:28px;">JOIN THE<br>JOURNEY.</div>
-</section>
-
-<!-- FAQ -->
-<section class="section-pad" id="faq" style="padding:80px 24px 60px;">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">FAQ</div>
-      <h2 class="section-title">GOT QUESTIONS?</h2>
-    </div>
-    <div class="faq-section">
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What is TapNPay+?</span><span class="faq-toggle">+</span></div>
-        <div class="faq-a"><p>TapNPay+ is a fan payment platform. You shop at 300+ national brands using digital gift cards delivered instantly to your phone, earn ~4% cash back on every purchase, and a portion of the cash back goes directly to the athlete you selected.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d1">
-        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> Does it cost me anything extra?</span><span class="faq-toggle">+</span></div>
-        <div class="faq-a"><p>No! You pay the exact same price you'd normally pay. The cash back is generated from the digital gift card transaction — there's zero extra cost to you.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d2">
-        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How do I earn cash back?</span><span class="faq-toggle">+</span></div>
-        <div class="faq-a"><p>Open the app, enter your purchase amount, receive a digital gift card instantly on your phone, and scan it to pay at checkout. Cash back activates the moment the transaction completes.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d3">
-        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How does my athlete earn?</span><span class="faq-toggle">+</span></div>
-        <div class="faq-a"><p>When you register, you select the athlete who invited you. Every digital gift card payment you make generates cash back — and 10% of the overall cash back goes directly to that athlete's NIL earnings. Automatically, every time.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What brands are available?</span><span class="faq-toggle">+</span></div>
-        <div class="faq-a"><p>300+ national brands including grocery, restaurants, gas, retail, travel, entertainment, and more. Nike, Target, Starbucks, Amazon, DoorDash — brands you already use every day.</p></div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- CTA / FORM -->
@@ -1238,6 +1210,38 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section-pad" id="faq" style="padding:80px 24px 60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">GOT QUESTIONS?</h2>
+    </div>
+    <div class="faq-section">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What is TapNPay+?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>TapNPay+ is a fan payment platform. You shop at 300+ national brands using digital gift cards delivered instantly to your phone, earn ~4% cash back on every purchase, and a portion of the cash back goes directly to the athlete you selected.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> Does it cost me anything extra?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>No! You pay the exact same price you'd normally pay. The cash back is generated from the digital gift card transaction — there's zero extra cost to you.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How do I earn cash back?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>Open the app, enter your purchase amount, receive a digital gift card instantly on your phone, and scan it to pay at checkout. Cash back activates the moment the transaction completes.</p></div>
+      </div>
+      <div class="faq-item reveal reveal-d3">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> How does my athlete earn?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>When you register, you select the athlete who invited you. Every digital gift card payment you make generates cash back — and 10% of the overall cash back goes directly to that athlete's NIL earnings. Automatically, every time.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span><span class="faq-label">Q:</span> What brands are available?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"><p>300+ national brands including grocery, restaurants, gas, retail, travel, entertainment, and more. Nike, Target, Starbucks, Amazon, DoorDash — brands you already use every day.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
@@ -1262,6 +1266,10 @@
 </footer>
 
 <script>
+// ===== FORCE SCROLL TO TOP ON LOAD =====
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // ===== BRAND DATA =====
 const brands = [
   { row:1, name:'Nike', domain:'nike.com' },
