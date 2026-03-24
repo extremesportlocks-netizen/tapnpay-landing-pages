@@ -541,6 +541,34 @@
     transition: all 0.3s;
   }
   .consent-text a:hover { color: var(--purple-glow); border-color: var(--purple-glow); }
+  /* COLLAPSIBLE CONFIRMATIONS */
+  .confirm-section{margin-top:28px;border-top:1px solid rgba(139,92,246,0.1);padding-top:24px;}
+  .confirm-section-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:rgba(255,255,255,0.6);margin-bottom:16px;text-align:center;}
+  .confirm-block{margin-bottom:12px;border:1px solid rgba(139,92,246,0.1);border-radius:14px;overflow:hidden;transition:border-color 0.3s;}
+  .confirm-block.checked{border-color:rgba(0,230,118,0.25);}
+  .confirm-header{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;transition:background 0.2s;user-select:none;}
+  .confirm-header:hover{background:rgba(139,92,246,0.04);}
+  .confirm-header input[type="checkbox"]{width:20px;height:20px;min-width:20px;accent-color:var(--green-neon);cursor:pointer;border-radius:4px;}
+  .confirm-header .confirm-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.55);flex:1;}
+  .confirm-header .confirm-label strong{color:var(--green-neon);}
+  .confirm-header .confirm-arrow{font-size:14px;color:rgba(255,255,255,0.25);transition:transform 0.3s;}
+  .confirm-block.open .confirm-arrow{transform:rotate(180deg);}
+  .confirm-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease;padding:0 16px;}
+  .confirm-block.open .confirm-body{max-height:600px;padding:0 16px 16px;}
+  .confirm-body p,.confirm-body ul{font-size:11px;line-height:1.65;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+  .confirm-body a{color:rgba(139,92,246,0.7);text-decoration:none;border-bottom:1px solid rgba(139,92,246,0.2);}
+  .confirm-body a:hover{color:var(--purple-glow);}
+
+  /* COMPENSATION DISCLOSURE */
+  .comp-disclosure{margin-top:28px;padding-top:24px;border-top:1px solid rgba(139,92,246,0.1);}
+  .comp-disclosure-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-bottom:12px;}
+  .comp-block{background:rgba(255,255,255,0.02);border:1px solid rgba(139,92,246,0.06);border-radius:12px;padding:16px;margin-bottom:10px;}
+  .comp-block h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--green-neon);margin-bottom:6px;}
+  .comp-block p{font-size:11px;line-height:1.65;color:rgba(255,255,255,0.35);}
+  .comp-block .math{font-family:'Outfit',monospace;font-size:11px;color:rgba(255,255,255,0.45);margin-top:8px;line-height:1.8;}
+  .comp-block .math span{color:var(--green-neon);font-weight:600;}
+  .auth-notice{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.3);margin-top:16px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);}
+
   .form-submit {
     width: 100%; padding: 16px; border: none; border-radius: 14px;
     background: linear-gradient(135deg, var(--green-neon), #00C853);
@@ -830,34 +858,109 @@
       <div class="form-title">START YOUR NIL JOURNEY</div>
       <p class="form-sub">Fill out the form below and our team will reach out within 24 hours.</p>
 
-      <div class="form-row full">
+      <div class="form-row">
+        <div class="form-group"><label>First Name *</label><input type="text" id="nil-fname" placeholder="First name" required></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="nil-lname" placeholder="Last name" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email Address *</label><input type="email" id="nil-email" placeholder="athlete@school.edu" required></div>
+        <div class="form-group"><label>Mobile Phone *</label><input type="tel" id="nil-phone" placeholder="(555) 000-0000" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>School Name *</label><input type="text" id="nil-school" placeholder="Your university" required></div>
+        <div class="form-group"><label>Sport *</label><input type="text" id="nil-sport" placeholder="Your sport" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Graduation Year *</label><input type="text" id="nil-gradyear" placeholder="e.g. 2027" required></div>
         <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="nil-name" placeholder="Your full name" required>
+          <label>Governing Body *</label>
+          <select id="nil-govbody" required>
+            <option value="" disabled selected>Select...</option>
+            <option value="NCAA DI">NCAA DI</option>
+            <option value="NCAA DII">NCAA DII</option>
+            <option value="NCAA DIII">NCAA DIII</option>
+            <option value="NAIA">NAIA</option>
+            <option value="NJCAA">NJCAA</option>
+          </select>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" id="nil-email" placeholder="athlete@school.edu" required>
-        </div>
-        <div class="form-group">
-          <label>Phone *</label>
-          <input type="tel" id="nil-phone" placeholder="(555) 000-0000" required>
-        </div>
+        <div class="form-group"><label>Social Media Handle(s) <span style="font-weight:400;opacity:0.5;">Optional</span></label><input type="text" id="nil-social" placeholder="Instagram, TikTok, X, YouTube"></div>
+        <div class="form-group"><label>Est. Total Followers <span style="font-weight:400;opacity:0.5;">Optional</span></label><input type="text" id="nil-followers" placeholder="Combined across all platforms"></div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>School *</label>
-          <input type="text" id="nil-school" placeholder="Your university" required>
+
+      <!-- COMPENSATION DISCLOSURE -->
+      <div class="comp-disclosure">
+        <div class="comp-disclosure-title">Your Compensation — Two Streams</div>
+        <div class="comp-block">
+          <h4>Stream 1 — Membership Commission</h4>
+          <p>You earn 70% of every TapNPay+ membership where a fan selects your name from the dropdown at time of purchase. Memberships range from $30 to $1,000 — they all provide the same access to your fans; they are simply choosing to pay what they want for your benefit.</p>
+          <div class="math"><span>$30</span> membership = <span>$21.00</span> to you<br><span>$100</span> membership = <span>$70.00</span> to you<br><span>$500</span> membership = <span>$350.00</span> to you<br><span>$1,000</span> membership = <span>$700.00</span> to you</div>
         </div>
-        <div class="form-group">
-          <label>Sport *</label>
-          <input type="text" id="nil-sport" placeholder="Your sport" required>
+        <div class="comp-block">
+          <h4>Stream 2 — DGC Cash Back Performance Royalty</h4>
+          <p>You earn 10% of overall cash back earned by your members on Digital Gift Card purchases made through the TapNPay+ platform. This accrues on an ongoing basis for as long as your members remain active.</p>
+          <p style="margin-top:8px;">Your compensation is earned through your documented promotional activity. It is not tied to your athletic performance or school enrollment.</p>
+        </div>
+        <div class="comp-block">
+          <h4>How You Stay Active — One Simple Rule</h4>
+          <p>Complete a minimum of 1 Share Activation per month using the TapNPay+ in-app Share button to remain visible in the fan dropdown and eligible to earn.</p>
+          <p style="margin-top:6px;"><strong style="color:var(--green-neon);">Active</strong> (1+ shares in 30 days): Visible in dropdown. Eligible to earn.<br><strong style="color:rgba(255,255,255,0.4);">Paused</strong> (0 shares in 30 days): Removed from dropdown. Not eligible to earn.</p>
+          <p style="margin-top:6px;">One tap of the Share button reactivates a Paused account immediately. Your share count and status are visible in real time in your athlete dashboard.</p>
+        </div>
+        <div class="auth-notice"><strong style="color:rgba(255,255,255,0.5);">Authorization Notice:</strong> By activating this profile, you confirm that you are the authorized adult account holder and understand that TapNPay+ membership purchases attributed to you by fans are non-refundable once processed.</div>
+      </div>
+
+      <!-- COLLAPSIBLE CONFIRMATIONS -->
+      <div class="confirm-section">
+        <div class="confirm-section-title">Review &amp; Confirm</div>
+
+        <div class="confirm-block" id="cb1">
+          <div class="confirm-header" onclick="toggleConfirm('cb1')">
+            <input type="checkbox" id="chk-eligibility" onclick="event.stopPropagation();">
+            <div class="confirm-label"><strong>Confirmation 1</strong> — Eligibility</div>
+            <div class="confirm-arrow">▾</div>
+          </div>
+          <div class="confirm-body">
+            <p><strong style="color:var(--white);">I confirm</strong> I am currently enrolled as a student-athlete at a college or university — not a high school student-athlete — and I am at least 18 years of age.</p>
+          </div>
+        </div>
+
+        <div class="confirm-block" id="cb2">
+          <div class="confirm-header" onclick="toggleConfirm('cb2')">
+            <input type="checkbox" id="chk-agreement" onclick="event.stopPropagation();">
+            <div class="confirm-label"><strong>Confirmation 2</strong> — Program Agreement</div>
+            <div class="confirm-arrow">▾</div>
+          </div>
+          <div class="confirm-body">
+            <p><strong style="color:var(--white);">I agree</strong> I understand that my TapNPay+ compensation is earned through my documented promotional Share Activations, that my name appears in the TapNPay+ fan membership dropdown for fans to select when purchasing a membership, and that my compensation is not tied to my athletic performance or school enrollment. I understand I must complete a minimum of 1 Share Activation per month to remain visible in the dropdown and eligible to earn. I have read and agree to the TapNPay+ NIL Athlete <a href="https://docs.google.com/document/d/1dIrCLdOxoSuK3FCdWKkBS3zfBwR1-g4i/export?format=pdf" target="_blank">Agreement</a>, <a href="https://www.tapnpayplus.com/terms-of-use" target="_blank">Terms of Use</a>, and <a href="https://www.tapnpayplus.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+          </div>
+        </div>
+
+        <div class="confirm-block" id="cb3">
+          <div class="confirm-header" onclick="toggleConfirm('cb3')">
+            <input type="checkbox" id="chk-compliance" onclick="event.stopPropagation();">
+            <div class="confirm-label"><strong>Confirmation 3</strong> — NCAA Compliance Responsibility</div>
+            <div class="confirm-arrow">▾</div>
+          </div>
+          <div class="confirm-body">
+            <p><strong style="color:var(--white);">I understand</strong> I am responsible for compliance with my governing body's NIL rules and my school's institutional policy before I begin promoting TapNPay+. TapNPay+ will provide my compliance documentation package immediately upon registration.</p>
+          </div>
+        </div>
+
+        <div class="confirm-block" id="cb4">
+          <div class="confirm-header" onclick="toggleConfirm('cb4')">
+            <input type="checkbox" id="chk-nilgo" onclick="event.stopPropagation();">
+            <div class="confirm-label"><strong>Confirmation 4</strong> — NIL Go Reporting</div>
+            <div class="confirm-arrow">▾</div>
+          </div>
+          <div class="confirm-body">
+            <p><strong style="color:var(--white);">I understand:</strong> As a student-athlete I am required to submit this NIL agreement to the NCAA NIL Go portal (<a href="https://nil.ncaa.org" target="_blank">nil.ncaa.org</a>) within 5 business days of today. TapNPay+ will email my pre-built NIL Go submission package immediately upon registration.</p>
+          </div>
         </div>
       </div>
 
-      <div class="consent-wrap">
+      <div class="consent-wrap" style="margin-top:20px;">
         <input type="checkbox" id="sms-consent-nil" required>
         <label for="sms-consent-nil" class="consent-text">
           I agree to receive texts from TapNPay+ regarding my account and onboarding. Msg frequency varies; msg &amp; data rates may apply. Reply HELP for help, STOP to opt out.
@@ -1028,23 +1131,45 @@ document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el))
   }
 })();
 
+function toggleConfirm(id){
+  var block=document.getElementById(id);
+  block.classList.toggle('open');
+}
+document.querySelectorAll('.confirm-block input[type="checkbox"]').forEach(function(cb){
+  cb.addEventListener('change',function(){
+    this.closest('.confirm-block').classList.toggle('checked',this.checked);
+  });
+});
+
 function submitNIL(){
-  var name=document.getElementById('nil-name').value.trim();
+  var fname=document.getElementById('nil-fname').value.trim();
+  var lname=document.getElementById('nil-lname').value.trim();
   var email=document.getElementById('nil-email').value.trim();
   var phone=document.getElementById('nil-phone').value.trim();
   var school=document.getElementById('nil-school').value.trim();
   var sport=document.getElementById('nil-sport').value.trim();
-  var consent=document.getElementById('sms-consent-nil').checked;
-  if(!name||!email||!phone||!school||!sport){alert('Please fill out all fields.');return;}
-  if(!consent){alert('Please agree to the SMS consent.');return;}
+  var gradyear=document.getElementById('nil-gradyear').value.trim();
+  var govbody=document.getElementById('nil-govbody').value;
+  var social=document.getElementById('nil-social').value.trim();
+  var followers=document.getElementById('nil-followers').value.trim();
+  var sms=document.getElementById('sms-consent-nil').checked;
+  var chk1=document.getElementById('chk-eligibility').checked;
+  var chk2=document.getElementById('chk-agreement').checked;
+  var chk3=document.getElementById('chk-compliance').checked;
+  var chk4=document.getElementById('chk-nilgo').checked;
+  if(!fname||!lname||!email||!phone||!school||!sport||!gradyear||!govbody){alert('Please fill out all required fields.');return;}
+  if(!chk1||!chk2||!chk3||!chk4){alert('Please review and check all four confirmation boxes.');return;}
+  if(!sms){alert('Please agree to the SMS consent.');return;}
   var btn=document.getElementById('nil-submit');
   btn.textContent='SUBMITTING...';btn.disabled=true;
   fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/814f0e51-4ab0-421b-9fc1-bcbefdde7020',{
     method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({full_name:name,email:email,phone:phone,school:school,sport:sport,sms_consent:true,source:'nil.tapnpayplus.com',form:'NIL Landing Form'})
+    body:JSON.stringify({first_name:fname,last_name:lname,email:email,phone:phone,school:school,sport:sport,graduation_year:gradyear,governing_body:govbody,social_media:social||'',estimated_followers:followers||'',eligibility_confirmed:true,program_agreement:true,compliance_acknowledged:true,nilgo_acknowledged:true,sms_consent:true,source:'nil.tapnpayplus.com',form:'NIL Landing Form'})
   }).then(function(){
-    document.getElementById('nil-form').querySelectorAll('input').forEach(function(i){i.value='';});
-    document.getElementById('sms-consent-nil').checked=false;
+    document.getElementById('nil-form').querySelectorAll('input:not([type=checkbox])').forEach(function(i){i.value='';});
+    document.getElementById('nil-form').querySelectorAll('input[type=checkbox]').forEach(function(c){c.checked=false;});
+    document.getElementById('nil-govbody').selectedIndex=0;
+    document.querySelectorAll('.confirm-block').forEach(function(b){b.classList.remove('checked','open');});
     btn.style.display='none';
     document.getElementById('nil-success').style.display='block';
   }).catch(function(){
