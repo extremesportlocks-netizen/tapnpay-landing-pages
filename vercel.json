@@ -32,6 +32,16 @@
     },
     {
       "source": "/",
+      "has": [{ "type": "host", "value": "fans.tapnpayplus.com" }],
+      "destination": "/fan/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "fans.tapnpayplus.com" }],
+      "destination": "/fan/:path*"
+    },
+    {
+      "source": "/",
       "destination": "/hub/index.html"
     }
   ]
