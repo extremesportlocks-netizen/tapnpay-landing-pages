@@ -59,6 +59,36 @@
     },
     {
       "source": "/",
+      "has": [{ "type": "host", "value": "parentrally.tapnpayplus.com" }],
+      "destination": "/parent-rally/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "parentrally.tapnpayplus.com" }],
+      "destination": "/parent-rally/:path*"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "parentrallyfans.tapnpayplus.com" }],
+      "destination": "/parent-rally-fans/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "parentrallyfans.tapnpayplus.com" }],
+      "destination": "/parent-rally-fans/:path*"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "parentrallyparents.tapnpayplus.com" }],
+      "destination": "/parent-rally-parents/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "parentrallyparents.tapnpayplus.com" }],
+      "destination": "/parent-rally-parents/:path*"
+    },
+    {
+      "source": "/",
       "destination": "/hub/index.html"
     }
   ]
