@@ -291,10 +291,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="photo-bg">
     <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1600&q=80&auto=format&fit=crop" alt="" loading="eager" onerror="this.parentElement.style.display='none'">
   </div>
-  <div class="hero-mesh"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-  <div class="particles" id="particles"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Parent Rally Program — You're Registered &amp; Ready</div>
     <h1 class="hero-h1">YOU'RE IN.<br><span class="gradient-text">NOW RALLY YOUR COMMUNITY.</span></h1>
@@ -591,7 +587,7 @@ window.addEventListener('scroll',function(){document.getElementById('navbar').cl
 var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 
-(function(){var c=document.getElementById('particles');for(var i=0;i<28;i++){var p=document.createElement('div');p.className='particle';var size=Math.random()*4+1.5;p.style.width=size+'px';p.style.height=size+'px';p.style.left=Math.random()*100+'%';p.style.background=Math.random()>0.4?'rgba(0,230,118,0.6)':'rgba(16,185,129,0.4)';p.style.animationDuration=(Math.random()*12+8)+'s';p.style.animationDelay=(Math.random()*12)+'s';c.appendChild(p);}})();
+// Page blobs only — no particles for light theme
 
 // ===== SCROLL PROGRESS BAR =====
 var progressBar=document.getElementById('scrollProgress');
