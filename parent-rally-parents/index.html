@@ -30,15 +30,15 @@
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(16,185,129,0.15);box-shadow:0 1px 12px rgba(0,0,0,0.04);transition:all 0.4s;}
 .navbar.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 4px 20px rgba(0,0,0,0.06);}
 .nav-left{display:flex;align-items:center;gap:14px;}
-.navbar-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+.navbar-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#1A2E23;text-decoration:none;}
 .navbar-logo span{color:var(--green-neon);}
 .nav-badge{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2.5px;color:var(--purple-bright);background:rgba(251,191,36,0.05);border:1px solid rgba(16,185,129,0.15);padding:5px 12px;border-radius:6px;}
 .nav-links{display:flex;align-items:center;gap:28px;}
 .nav-links a{font-size:12px;font-weight:500;color:rgba(26,46,35,0.5);text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:color 0.3s;}
-.nav-links a:hover{color:var(--white);}
+.nav-links a:hover{color:#1A2E23;}
 .btn-primary{background:linear-gradient(135deg,var(--green-neon),var(--green-dark));color:var(--dark);font-weight:800;font-size:13px;padding:11px 28px;border-radius:50px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:2px;transition:all 0.4s;text-decoration:none;display:inline-block;}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,230,118,0.25);}
-.btn-secondary{background:transparent;color:var(--white);font-weight:700;font-size:13px;padding:11px 28px;border-radius:50px;border:1px solid rgba(26,46,35,0.15);cursor:pointer;text-transform:uppercase;letter-spacing:2px;transition:all 0.4s;text-decoration:none;display:inline-block;}
+.btn-secondary{background:transparent;color:#1A2E23;font-weight:700;font-size:13px;padding:11px 28px;border-radius:50px;border:1px solid rgba(26,46,35,0.15);cursor:pointer;text-transform:uppercase;letter-spacing:2px;transition:all 0.4s;text-decoration:none;display:inline-block;}
 .btn-secondary:hover{border-color:var(--purple-bright);background:rgba(251,191,36,0.05);transform:translateY(-3px);box-shadow:0 12px 40px rgba(16,185,129,0.2);}
 
 /* HERO */
@@ -55,11 +55,11 @@
 .particle{position:absolute;border-radius:50%;animation:float-up linear infinite;opacity:0;}
 @keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:0.8;}90%{opacity:0.3;}100%{transform:translateY(-20vh) scale(1.5);opacity:0;}}
 .hero-content{position:relative;z-index:2;max-width:800px;}
-.hero-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--green-neon);margin-bottom:28px;display:inline-block;padding:10px 24px;border-radius:50px;background:rgba(124,58,237,0.05);border:1px solid rgba(0,230,118,0.15);opacity:0;animation:fade-up 0.8s 0.2s forwards;}
+.hero-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#059669;margin-bottom:28px;display:inline-block;padding:10px 24px;border-radius:50px;background:rgba(124,58,237,0.05);border:1px solid rgba(0,230,118,0.15);opacity:0;animation:fade-up 0.8s 0.2s forwards;}
 .hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,96px);letter-spacing:3px;line-height:0.92;margin-bottom:28px;opacity:0;animation:fade-up 0.8s 0.4s forwards;}
 .gradient-text{background:linear-gradient(135deg,var(--green-neon) 0%,var(--green-bright) 40%,var(--purple-glow) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:17px;color:rgba(26,46,35,0.6);line-height:1.75;max-width:640px;margin:0 auto 36px;opacity:0;animation:fade-up 0.8s 0.6s forwards;}
-.hero-sub strong{color:var(--dark);}
+.hero-sub strong{color:#059669;}
 .hero-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fade-up 0.8s 0.8s forwards;}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;font-size:13px;font-weight:600;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.15);color:rgba(26,46,35,0.7);}
 .pill strong{color:var(--green-neon);font-size:15px;}
@@ -117,7 +117,7 @@
 .logo-marquee.reverse{animation-direction:reverse;}
 .logo-marquee.slow{animation-duration:220s;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.brand-chip{display:flex;align-items:center;gap:10px;background:rgba(14,8,34,0.8);border:1px solid rgba(251,191,36,0.05);border-radius:12px;padding:10px 18px;flex-shrink:0;transition:border-color 0.3s;}
+.brand-chip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.7);border:1px solid rgba(251,191,36,0.05);border-radius:12px;padding:10px 18px;flex-shrink:0;transition:border-color 0.3s;}
 .brand-chip:hover{border-color:rgba(16,185,129,0.25);}
 .brand-chip img{width:24px;height:24px;border-radius:4px;}
 .brand-name{font-size:13px;font-weight:600;white-space:nowrap;color:rgba(26,46,35,0.7);}
@@ -149,7 +149,7 @@
 .footer-left p{font-size:11px;color:rgba(26,46,35,0.3);margin-top:4px;}
 .footer-links{display:flex;gap:24px;}
 .footer-links a{font-size:12px;color:rgba(26,46,35,0.35);text-decoration:none;transition:color 0.3s;}
-.footer-links a:hover{color:var(--white);}
+.footer-links a:hover{color:#1A2E23;}
 .footer-social{display:flex;gap:10px;}
 .social-icon{width:36px;height:36px;border-radius:50%;border:1px solid rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:rgba(26,46,35,0.35);text-decoration:none;transition:all 0.3s;}
 .social-icon:hover{border-color:var(--green-neon);color:var(--green-neon);}
@@ -168,8 +168,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 /* ===== DUOTONE PHOTO SYSTEM ===== */
 .photo-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
 .photo-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(100%) brightness(0.22) contrast(1.4);display:block;}
-.photo-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,29,150,0.78) 0%,rgba(6,2,15,0.88) 100%);}
-.photo-bg.light-overlay::after{background:linear-gradient(135deg,rgba(0,60,30,0.72) 0%,rgba(6,2,15,0.88) 100%);}
+.photo-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(245,243,255,0.6) 100%);}
+.photo-bg.light-overlay::after{background:linear-gradient(135deg,rgba(16,185,129,0.06) 0%,rgba(240,253,244,0.6) 100%);}
 
 /* ===== MOUSE GLOW ON CARDS ===== */
 .glow-card,.earn-card,.comp-card{position:relative;overflow:hidden;}
@@ -190,7 +190,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 @keyframes ripple-out{to{transform:scale(4);opacity:0;}}
 
 /* ===== ACTIVE NAV ===== */
-.nav-links a.active{color:var(--white)!important;}
+.nav-links a.active{color:#1A2E23!important;}
 .nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green-neon);border-radius:1px;}
 .nav-links a{position:relative;}
 
@@ -243,7 +243,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .stat-desc{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:rgba(26,46,35,0.3);margin-top:10px;font-weight:700;}
 
 /* PROOF BAR */
-.proof-bar{padding:20px 24px;text-align:center;border-top:1px solid rgba(16,185,129,0.1);border-bottom:1px solid rgba(16,185,129,0.1);background:rgba(255,255,255,0.6);position:relative;z-index:1;}
+.proof-bar{padding:20px 24px;text-align:center;border-top:1px solid rgba(16,185,129,0.1);border-bottom:1px solid rgba(16,185,129,0.1);background:rgba(240,253,244,0.8);position:relative;z-index:1;}
 .proof-bar p{font-size:13px;color:rgba(26,46,35,0.35);text-transform:uppercase;letter-spacing:3px;font-weight:600;}
 
 /* FAQ */
@@ -444,7 +444,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       <div class="earn-card reveal">
         <div class="earn-pct">70%</div>
         <h3>Of Every Fan Membership Activation</h3>
-        <p>Fan memberships are <strong style="color:var(--white);">$50</strong> annually. You earn 70% of every activation. All members receive identical platform access.</p>
+        <p>Fan memberships are <strong style="color:#059669;">$50</strong> annually. You earn 70% of every activation. All members receive identical platform access.</p>
         <div class="earn-range">
           <div style="text-align:center;"><div class="amt">$35</div><div class="lbl">Per activation</div></div>
         </div>
