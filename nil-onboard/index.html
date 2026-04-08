@@ -731,9 +731,10 @@ document.querySelectorAll('.counter').forEach(function(el){statsObs.observe(el);
   fetch(BASE+'/promo-code.json?t='+Date.now())
     .then(function(r){return r.json();})
     .then(function(d){
-      if(d&&d.code){
+      var code=d&&(d.athletes||d.code);
+      if(code){
         document.querySelectorAll('[data-promo-code]').forEach(function(el){
-          el.textContent=d.code;
+          el.textContent=code;
         });
       }
     })

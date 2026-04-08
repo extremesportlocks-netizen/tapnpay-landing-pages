@@ -43,6 +43,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
 .btn-logout{background:transparent;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);font-size:14px;margin-top:16px;}
 .btn-logout:hover{border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);box-shadow:none;}
+.btn-all{background:transparent;border:1px solid rgba(139,92,246,0.2);color:var(--purple-glow);font-size:12px;padding:8px 16px;margin-top:0;margin-bottom:4px;border-radius:8px;}
+.btn-all:hover{border-color:rgba(139,92,246,0.4);box-shadow:none;}
 
 /* STATUS */
 .status{text-align:center;margin-top:16px;font-size:13px;font-weight:600;min-height:20px;transition:all 0.3s;}
@@ -50,24 +52,23 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .status.error{color:#EF4444;}
 .status.loading{color:var(--purple-glow);}
 
-/* CURRENT CODE DISPLAY */
-.current{text-align:center;margin-bottom:24px;padding:16px;border-radius:14px;background:rgba(0,230,118,0.03);border:1px solid rgba(0,230,118,0.1);}
-.current-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:8px;}
-.current-code{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:8px;color:var(--green-neon);text-shadow:0 0 30px rgba(0,230,118,0.2);}
-.current-updated{font-size:11px;color:rgba(255,255,255,0.25);margin-top:6px;}
-
-/* PAGES LIST */
-.pages{margin-top:20px;padding-top:16px;border-top:1px solid rgba(139,92,246,0.08);}
-.pages-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);margin-bottom:10px;}
-.page-item{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:12px;color:rgba(255,255,255,0.4);}
-.page-dot{width:6px;height:6px;border-radius:50%;background:var(--green-neon);box-shadow:0 0 8px rgba(0,230,118,0.4);}
+/* PAGE SELECTOR */
+.pages{margin-bottom:20px;}
+.pages-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+.page-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid rgba(139,92,246,0.06);margin-bottom:6px;transition:all 0.3s;cursor:pointer;}
+.page-row:hover{border-color:rgba(139,92,246,0.15);background:rgba(139,92,246,0.03);}
+.page-row.checked{border-color:rgba(0,230,118,0.2);background:rgba(0,230,118,0.03);}
+.page-check{width:20px;height:20px;border-radius:6px;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;font-size:12px;color:transparent;}
+.page-row.checked .page-check{border-color:var(--green-neon);background:rgba(0,230,118,0.15);color:var(--green-neon);}
+.page-info{flex:1;min-width:0;}
+.page-name{font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);}
+.page-code{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;color:var(--green-neon);margin-top:2px;}
 
 /* HIDDEN */
 .hidden{display:none;}
 
 @media(max-width:480px){
   .card{padding:32px 24px;}
-  .current-code{font-size:32px;letter-spacing:6px;}
   .code-input{font-size:26px!important;letter-spacing:4px!important;}
 }
 </style>
@@ -97,10 +98,39 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="card hidden" id="admin-card">
     <div class="card-title">PROMO CODE MANAGER</div>
 
-    <div class="current">
-      <div class="current-label">Current Code — Live on All Pages</div>
-      <div class="current-code" id="display-code">...</div>
-      <div class="current-updated" id="display-updated"></div>
+    <div class="pages">
+      <div class="pages-title">
+        <span>Select Pages to Update</span>
+        <button class="btn btn-all" onclick="toggleAll()">Select All</button>
+      </div>
+      <div class="page-row checked" data-page="athletes" onclick="togglePage(this)">
+        <div class="page-check">✓</div>
+        <div class="page-info">
+          <div class="page-name">athletes.tapnpayplus.com</div>
+          <div class="page-code" id="code-athletes">—</div>
+        </div>
+      </div>
+      <div class="page-row checked" data-page="fans" onclick="togglePage(this)">
+        <div class="page-check">✓</div>
+        <div class="page-info">
+          <div class="page-name">fans.tapnpayplus.com</div>
+          <div class="page-code" id="code-fans">—</div>
+        </div>
+      </div>
+      <div class="page-row checked" data-page="parentrallyfans" onclick="togglePage(this)">
+        <div class="page-check">✓</div>
+        <div class="page-info">
+          <div class="page-name">parentrallyfans.tapnpayplus.com</div>
+          <div class="page-code" id="code-parentrallyfans">—</div>
+        </div>
+      </div>
+      <div class="page-row checked" data-page="parentrallyparents" onclick="togglePage(this)">
+        <div class="page-check">✓</div>
+        <div class="page-info">
+          <div class="page-name">parentrallyparents.tapnpayplus.com</div>
+          <div class="page-code" id="code-parentrallyparents">—</div>
+        </div>
+      </div>
     </div>
 
     <div class="field">
@@ -108,16 +138,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <input type="text" class="code-input" id="new-code" placeholder="ENTER CODE" maxlength="30" oninput="this.value=this.value.toUpperCase()">
     </div>
 
-    <button class="btn" id="save-btn" onclick="saveCode()">UPDATE CODE ON ALL PAGES</button>
+    <button class="btn" id="save-btn" onclick="saveCode()">UPDATE SELECTED PAGES</button>
     <div class="status" id="save-status"></div>
-
-    <div class="pages">
-      <div class="pages-title">Pushes to:</div>
-      <div class="page-item"><span class="page-dot"></span> athletes.tapnpayplus.com</div>
-      <div class="page-item"><span class="page-dot"></span> fans.tapnpayplus.com</div>
-      <div class="page-item"><span class="page-dot"></span> parentrallyfans.tapnpayplus.com</div>
-      <div class="page-item"><span class="page-dot"></span> parentrallyparents.tapnpayplus.com</div>
-    </div>
 
     <button class="btn btn-logout" onclick="logout()">SIGN OUT</button>
   </div>
@@ -135,7 +157,6 @@ function login() {
 
   status.className='status loading'; status.textContent='Signing in...';
 
-  // Simple client-side auth check (matches server-side)
   if (email.toLowerCase() === 'colton@powermarketing.com' && pass === 'Tapnpay2026!') {
     session = { email: email, password: pass };
     status.className='status success'; status.textContent='Welcome!';
@@ -148,7 +169,7 @@ function login() {
 function showAdmin() {
   document.getElementById('login-card').classList.add('hidden');
   document.getElementById('admin-card').classList.remove('hidden');
-  loadCurrentCode();
+  loadCurrentCodes();
 }
 
 function logout() {
@@ -159,56 +180,93 @@ function logout() {
   document.getElementById('login-status').textContent = '';
 }
 
-function loadCurrentCode() {
+function togglePage(el) {
+  el.classList.toggle('checked');
+  updateButtonText();
+}
+
+function toggleAll() {
+  var rows = document.querySelectorAll('.page-row');
+  var allChecked = true;
+  rows.forEach(function(r) { if (!r.classList.contains('checked')) allChecked = false; });
+  rows.forEach(function(r) {
+    if (allChecked) r.classList.remove('checked');
+    else r.classList.add('checked');
+  });
+  updateButtonText();
+}
+
+function updateButtonText() {
+  var count = document.querySelectorAll('.page-row.checked').length;
+  var btn = document.getElementById('save-btn');
+  if (count === 0) btn.textContent = 'SELECT PAGES FIRST';
+  else if (count === 4) btn.textContent = 'UPDATE ALL PAGES';
+  else btn.textContent = 'UPDATE ' + count + ' PAGE' + (count > 1 ? 'S' : '');
+}
+
+function getSelectedPages() {
+  var pages = [];
+  document.querySelectorAll('.page-row.checked').forEach(function(r) {
+    pages.push(r.getAttribute('data-page'));
+  });
+  return pages;
+}
+
+function loadCurrentCodes() {
   fetch('/promo-code.json?t=' + Date.now())
     .then(function(r){ return r.json(); })
     .then(function(data){
-      document.getElementById('display-code').textContent = data.code || '—';
-      if (data.updated) {
-        var d = new Date(data.updated);
-        document.getElementById('display-updated').textContent = 'Last updated: ' + d.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
-      }
+      ['athletes','fans','parentrallyfans','parentrallyparents'].forEach(function(key){
+        var el = document.getElementById('code-' + key);
+        if (el) el.textContent = data[key] || data.code || '—';
+      });
     })
-    .catch(function(){ document.getElementById('display-code').textContent = '—'; });
+    .catch(function(){});
 }
 
 function saveCode() {
   var code = document.getElementById('new-code').value.trim();
+  var pages = getSelectedPages();
   var btn = document.getElementById('save-btn');
   var status = document.getElementById('save-status');
 
   if (!code || code.length < 2) { status.className='status error'; status.textContent='Enter a valid code (2+ characters).'; return; }
+  if (pages.length === 0) { status.className='status error'; status.textContent='Select at least one page.'; return; }
   if (!session) { status.className='status error'; status.textContent='Not authenticated.'; return; }
 
   btn.disabled = true;
+  var origText = btn.textContent;
   btn.textContent = 'UPDATING...';
-  status.className='status loading'; status.textContent='Pushing to all pages...';
+  status.className='status loading'; status.textContent='Pushing to ' + pages.length + ' page(s)...';
 
   fetch('/api/update-code', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: session.email, password: session.password, code: code })
+    body: JSON.stringify({ email: session.email, password: session.password, code: code, pages: pages })
   })
   .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
   .then(function(result){
     if (result.ok && result.data.success) {
       status.className='status success';
-      status.textContent = 'Code updated to ' + result.data.code + '! Pages update in 2-3 minutes.';
-      document.getElementById('display-code').textContent = result.data.code;
-      document.getElementById('display-updated').textContent = 'Last updated: just now';
+      status.textContent = '"' + result.data.code + '" pushed to ' + result.data.pages.length + ' page(s). Updates in 2-3 min.';
+      // Update displayed codes for selected pages
+      result.data.pages.forEach(function(key){
+        var el = document.getElementById('code-' + key);
+        if (el) el.textContent = result.data.code;
+      });
       document.getElementById('new-code').value = '';
     } else {
       status.className='status error';
       status.textContent = result.data.error || 'Update failed. Try again.';
     }
     btn.disabled = false;
-    btn.textContent = 'UPDATE CODE ON ALL PAGES';
+    btn.textContent = origText;
   })
   .catch(function(err){
     status.className='status error';
     status.textContent = 'Network error. Try again.';
     btn.disabled = false;
-    btn.textContent = 'UPDATE CODE ON ALL PAGES';
+    btn.textContent = origText;
   });
 }
 
