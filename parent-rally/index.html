@@ -810,6 +810,7 @@
   .reveal-d1 { transition-delay: 0.1s; }
   .reveal-d2 { transition-delay: 0.2s; }
   .reveal-d3 { transition-delay: 0.3s; }
+  .card-glow{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,230,118,0.08) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s;z-index:0;}
 </style>
 </head>
 <body>
@@ -1181,6 +1182,33 @@ function submitImpact(){
     alert('Something went wrong. Please try again or contact us directly.');
   });
 }
+</script>
+<script>
+// ===== MOUSE GLOW ON CARDS =====
+document.querySelectorAll('.tl-card,.benefit-card').forEach(function(card){
+  var glow=document.createElement('div');
+  glow.className='card-glow';
+  card.appendChild(glow);
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    glow.style.left=(e.clientX-rect.left)+'px';
+    glow.style.top=(e.clientY-rect.top)+'px';
+    glow.style.opacity='1';
+  });
+  card.addEventListener('mouseleave',function(){glow.style.opacity='0';});
+});
+// ===== 3D TILT ON CARDS =====
+document.querySelectorAll('.tl-card,.benefit-card').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    var x=(e.clientX-rect.left)/rect.width-0.5;
+    var y=(e.clientY-rect.top)/rect.height-0.5;
+    card.style.transform='perspective(800px) rotateY('+x*8+'deg) rotateX('+(-y*8)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform='perspective(800px) rotateY(0) rotateX(0) translateY(0)';
+  });
+});
 </script>
 
 </body>
