@@ -248,15 +248,16 @@
   .form-sub { font-size: 13px; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 32px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
   .form-row.full { grid-template-columns: 1fr; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .form-group label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); }
   .form-group input, .form-group select {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px; padding: 14px 16px; color: #FFF;
     font-family: 'Outfit', sans-serif; font-size: 15px; outline: none; transition: all 0.3s;
     -webkit-appearance: none; appearance: none;
+    width: 100%; max-width: 100%;
   }
-  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .form-group select option { background: #1A0A3E; color: #FFF; }
   .form-group input::placeholder { color: rgba(255,255,255,0.2); }
   .form-group input:focus, .form-group select:focus { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.04); box-shadow: 0 0 20px rgba(245,158,11,0.08); }
@@ -293,20 +294,42 @@
     .nav-badge { font-size: 8px; padding: 3px 7px; }
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
-    .hiw-grid { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 100px 20px 60px; min-height: auto; }
+    .hero h1 { font-size: clamp(36px,6.5vw,56px); }
+    .hero-sub { font-size: 16px; }
+    .section-pad { padding: 70px 20px; }
+    .hiw-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
     .earn-grid { grid-template-columns: 1fr; }
     .stats-strip { gap: 24px; }
     .stat-val { font-size: 36px; }
-    .footer-inner { flex-direction: column; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .ghl-form { padding: 36px 28px; }
     .callout-banner { padding: 36px 24px; }
+    .callout-banner h2 { font-size: clamp(28px,5vw,44px); }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
   }
   @media (max-width: 480px) {
-    .hiw-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .ghl-form { padding: 32px 24px; }
-    .hero h1 { font-size: clamp(40px,10vw,60px); }
+    .hero { padding: 90px 16px 48px; }
+    .hero h1 { font-size: clamp(32px,8.5vw,48px); }
+    .hero-overline { font-size: 11px; letter-spacing: 2.5px; padding: 5px 14px; }
+    .hero-sub { font-size: 15px; margin-bottom: 32px; }
     .hero-ctas { flex-direction: column; align-items: center; }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .cta-primary, .cta-secondary { width: 100%; text-align: center; justify-content: center; }
+    .stats-strip { gap: 16px; }
+    .stat-val { font-size: 32px; }
+    .stat-label { font-size: 11px; }
+    .section-pad { padding: 56px 16px; }
+    .hiw-grid { grid-template-columns: 1fr; gap: 14px; }
+    .hiw-card { padding: 28px 20px; }
+    .earn-card { padding: 36px 24px; }
+    .ghl-form { padding: 28px 20px; }
+    .form-title { font-size: 24px; }
+    .form-submit { font-size: 19px; padding: 14px; }
+    .callout-banner { padding: 32px 20px; border-radius: 16px; }
+    .callout-banner p { font-size: 15px; }
+    .brands-section { padding: 56px 16px; }
+    .section-title { font-size: clamp(28px,6vw,48px); }
   }
 </style>
 </head>
