@@ -69,22 +69,22 @@
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "parentrallyfans.tapnpayplus.com" }],
+      "has": [{ "type": "host", "value": "pr-fans.tapnpayplus.com" }],
       "destination": "/parent-rally-fans/index.html"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "parentrallyfans.tapnpayplus.com" }],
+      "has": [{ "type": "host", "value": "pr-fans.tapnpayplus.com" }],
       "destination": "/parent-rally-fans/:path*"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "parentrallyparents.tapnpayplus.com" }],
+      "has": [{ "type": "host", "value": "pr-parents.tapnpayplus.com" }],
       "destination": "/parent-rally-parents/index.html"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "parentrallyparents.tapnpayplus.com" }],
+      "has": [{ "type": "host", "value": "pr-parents.tapnpayplus.com" }],
       "destination": "/parent-rally-parents/:path*"
     },
     {
