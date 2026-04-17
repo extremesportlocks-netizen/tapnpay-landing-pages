@@ -862,7 +862,7 @@ function submitCivicChamps() {
   if (!name || !email || !phone || !nonprofit) { alert('Please fill out all required fields.'); return; }
   var btn = document.getElementById('cc-submit');
   btn.textContent = 'SUBMITTING...'; btn.disabled = true;
-  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/65bb26c7-1d7d-410d-92cf-536b1c2077d9', {
+  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/324ca31d-ba5b-4321-978e-362ef6c451e2', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -873,13 +873,11 @@ function submitCivicChamps() {
       source: 'civic-champs.tapnpayplus.com',
       form: 'Civic Champs NPO Application'
     })
-  }).then(function() {
+  }).catch(function(){});
+  setTimeout(function(){
     document.getElementById('civic-form').style.display = 'none';
     document.getElementById('cc-success').style.display = 'block';
-  }).catch(function() {
-    btn.textContent = 'SUBMIT APPLICATION'; btn.disabled = false;
-    alert('Something went wrong. Please try again or contact us directly.');
-  });
+  },800);
 }
 </script>
 </body>
