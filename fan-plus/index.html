@@ -500,8 +500,9 @@
     margin-bottom: 32px;
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row .form-group { margin-bottom: 0; }
   .form-row.full { grid-template-columns: 1fr; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
   .form-group label {
     font-size: 12px; font-weight: 600; text-transform: uppercase;
     letter-spacing: 1.5px; color: rgba(255,255,255,0.5);
@@ -1208,9 +1209,23 @@ function submitFanPlus(){
 
 <script>
 var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';var fs=document.getElementsByTagName('script')[0];fs.parentNode.insertBefore(tag,fs);
-function onYouTubeIframeAPIReady(){
-  new YT.Player('yt-player-container',{videoId:'o7-6HxxLUTw',playerVars:{autoplay:0,modestbranding:1,rel:0,showinfo:0}});
-}
+var ytPlayer;
+window.onYouTubeIframeAPIReady=function(){
+  ytPlayer=new YT.Player('yt-player-container',{
+    videoId:'o7-6HxxLUTw',
+    playerVars:{rel:0,modestbranding:1,playsinline:1,controls:1,mute:1},
+    events:{onReady:function(e){
+      var container=document.getElementById('yt-player-container').parentElement;
+      if(container){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting){e.target.playVideo();}else{e.target.pauseVideo();}
+          });
+        },{threshold:0.4}).observe(container);
+      }
+    }}
+  });
+};
 </script>
 </body>
 </html>
