@@ -89,6 +89,26 @@
     },
     {
       "source": "/",
+      "has": [{ "type": "host", "value": "fanplus.tapnpayplus.com" }],
+      "destination": "/fan-plus/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "fanplus.tapnpayplus.com" }],
+      "destination": "/fan-plus/:path*"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "civicchamps.tapnpayplus.com" }],
+      "destination": "/civic-champs/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "civicchamps.tapnpayplus.com" }],
+      "destination": "/civic-champs/:path*"
+    },
+    {
+      "source": "/",
       "destination": "/hub/index.html"
     }
   ]
