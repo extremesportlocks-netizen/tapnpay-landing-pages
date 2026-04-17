@@ -1270,7 +1270,7 @@ function submitNIL(){
   if(!sms){alert('Please agree to the SMS consent.');return;}
   var btn=document.getElementById('nil-submit');
   btn.textContent='SUBMITTING...';btn.disabled=true;
-  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/65bb26c7-1d7d-410d-92cf-536b1c2077d9',{
+  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/c756afeb-2206-4f68-ba9e-4597fcfed3e8',{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({first_name:fname,last_name:lname,email:email,phone:phone,school:school,sport:sport,graduation_year:gradyear,governing_body:govbody,social_media:social||'',estimated_followers:followers||'',eligibility_confirmed:true,program_agreement:true,compliance_acknowledged:true,nilgo_acknowledged:true,sms_consent:true,source:'nil.tapnpayplus.com',form:'NIL Landing Form'})
   }).then(function(){

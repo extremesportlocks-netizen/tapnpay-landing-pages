@@ -1168,7 +1168,7 @@ function submitImpact(){
   if(!guardian){alert('Please confirm you are the parent or legal guardian.');return;}
   var btn=document.getElementById('impact-submit');
   btn.textContent='SUBMITTING...';btn.disabled=true;
-  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/c756afeb-2206-4f68-ba9e-4597fcfed3e8',{
+  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/65bb26c7-1d7d-410d-92cf-536b1c2077d9',{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({parent_first_name:pf,parent_last_name:pl,email:em,phone:ph,student_first_name:sf,student_last_name:sl,sms_consent:true,guardian_consent:true,source:'parentrally.tapnpayplus.com',form:'Parent Rally Registration'})
   }).then(function(){
