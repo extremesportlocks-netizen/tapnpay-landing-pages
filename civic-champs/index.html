@@ -862,7 +862,7 @@ function submitCivicChamps() {
   if (!name || !email || !phone || !nonprofit) { alert('Please fill out all required fields.'); return; }
   var btn = document.getElementById('cc-submit');
   btn.textContent = 'SUBMITTING...'; btn.disabled = true;
-  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/814f0e51-4ab0-421b-9fc1-bcbefdde7020', {
+  fetch('https://services.leadconnectorhq.com/hooks/FhuSPxwXV1HcJQt31DdD/webhook-trigger/65bb26c7-1d7d-410d-92cf-536b1c2077d9', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
