@@ -507,14 +507,14 @@
     font-size: 12px; font-weight: 600; text-transform: uppercase;
     letter-spacing: 1.5px; color: rgba(255,255,255,0.5);
   }
-  .form-group input, .form-group select {
+  .form-group input, .form-group select, .form-group textarea {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px; padding: 14px 16px; color: var(--white);
     font-family: 'Outfit', sans-serif; font-size: 15px; outline: none;
     transition: all 0.3s;
   }
-  .form-group input::placeholder { color: rgba(255,255,255,0.2); }
-  .form-group input:focus, .form-group select:focus {
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: rgba(139, 92, 246, 0.4);
     background: rgba(139, 92, 246, 0.06);
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
@@ -908,21 +908,18 @@
         <div class="form-group"><label>Email Address *</label><input type="email" id="fp-email" placeholder="you@organization.com" required></div>
       </div>
       <div class="form-group"><label>Role / Job Title / Position</label><input type="text" id="fp-role" placeholder="Head Coach, Athletic Director, Booster Club President, etc."></div>
-      <div class="form-group"><label>Team / Organization / Club Name *</label><input type="text" id="fp-org" placeholder="Your team or organization name" required></div>
+      <div class="form-group"><label>Team / Program / Club Name *</label><input type="text" id="fp-org" placeholder="Your team or program name" required></div>
+      <div class="form-group"><label>Mascot Name</label><input type="text" id="fp-mascot" placeholder="e.g. Eagles, Wildcats, Panthers"></div>
       <div class="form-group">
-        <label>Best Way To Contact You</label>
-        <select id="fp-contact" required style="width:100%;padding:14px 18px;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);border-radius:12px;color:rgba(255,255,255,0.7);font-size:14px;font-family:inherit;">
-          <option value="" disabled selected>Select preferred contact method</option>
-          <option value="phone">Phone Call</option>
-          <option value="text">Text Message</option>
-          <option value="email">Email</option>
-        </select>
+        <label>Sports / Teams *</label>
+        <textarea id="fp-sports" rows="3" placeholder="Minimum 1 entry. List each team or group fans can select — e.g. Varsity Football, JV Soccer, Women's Basketball. If fans should not choose, enter the sport or team name only." required style="resize:vertical;"></textarea>
       </div>
+      <div class="form-group"><label>Target Launch Date</label><input type="text" id="fp-launch" placeholder="e.g. May 1, 2026 or ASAP"></div>
 
       <div style="margin:20px 0 12px;padding:16px 18px;background:rgba(139,92,246,0.04);border:1px solid rgba(139,92,246,0.1);border-radius:12px;">
         <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">
           <input type="checkbox" id="fp-agreement" style="margin-top:4px;accent-color:var(--green-neon);flex-shrink:0;">
-          <span>I have read, understand, and agree to the <a href="https://docs.google.com/document/d/1aLY5ONekikaUHLBKHKyeElzmb5v6XEDptCPSNt-oscw/edit" target="_blank" style="color:var(--green-neon);text-decoration:underline;">TapNPay+ FAN+ Client Agreement V1</a>, including all terms and conditions set forth therein. I represent that I am authorized to enter into this Agreement on behalf of the organization identified above.</span>
+          <span>I have read, understand, and agree to the <a href="https://docs.google.com/document/d/1aLY5ONekikaUHLBKHKyeElzmb5v6XEDptCPSNt-oscw/edit" target="_blank" style="color:var(--green-neon);text-decoration:underline;">TapNPay+ FAN+ Client Agreement V1</a>, including all terms and conditions set forth therein. I represent that I am authorized to enter into this Agreement on behalf of the program identified above.</span>
         </label>
       </div>
       <div style="margin:0 0 20px;padding:0 18px;">
@@ -1183,7 +1180,9 @@ function submitFanPlus(){
   if(!fn.value.trim()||!ln.value.trim()){alert('Please enter your first and last name.');return;}
   if(!ph.value.trim()){alert('Please enter your phone number.');return;}
   if(!em.value.trim()){alert('Please enter your email address.');return;}
-  if(!org.value.trim()){alert('Please enter your team or organization name.');return;}
+  if(!org.value.trim()){alert('Please enter your team or program name.');return;}
+  var sports=document.getElementById('fp-sports');
+  if(!sports.value.trim()){alert('Please enter at least one sport or team.');return;}
   if(!agree.checked){alert('Please read and agree to the Fan+ Client Agreement.');return;}
   var btn=document.getElementById('fp-submit');
   btn.textContent='SUBMITTING...';btn.disabled=true;
@@ -1192,7 +1191,9 @@ function submitFanPlus(){
     phone:ph.value,email:em.value,
     role:document.getElementById('fp-role').value,
     organization:org.value,
-    contact_method:document.getElementById('fp-contact').value,
+    mascot:document.getElementById('fp-mascot').value,
+    sports_teams:sports.value,
+    target_launch_date:document.getElementById('fp-launch').value,
     agreement_accepted:agree.checked,
     sms_optin:document.getElementById('fp-sms').checked,
     source:'fan-plus.tapnpayplus.com',page:'fan-plus'
