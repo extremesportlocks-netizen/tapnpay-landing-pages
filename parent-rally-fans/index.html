@@ -1439,7 +1439,7 @@ function toggleFaq(el) {
 <!-- PROMO CODE LOADER -->
 <script>
 (function(){
-  var BASE='https://tapnpay-landing-pages.vercel.app';
+  var BASE='';
   fetch(BASE+'/promo-code.json?t='+Date.now())
     .then(function(r){return r.json();})
     .then(function(d){
