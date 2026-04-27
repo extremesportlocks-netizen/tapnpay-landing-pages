@@ -218,8 +218,8 @@
   }
 
   /* ===== SECTION UTILITIES ===== */
-  .section-pad { padding: 100px 24px; }
-  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-pad { padding: 72px 24px; }
+  .section-header { text-align: center; margin-bottom: 44px; }
   .section-label {
     font-size: 12px; font-weight: 800; text-transform: uppercase;
     letter-spacing: 5px; color: var(--gold-bright); margin-bottom: 14px;
@@ -237,9 +237,9 @@
   /* ===== HOW IT WORKS (3-STEP) ===== */
   .how-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .how-card {
-    position: relative; padding: 44px 30px 36px;
+    position: relative; padding: 32px 24px 28px;
     background: linear-gradient(160deg, rgba(0, 20, 40, 0.6), rgba(0, 24, 51, 0.4));
-    border: 1px solid rgba(0, 43, 92, 0.2); border-radius: 24px;
+    border: 1px solid rgba(0, 43, 92, 0.2); border-radius: 20px;
     text-align: center; overflow: hidden; transition: all 0.5s;
   }
   .how-card:hover {
@@ -253,19 +253,19 @@
   }
   .how-card:hover::before { opacity: 1; }
   .how-num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
     background: linear-gradient(180deg, rgba(0, 43, 92, 0.3), transparent);
     -webkit-background-clip: text; background-clip: text; color: transparent;
-    line-height: 1; margin-bottom: 4px;
+    line-height: 1; margin-bottom: 0;
   }
   .how-icon {
-    width: 56px; height: 56px; margin: 0 auto 16px;
+    width: 44px; height: 44px; margin: 0 auto 12px;
     background: linear-gradient(135deg, var(--navy-mid), var(--navy-bright));
-    border-radius: 16px; display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
   }
-  .how-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-  .how-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+  .how-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .how-card p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5); }
 
   /* ===== APP STORE BUTTONS ===== */
   .store-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
@@ -474,14 +474,14 @@
 
   /* ===== STATS ===== */
   .stats-strip {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    max-width: 1140px; margin: 0 auto; padding: 60px 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    max-width: 1140px; margin: 0 auto; padding: 40px 24px;
   }
   .stat-cell {
-    text-align: center; padding: 40px 20px;
+    text-align: center; padding: 28px 16px;
     background: rgba(0, 24, 51, 0.35);
     backdrop-filter: blur(16px); border: 1px solid rgba(0, 43, 92, 0.15);
-    border-radius: 20px; position: relative; overflow: hidden; transition: all 0.4s;
+    border-radius: 16px; position: relative; overflow: hidden; transition: all 0.4s;
   }
   .stat-cell::before {
     content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
@@ -489,13 +489,13 @@
   }
   .stat-cell:hover { border-color: rgba(0, 43, 92, 0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
   .stat-number {
-    font-family: 'Bebas Neue', sans-serif; font-size: 68px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
     background: linear-gradient(135deg, var(--navy-bright), var(--gold-accent));
     -webkit-background-clip: text; background-clip: text; color: transparent;
     line-height: 1;
   }
   .stat-number .suffix {
-    font-size: 44px;
+    font-size: 36px;
     background: linear-gradient(135deg, var(--gold-accent), var(--navy-glow));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
@@ -547,7 +547,7 @@
 
   /* ===== CTA CLOSE ===== */
   .cta-section {
-    padding: 120px 24px; text-align: center; position: relative;
+    padding: 80px 24px; text-align: center; position: relative;
   }
   .cta-section::before {
     content: ''; position: absolute; inset: 0;
@@ -604,55 +604,78 @@
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
     .scroll-progress { top: 56px; }
-    .hero { min-height: auto; padding: 72px 20px 40px; }
-    .hero h1 { font-size: 48px; line-height: 1; margin-bottom: 12px; }
-    .hero-eyebrow { margin-bottom: 20px; font-size: 10px; letter-spacing: 2px; padding: 6px 16px; }
-    .hero-sub { font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
-    .hero-cta-group { gap: 10px; }
-    .cta-primary { padding: 14px 28px; font-size: 14px; }
-    .cta-secondary { padding: 14px 24px; font-size: 13px; }
-    .promo-bar { padding: 20px 20px; }
-    .promo-code { font-size: 26px; letter-spacing: 4px; }
-    .how-cards { grid-template-columns: 1fr; }
-    .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 40px 20px; }
-    .stat-cell { padding: 28px 16px; }
-    .stat-number { font-size: 52px; }
-    .tier-grid { grid-template-columns: 1fr; }
-    .tier-price { font-size: 56px; }
-    .tier-price .dollar { font-size: 32px; }
-    .tier-card { padding: 32px 24px; }
+    .hero { min-height: auto; padding: 68px 20px 32px; }
+    .hero h1 { font-size: 44px; line-height: 1; margin-bottom: 10px; }
+    .hero-eyebrow { margin-bottom: 14px; font-size: 10px; letter-spacing: 2px; padding: 5px 14px; }
+    .hero-sub { font-size: 14px; margin-bottom: 20px; line-height: 1.55; }
+    .hero-cta-group { gap: 8px; }
+    .cta-primary { padding: 12px 24px; font-size: 13px; }
+    .cta-secondary { padding: 12px 20px; font-size: 12px; }
+    .promo-bar { padding: 16px 20px; }
+    .promo-code { font-size: 24px; letter-spacing: 4px; }
+    .proof-bar p { font-size: 11px; letter-spacing: 2px; }
+    .how-cards { grid-template-columns: 1fr; gap: 12px; }
+    .how-card { padding: 24px 20px 20px; border-radius: 16px; }
+    .how-num { font-size: 48px; margin-bottom: 0; }
+    .how-icon { width: 40px; height: 40px; margin: 0 auto 10px; font-size: 20px; border-radius: 12px; }
+    .how-card h3 { font-size: 17px; margin-bottom: 6px; }
+    .how-card p { font-size: 13px; line-height: 1.5; }
+    .store-buttons { margin-top: 16px; }
+    .promo-callout { margin-top: 20px; padding: 14px 20px; }
+    .promo-callout .promo-code { font-size: 24px; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 24px 20px; }
+    .stat-cell { padding: 20px 12px; border-radius: 14px; }
+    .stat-number { font-size: 44px; }
+    .stat-desc { font-size: 10px; letter-spacing: 2px; margin-top: 6px; }
+    .tier-grid { grid-template-columns: 1fr; gap: 16px; }
+    .tier-price { font-size: 52px; }
+    .tier-price .dollar { font-size: 30px; }
+    .tier-card { padding: 28px 22px; border-radius: 18px; }
     .works-grid { grid-template-columns: 1fr; }
-    .flow-grid { grid-template-columns: repeat(2, 1fr); }
-    .earn-grid { grid-template-columns: 1fr; }
-    .callout-banner { padding: 36px 24px; }
-    .callout-banner p { font-size: 16px; }
-    .faq-q span { font-size: 15px; }
-    .benefits-grid { grid-template-columns: 1fr; }
-    .section-pad { padding: 60px 20px; }
-    .section-header { margin-bottom: 40px; }
-    .section-title { font-size: clamp(30px, 5vw, 48px); }
-    .cta-section { padding: 60px 20px; }
+    .flow-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .flow-step { padding: 20px 12px; border-radius: 14px; }
+    .flow-step-num { font-size: 28px; margin-bottom: 6px; }
+    .flow-step h4 { font-size: 13px; margin-bottom: 4px; }
+    .flow-step p { font-size: 11px; }
+    .flow-callout { padding: 12px 16px; margin-bottom: 24px; }
+    .flow-callout p { font-size: 13px; }
+    .earn-grid { grid-template-columns: 1fr; gap: 12px; }
+    .earn-card { padding: 28px 24px; border-radius: 16px; }
+    .earn-card .earn-emoji { font-size: 32px; margin-bottom: 10px; }
+    .earn-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .callout-banner { padding: 32px 22px; border-radius: 16px; }
+    .callout-banner p { font-size: 15px; }
+    .benefits-grid { grid-template-columns: 1fr; gap: 12px; }
+    .benefit-card { padding: 24px 22px; border-radius: 16px; }
+    .benefit-card h3 { font-size: 17px; }
+    .benefit-icon { width: 40px; height: 40px; font-size: 18px; margin-bottom: 12px; border-radius: 12px; }
+    .faq-q span { font-size: 14px; }
+    .section-pad { padding: 40px 20px; }
+    .section-header { margin-bottom: 28px; }
+    .section-title { font-size: clamp(28px, 5vw, 44px); }
+    .section-subtitle { font-size: 14px; margin-top: 10px; }
+    .section-label { font-size: 11px; letter-spacing: 4px; margin-bottom: 10px; }
+    .cta-section { padding: 48px 20px; }
     .cta-content h2 { line-height: 1.05; }
     .cta-code { display: none; }
-    .testimonial-section { padding: 40px 16px; }
+    .testimonial-section { padding: 32px 16px; }
+    .brands-section { padding: 40px 20px; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
   }
   @media (max-width: 420px) {
-    .hero h1 { font-size: 36px; letter-spacing: -1px; }
-    .hero-eyebrow { font-size: 9px; padding: 5px 12px; }
-    .hero-sub { font-size: 14px; }
-    .cta-primary { padding: 12px 22px; font-size: 13px; letter-spacing: 1px; }
-    .cta-secondary { padding: 12px 20px; font-size: 12px; }
+    .hero h1 { font-size: 34px; letter-spacing: -1px; }
+    .hero-eyebrow { font-size: 9px; padding: 4px 10px; }
+    .hero-sub { font-size: 13px; }
+    .cta-primary { padding: 11px 20px; font-size: 12px; letter-spacing: 1px; }
+    .cta-secondary { padding: 11px 18px; font-size: 11px; }
     .nav-badge { display: none; }
-    .stats-strip { grid-template-columns: 1fr; }
-    .stat-number { font-size: 48px; }
-    .promo-code { font-size: 22px; letter-spacing: 3px; padding: 6px 20px; }
-    .section-title { font-size: 30px; }
-    .flow-grid { grid-template-columns: 1fr; }
-    .store-btn { padding: 10px 16px; font-size: 12px; }
-    .tier-price { font-size: 48px; }
-    .tier-price .dollar { font-size: 28px; }
+    .stat-number { font-size: 38px; }
+    .promo-code { font-size: 20px; letter-spacing: 3px; padding: 6px 16px; }
+    .section-title { font-size: 26px; }
+    .store-btn { padding: 10px 14px; font-size: 12px; }
+    .tier-price { font-size: 44px; }
+    .tier-price .dollar { font-size: 26px; }
     body::after { display: none; }
   }
 
