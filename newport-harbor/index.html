@@ -341,6 +341,114 @@
   .works-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
   .works-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
 
+  /* ===== SOCIAL PROOF BAR ===== */
+  .proof-bar {
+    padding: 20px 24px; text-align: center;
+    border-top: 1px solid rgba(0, 43, 92, 0.08);
+    border-bottom: 1px solid rgba(0, 43, 92, 0.08);
+    background: rgba(0, 20, 40, 0.5); position: relative; z-index: 1;
+  }
+  .proof-bar p {
+    font-size: 13px; color: rgba(255,255,255,0.35);
+    text-transform: uppercase; letter-spacing: 3px; font-weight: 600;
+  }
+
+  /* ===== PAYMENT FLOW STEPS ===== */
+  .flow-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    max-width: 960px; margin: 0 auto 32px;
+  }
+  .flow-step {
+    text-align: center; padding: 28px 16px; border-radius: 20px;
+    background: rgba(0, 24, 51, 0.35); border: 1px solid rgba(0, 43, 92, 0.15);
+    transition: all 0.4s;
+  }
+  .flow-step:hover { border-color: rgba(0, 43, 92, 0.3); transform: translateY(-4px); }
+  .flow-step-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .flow-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .flow-step p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+  .flow-callout {
+    padding: 16px 20px; border-left: 3px solid var(--gold-accent);
+    background: rgba(212, 168, 67, 0.05); border-radius: 0 12px 12px 0;
+    margin-bottom: 40px;
+  }
+  .flow-callout p { font-size: 14px; color: rgba(255,255,255,0.75); }
+
+  /* ===== DUAL EARN CARDS ===== */
+  .earn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .earn-card {
+    text-align: center; padding: 40px 32px; border-radius: 20px;
+    background: rgba(0, 24, 51, 0.35); border: 1px solid rgba(0, 43, 92, 0.15);
+    transition: all 0.4s;
+  }
+  .earn-card:hover { border-color: rgba(212, 168, 67, 0.2); transform: translateY(-4px); }
+  .earn-card .earn-emoji { font-size: 40px; margin-bottom: 16px; }
+  .earn-card h3 {
+    font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+  }
+  .earn-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+
+  /* ===== COMMUNITY CALLOUT ===== */
+  .callout-banner {
+    border-radius: 20px; padding: 48px 40px; text-align: center;
+    max-width: 900px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--navy-core), var(--navy-mid));
+    border: 1px solid rgba(212, 168, 67, 0.15);
+    position: relative; overflow: hidden;
+  }
+  .callout-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 80% 20%, rgba(212, 168, 67, 0.1), transparent);
+    pointer-events: none;
+  }
+  .callout-banner h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px); letter-spacing: 2px; margin-bottom: 16px;
+    position: relative;
+  }
+  .callout-banner p {
+    font-size: 18px; color: rgba(255,255,255,0.9);
+    max-width: 600px; margin: 0 auto; line-height: 1.6; position: relative;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid rgba(0, 43, 92, 0.15); overflow: hidden;
+  }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; cursor: pointer; gap: 16px; transition: color 0.3s;
+  }
+  .faq-q:hover { color: var(--gold-bright); }
+  .faq-q span { font-size: 16px; font-weight: 600; }
+  .faq-label { color: var(--gold-accent); margin-right: 8px; }
+  .faq-toggle {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(0, 43, 92, 0.2); display: flex; align-items: center;
+    justify-content: center; font-size: 18px; font-weight: 300;
+    transition: all 0.3s; color: rgba(255,255,255,0.5);
+  }
+  .faq-item.open .faq-toggle { background: rgba(212, 168, 67, 0.15); color: var(--gold-accent); transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 0 0 0;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 0 20px 0; }
+  .faq-a p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+
+  /* ===== PROMO CALLOUT BOX ===== */
+  .promo-callout {
+    margin-top: 32px; padding: 20px 28px; border-radius: 16px;
+    background: rgba(212, 168, 67, 0.06); border: 2px dashed rgba(212, 168, 67, 0.3);
+    text-align: center;
+  }
+  .promo-callout p { font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 6px; }
+  .promo-callout .promo-code { margin-top: 0; }
+
   /* ===== BENEFITS ===== */
   .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .benefit-card {
@@ -514,6 +622,11 @@
     .tier-price .dollar { font-size: 32px; }
     .tier-card { padding: 32px 24px; }
     .works-grid { grid-template-columns: 1fr; }
+    .flow-grid { grid-template-columns: repeat(2, 1fr); }
+    .earn-grid { grid-template-columns: 1fr; }
+    .callout-banner { padding: 36px 24px; }
+    .callout-banner p { font-size: 16px; }
+    .faq-q span { font-size: 15px; }
     .benefits-grid { grid-template-columns: 1fr; }
     .section-pad { padding: 60px 20px; }
     .section-header { margin-bottom: 40px; }
@@ -536,6 +649,7 @@
     .stat-number { font-size: 48px; }
     .promo-code { font-size: 22px; letter-spacing: 3px; padding: 6px 20px; }
     .section-title { font-size: 30px; }
+    .flow-grid { grid-template-columns: 1fr; }
     .store-btn { padding: 10px 16px; font-size: 12px; }
     .tier-price { font-size: 48px; }
     .tier-price .dollar { font-size: 28px; }
@@ -585,6 +699,7 @@
     <a href="#tiers">Membership</a>
     <a href="#brands">Partners</a>
     <a href="#benefits">Benefits</a>
+    <a href="#faq">FAQ</a>
   </div>
   <a href="#cta" class="navbar-cta">Download Now</a>
 </nav>
@@ -612,6 +727,11 @@
 <div class="promo-bar">
   <p>Use Your Exclusive Promo Code When You Sign Up</p>
   <div class="promo-code">NHSAILORS</div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-bar">
+  <p>Trusted By 50+ Athletic Programs Nationwide &nbsp;&#x2022;&nbsp; 300+ Brand Partners &nbsp;&#x2022;&nbsp; $0 Extra Cost</p>
 </div>
 
 <!-- HOW TO GET STARTED -->
@@ -651,6 +771,10 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.382.218-.72.609-.92z" fill="#4285F4"/><path d="M17.194 8.57L5.073.493C4.553.196 3.99.13 3.609 1.814L13.792 12l3.402-3.43z" fill="#EA4335"/><path d="M3.609 22.186c.381.684.944.618 1.464.321l12.12-8.078L13.793 12 3.609 22.186z" fill="#34A853"/><path d="M20.854 10.758l-3.66-2.188L13.792 12l3.402 3.43 3.66-2.19c.916-.557.916-1.926 0-2.482z" fill="#FBBC04"/></svg>
         <span><span class="store-label">Get it on</span>Google Play</span>
       </a>
+    </div>
+    <div class="promo-callout reveal">
+      <p>Your Exclusive Promo Code</p>
+      <div class="promo-code">NHSAILORS</div>
     </div>
   </div>
 </section>
@@ -694,7 +818,10 @@
         <div class="tier-badge">Ultimate Fanatic</div>
         <div class="tier-price"><span class="dollar">$</span>96<span class="period">/year</span></div>
         <h3>Honoring the 1996 Team</h3>
-        <p>The Ultimate Fanatic Level — $96 annually — honors the legendary 1996 Newport Harbor Football team. Maximum support for the Sailors, maximum cash back rewards, and ultimate bragging rights.</p>
+        <p style="margin-bottom:16px;">Maximum support for the Sailors, maximum cash back rewards, and ultimate bragging rights.</p>
+        <div style="padding:12px 16px;background:rgba(212,168,67,0.08);border-left:3px solid var(--gold-accent);border-radius:0 10px 10px 0;text-align:left;">
+          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><strong style="color:var(--gold-accent);">Why $96?</strong> The 1996 Newport Harbor Football team set the standard. This tier honors their legacy — and fuels the next generation of Sailors.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -705,19 +832,46 @@
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">How TapNPay+ Works</div>
-      <h2 class="section-title">PAY YOUR WAY.<br>SUPPORT THE SAILORS.</h2>
-      <p class="section-subtitle">Whether you're shopping in store or online, TapNPay+ makes it effortless to support Newport Harbor Football.</p>
+      <h2 class="section-title">YOU PAY. YOU EARN.<br><span style="color:var(--gold-accent);">EVERYBODY WINS.</span></h2>
+      <p class="section-subtitle">Every payment you make does two things — puts instant cash back in your pocket and directly funds Newport Harbor Football.</p>
     </div>
-    <div class="works-grid">
-      <div class="works-card reveal">
-        <div class="works-icon">🏪</div>
-        <h3>In-Store Purchasing</h3>
-        <p>Open TapNPay+, select a brand partner, and load a digital gift card in the exact amount of your purchase. Pay at the register with your gift card — it's instant and seamless. The brand partner funds a contribution to Newport Harbor Football automatically.</p>
+    <!-- 4-step payment flow -->
+    <div class="flow-grid reveal">
+      <div class="flow-step">
+        <div class="flow-step-num" style="color:var(--navy-bright);">01</div>
+        <h4>Open App</h4>
+        <p>Select a brand &amp; enter your purchase amount</p>
       </div>
-      <div class="works-card reveal reveal-delay-1">
-        <div class="works-icon">🛒</div>
-        <h3>Online Purchasing</h3>
-        <p>Shopping online? Load a digital gift card through TapNPay+ for any amount and use it at checkout. Same brands, same cash back, same impact for the Sailors — from the comfort of your couch.</p>
+      <div class="flow-step">
+        <div class="flow-step-num" style="color:var(--gold-accent);">02</div>
+        <h4>Digital Gift Card</h4>
+        <p style="color:var(--gold-bright);font-weight:600;">In exact amount of your purchase</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num" style="color:var(--navy-bright);">03</div>
+        <h4>Scan &amp; Pay</h4>
+        <p>At any of 300+ brand partners</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num" style="color:var(--gold-accent);">04</div>
+        <h4>Cash Back</h4>
+        <p>Activates instantly in your account</p>
+      </div>
+    </div>
+    <div class="flow-callout reveal">
+      <p><strong>⚓ Newport Harbor Football earns a contribution — every time you pay.</strong></p>
+    </div>
+    <!-- YOU EARN / PROGRAM EARNS dual cards -->
+    <div class="earn-grid reveal">
+      <div class="earn-card">
+        <div class="earn-emoji">👤</div>
+        <h3 style="color:var(--gold-accent);">You Earn</h3>
+        <p>Avg. 4% instant cash back on every payment at 300+ brands. Real money, back in your pocket the moment you pay.</p>
+      </div>
+      <div class="earn-card">
+        <div class="earn-emoji">⚓</div>
+        <h3 style="color:var(--navy-glow);">The Sailors Earn</h3>
+        <p>A portion of every transaction goes directly to Newport Harbor Football. Equipment, travel, training — your spending powers the program.</p>
       </div>
     </div>
   </div>
@@ -755,6 +909,14 @@
   </div>
 </section>
 
+<!-- COMMUNITY CALLOUT -->
+<section class="section-pad" style="padding:40px 24px;">
+  <div class="callout-banner reveal">
+    <h2>EVERY PAYMENT.<br>EVERY DAY.<br><span style="color:var(--gold-accent);">GO SAILORS.</span></h2>
+    <p>Every payment you make moves Newport Harbor Football forward — and puts cash back in your pocket. No extra cost. No fundraisers. Just your everyday spending, working harder.</p>
+  </div>
+</section>
+
 <!-- BRAND LOGOS -->
 <section class="brands-section" id="brands">
   <div class="section-header reveal">
@@ -782,6 +944,51 @@
     </div>
     <div class="reveal" style="position:relative;width:100%;padding-bottom:56.25%;border-radius:20px;overflow:hidden;border:1px solid rgba(0,43,92,0.2);">
       <div id="yt-player-container" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq">
+  <div class="faq-section">
+    <div class="section-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">GOT QUESTIONS?</h2>
+    </div>
+    <div class="faq-item open reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> Is TapNPay+ free to use?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>The app is free to download and use. You choose whether to add a $50 or $96 annual membership to directly support Newport Harbor Football. Either way, you earn cash back on every purchase.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> How does the school get paid?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>Every time you pay through TapNPay+ at a brand partner, a portion of the transaction is contributed directly to Newport Harbor Football. TapNPay+ handles all the payments — the school earns automatically.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> What brands can I use?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>Over 300 national brands including Nike, Starbucks, Home Depot, Amazon, Uber, and many more. Use them in-store or online — wherever you already shop.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-delay-3">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> Do I have to change how I shop?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>Not at all. You shop at the same brands you already use. The only difference is you open TapNPay+ first and load a digital gift card in the exact amount of your purchase. Same stores, same prices, same checkout — just with cash back and program support built in.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span><span class="faq-label">Q:</span> What is promo code NHSAILORS?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><p>NHSAILORS is the exclusive promo code that links your TapNPay+ account to Newport Harbor Football. Enter it when you sign up so your purchases count toward supporting the Sailors.</p></div>
     </div>
   </div>
 </section>
@@ -838,6 +1045,9 @@ var brands = [
 function createBrandChip(b){var c=document.createElement('div');c.className='brand-chip';c.innerHTML='<img src="https://www.google.com/s2/favicons?domain='+b.domain+'&sz=128" alt="'+b.name+'" onerror="this.style.display=\'none\'"><span class="brand-name">'+b.name+'</span>';return c;}
 function populateRow(id,num){var t=document.getElementById(id);var r=brands.filter(function(b){return b.row===num;});r.concat(r).forEach(function(b){t.appendChild(createBrandChip(b));});}
 populateRow('row1',1);populateRow('row2',2);populateRow('row3',3);
+
+// ===== FAQ TOGGLE =====
+function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
 
 // ===== NAVBAR SCROLL + PROGRESS =====
 window.addEventListener('scroll',function(){
