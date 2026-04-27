@@ -109,6 +109,16 @@
     },
     {
       "source": "/",
+      "has": [{ "type": "host", "value": "nhs.tapnpayplus.com" }],
+      "destination": "/newport-harbor/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "nhs.tapnpayplus.com" }],
+      "destination": "/newport-harbor/:path*"
+    },
+    {
+      "source": "/",
       "destination": "/hub/index.html"
     }
   ]
