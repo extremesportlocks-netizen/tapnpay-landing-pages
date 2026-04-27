@@ -267,16 +267,17 @@
   .how-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
 
   /* ===== APP STORE BUTTONS ===== */
-  .store-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+  .store-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
   .store-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 14px 28px; border-radius: 14px;
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-    color: var(--white); text-decoration: none; font-size: 14px; font-weight: 600;
-    transition: all 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 12px;
+    background: #000; border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white); text-decoration: none; font-size: 13px; font-weight: 600;
+    transition: all 0.3s; line-height: 1;
   }
-  .store-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(212, 168, 67, 0.3); transform: translateY(-2px); }
-  .store-btn svg { width: 24px; height: 24px; }
+  .store-btn:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+  .store-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .store-btn .store-label { font-size: 9px; font-weight: 400; display: block; opacity: 0.7; }
 
   /* ===== MEMBERSHIP TIERS ===== */
   .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
@@ -408,7 +409,7 @@
     animation: marquee 180s linear infinite; width: max-content;
   }
   .logo-marquee.reverse { animation-direction: reverse; }
-  .logo-marquee.slow { animation-duration: 220s; }
+  .logo-marquee.fast { animation-duration: 150s; }
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -493,13 +494,32 @@
     .nav-badge { font-size: 8px; padding: 3px 7px; }
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
+    .hero { padding: 80px 20px 50px; }
+    .hero-sub { font-size: 15px; }
     .how-cards { grid-template-columns: 1fr; }
     .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 40px 20px; }
     .stat-cell { padding: 28px 16px; }
+    .stat-number { font-size: 52px; }
     .tier-grid { grid-template-columns: 1fr; }
+    .tier-price { font-size: 56px; }
     .works-grid { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
+    .section-pad { padding: 70px 20px; }
+    .promo-code { font-size: 26px; letter-spacing: 4px; }
+    .cta-section { padding: 80px 20px; }
     .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; flex-wrap: wrap; }
+  }
+  @media (max-width: 420px) {
+    .hero h1 { font-size: 40px; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 2px; padding: 6px 14px; }
+    .cta-primary { padding: 14px 28px; font-size: 13px; }
+    .cta-secondary { padding: 14px 24px; font-size: 12px; }
+    .stats-strip { grid-template-columns: 1fr; }
+    .stat-number { font-size: 48px; }
+    .promo-code { font-size: 22px; letter-spacing: 3px; padding: 6px 20px; }
+    .section-title { font-size: 32px; }
+    .store-btn { padding: 10px 16px; font-size: 12px; }
   }
 
   /* ===== SCROLL REVEAL ===== */
@@ -588,12 +608,12 @@
     </div>
     <div class="store-buttons reveal">
       <a href="https://apps.apple.com/app/tapnpay/id6467442456" target="_blank" class="store-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span><span class="store-label">Download on the</span>App Store</span>
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.tapnpay.app" target="_blank" class="store-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83.52-1.28 1-1.5l10 10-10 10c-.48-.22-1-.67-1-1.5zm15-4.5l-2.5-2.5 2.5-2.5 2.8 1.6c.73.41.73 1.39 0 1.8L18 16zm-3.9-3.5L5.5 3l9.6 5.5-2 2zm0 1l2 2L5.5 21l9.6-9.5z"/></svg>
-        Google Play
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.382.218-.72.609-.92z" fill="#4285F4"/><path d="M17.194 8.57L5.073.493C4.553.196 3.99.13 3.609 1.814L13.792 12l3.402-3.43z" fill="#EA4335"/><path d="M3.609 22.186c.381.684.944.618 1.464.321l12.12-8.078L13.793 12 3.609 22.186z" fill="#34A853"/><path d="M20.854 10.758l-3.66-2.188L13.792 12l3.402 3.43 3.66-2.19c.916-.557.916-1.926 0-2.482z" fill="#FBBC04"/></svg>
+        <span><span class="store-label">Get it on</span>Google Play</span>
       </a>
     </div>
   </div>
@@ -709,10 +729,10 @@
     <div class="logo-marquee" id="row1"></div>
   </div>
   <div class="logo-marquee-wrap">
-    <div class="logo-marquee reverse" id="row2"></div>
+    <div class="logo-marquee reverse fast" id="row2"></div>
   </div>
   <div class="logo-marquee-wrap">
-    <div class="logo-marquee slow" id="row3"></div>
+    <div class="logo-marquee" id="row3"></div>
   </div>
   <p class="brands-count reveal">And <strong>hundreds more</strong> national retailers — in-store and online.</p>
 </section>
@@ -738,12 +758,12 @@
     <div class="promo-code" style="margin-bottom:28px;">NHSAILORS</div>
     <div class="store-buttons" style="margin-top:0;">
       <a href="https://apps.apple.com/app/tapnpay/id6467442456" target="_blank" class="store-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span><span class="store-label">Download on the</span>App Store</span>
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.tapnpay.app" target="_blank" class="store-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83.52-1.28 1-1.5l10 10-10 10c-.48-.22-1-.67-1-1.5zm15-4.5l-2.5-2.5 2.5-2.5 2.8 1.6c.73.41.73 1.39 0 1.8L18 16zm-3.9-3.5L5.5 3l9.6 5.5-2 2zm0 1l2 2L5.5 21l9.6-9.5z"/></svg>
-        Google Play
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.382.218-.72.609-.92z" fill="#4285F4"/><path d="M17.194 8.57L5.073.493C4.553.196 3.99.13 3.609 1.814L13.792 12l3.402-3.43z" fill="#EA4335"/><path d="M3.609 22.186c.381.684.944.618 1.464.321l12.12-8.078L13.793 12 3.609 22.186z" fill="#34A853"/><path d="M20.854 10.758l-3.66-2.188L13.792 12l3.402 3.43 3.66-2.19c.916-.557.916-1.926 0-2.482z" fill="#FBBC04"/></svg>
+        <span><span class="store-label">Get it on</span>Google Play</span>
       </a>
     </div>
   </div>
