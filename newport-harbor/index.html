@@ -307,7 +307,7 @@
     font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1;
     margin-bottom: 4px;
   }
-  .tier-price .dollar { font-size: 36px; vertical-align: super; }
+  .tier-price .dollar { font-size: 40px; }
   .tier-price .period { font-size: 18px; color: rgba(255,255,255,0.3); }
   .tier-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
   .tier-card p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
@@ -494,32 +494,44 @@
     .nav-badge { font-size: 8px; padding: 3px 7px; }
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
-    .hero { padding: 80px 20px 50px; }
-    .hero-sub { font-size: 15px; }
+    .hero { min-height: auto; padding: 72px 20px 40px; }
+    .hero h1 { font-size: 48px; line-height: 1; margin-bottom: 12px; }
+    .hero-eyebrow { margin-bottom: 20px; font-size: 10px; letter-spacing: 2px; padding: 6px 16px; }
+    .hero-sub { font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
+    .hero-cta-group { gap: 10px; }
+    .cta-primary { padding: 14px 28px; font-size: 14px; }
+    .cta-secondary { padding: 14px 24px; font-size: 13px; }
+    .promo-bar { padding: 20px 20px; }
+    .promo-code { font-size: 26px; letter-spacing: 4px; }
     .how-cards { grid-template-columns: 1fr; }
     .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 40px 20px; }
     .stat-cell { padding: 28px 16px; }
     .stat-number { font-size: 52px; }
     .tier-grid { grid-template-columns: 1fr; }
     .tier-price { font-size: 56px; }
+    .tier-price .dollar { font-size: 32px; }
+    .tier-card { padding: 32px 24px; }
     .works-grid { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
-    .section-pad { padding: 70px 20px; }
-    .promo-code { font-size: 26px; letter-spacing: 4px; }
-    .cta-section { padding: 80px 20px; }
+    .section-pad { padding: 60px 20px; }
+    .section-header { margin-bottom: 40px; }
+    .cta-section { padding: 60px 20px; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
   }
   @media (max-width: 420px) {
-    .hero h1 { font-size: 40px; }
-    .hero-eyebrow { font-size: 10px; letter-spacing: 2px; padding: 6px 14px; }
-    .cta-primary { padding: 14px 28px; font-size: 13px; }
-    .cta-secondary { padding: 14px 24px; font-size: 12px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1px; }
+    .hero-eyebrow { font-size: 9px; padding: 5px 12px; }
+    .hero-sub { font-size: 14px; }
+    .cta-primary { padding: 12px 22px; font-size: 13px; letter-spacing: 1px; }
+    .cta-secondary { padding: 12px 20px; font-size: 12px; }
     .stats-strip { grid-template-columns: 1fr; }
     .stat-number { font-size: 48px; }
     .promo-code { font-size: 22px; letter-spacing: 3px; padding: 6px 20px; }
-    .section-title { font-size: 32px; }
+    .section-title { font-size: 30px; }
     .store-btn { padding: 10px 16px; font-size: 12px; }
+    .tier-price { font-size: 48px; }
+    .tier-price .dollar { font-size: 28px; }
   }
 
   /* ===== SCROLL REVEAL ===== */
@@ -634,7 +646,7 @@
     <div class="stat-desc">Earning Potential</div>
   </div>
   <div class="stat-cell reveal reveal-delay-3">
-    <div class="stat-number"><span class="dollar" style="font-size:44px;">$</span>0</div>
+    <div class="stat-number">$0</div>
     <div class="stat-desc">Extra Cost To Fans</div>
   </div>
 </div>
