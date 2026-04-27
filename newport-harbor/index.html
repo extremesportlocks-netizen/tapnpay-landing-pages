@@ -491,9 +491,10 @@
   @media (max-width: 768px) {
     .navbar { padding: 0 16px; height: 56px; }
     .navbar-logo { font-size: 22px; }
-    .nav-badge { font-size: 8px; padding: 3px 7px; }
+    .nav-badge { font-size: 8px; padding: 3px 7px; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .navbar-cta { font-size: 11px; padding: 7px 16px; }
     .nav-links { display: none; }
+    .scroll-progress { top: 56px; }
     .hero { min-height: auto; padding: 72px 20px 40px; }
     .hero h1 { font-size: 48px; line-height: 1; margin-bottom: 12px; }
     .hero-eyebrow { margin-bottom: 20px; font-size: 10px; letter-spacing: 2px; padding: 6px 16px; }
@@ -515,6 +516,7 @@
     .benefits-grid { grid-template-columns: 1fr; }
     .section-pad { padding: 60px 20px; }
     .section-header { margin-bottom: 40px; }
+    .section-title { font-size: clamp(30px, 5vw, 48px); }
     .cta-section { padding: 60px 20px; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
@@ -525,6 +527,7 @@
     .hero-sub { font-size: 14px; }
     .cta-primary { padding: 12px 22px; font-size: 13px; letter-spacing: 1px; }
     .cta-secondary { padding: 12px 20px; font-size: 12px; }
+    .nav-badge { display: none; }
     .stats-strip { grid-template-columns: 1fr; }
     .stat-number { font-size: 48px; }
     .promo-code { font-size: 22px; letter-spacing: 3px; padding: 6px 20px; }
@@ -532,6 +535,21 @@
     .store-btn { padding: 10px 16px; font-size: 12px; }
     .tier-price { font-size: 48px; }
     .tier-price .dollar { font-size: 28px; }
+    body::after { display: none; }
+  }
+
+  /* ===== SCROLL PROGRESS BAR ===== */
+  .scroll-progress {
+    position: fixed; top: 72px; left: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold-accent), var(--navy-bright));
+    z-index: 1001; transition: width 0.1s linear; width: 0;
+  }
+
+  /* ===== NOISE GRAIN TEXTURE ===== */
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 128px 128px;
   }
 
   /* ===== SCROLL REVEAL ===== */
@@ -549,6 +567,8 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8B6W6R7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
@@ -619,7 +639,7 @@
       </div>
     </div>
     <div class="store-buttons reveal">
-      <a href="https://apps.apple.com/app/tapnpay/id6467442456" target="_blank" class="store-btn">
+      <a href="https://apps.apple.com/us/app/tapnpay/id1521871802" target="_blank" class="store-btn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         <span><span class="store-label">Download on the</span>App Store</span>
       </a>
@@ -769,7 +789,7 @@
     <p class="sub">Start supporting Newport Harbor Football with every purchase. Use promo code NHSAILORS.</p>
     <div class="promo-code" style="margin-bottom:28px;">NHSAILORS</div>
     <div class="store-buttons" style="margin-top:0;">
-      <a href="https://apps.apple.com/app/tapnpay/id6467442456" target="_blank" class="store-btn">
+      <a href="https://apps.apple.com/us/app/tapnpay/id1521871802" target="_blank" class="store-btn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         <span><span class="store-label">Download on the</span>App Store</span>
       </a>
@@ -815,8 +835,14 @@ function createBrandChip(b){var c=document.createElement('div');c.className='bra
 function populateRow(id,num){var t=document.getElementById(id);var r=brands.filter(function(b){return b.row===num;});r.concat(r).forEach(function(b){t.appendChild(createBrandChip(b));});}
 populateRow('row1',1);populateRow('row2',2);populateRow('row3',3);
 
-// ===== NAVBAR SCROLL =====
-window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);});
+// ===== NAVBAR SCROLL + PROGRESS =====
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
+  var scrollTop=window.scrollY;
+  var docHeight=document.documentElement.scrollHeight-window.innerHeight;
+  var scrollPercent=(scrollTop/docHeight)*100;
+  document.getElementById('scrollProgress').style.width=scrollPercent+'%';
+});
 
 // ===== SCROLL REVEAL =====
 var revealObserver=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
