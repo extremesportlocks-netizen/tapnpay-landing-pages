@@ -678,6 +678,43 @@
     body::after { display: none; }
   }
 
+  /* ===== PAGE BLOBS (FLOATING ORBS) ===== */
+  .page-blobs {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  }
+  .page-blob {
+    position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+  }
+  .page-blob-1 {
+    width: 600px; height: 600px; top: 5%; right: -10%;
+    background: rgba(220, 38, 38, 0.08);
+    animation: pblob1 20s ease-in-out infinite alternate;
+  }
+  .page-blob-2 {
+    width: 500px; height: 500px; top: 25%; left: -8%;
+    background: rgba(220, 38, 38, 0.06);
+    animation: pblob2 24s ease-in-out infinite alternate;
+  }
+  .page-blob-3 {
+    width: 450px; height: 450px; top: 50%; right: 5%;
+    background: rgba(220, 38, 38, 0.04);
+    animation: pblob3 18s ease-in-out infinite alternate;
+  }
+  .page-blob-4 {
+    width: 550px; height: 550px; top: 70%; left: 10%;
+    background: rgba(220, 38, 38, 0.05);
+    animation: pblob4 22s ease-in-out infinite alternate;
+  }
+  .page-blob-5 {
+    width: 400px; height: 400px; top: 90%; right: -5%;
+    background: rgba(220, 38, 38, 0.03);
+    animation: pblob1 26s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes pblob1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-40px, 30px) scale(1.15); } }
+  @keyframes pblob2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px, -25px) scale(1.1); } }
+  @keyframes pblob3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-30px, -40px) scale(1.2); } }
+  @keyframes pblob4 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(35px, 20px) scale(0.9); } }
+
   /* ===== SCROLL PROGRESS BAR ===== */
   .scroll-progress {
     position: fixed; top: 72px; left: 0; height: 2px;
@@ -709,6 +746,15 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- PAGE BLOBS -->
+<div class="page-blobs">
+  <div class="page-blob page-blob-1"></div>
+  <div class="page-blob page-blob-2"></div>
+  <div class="page-blob page-blob-3"></div>
+  <div class="page-blob page-blob-4"></div>
+  <div class="page-blob page-blob-5"></div>
+</div>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
@@ -1069,7 +1115,7 @@ var counterObserver=new IntersectionObserver(function(entries){entries.forEach(f
 document.querySelectorAll('.counter').forEach(function(el){counterObserver.observe(el);});
 
 // ===== PARTICLES =====
-(function(){var c=document.getElementById('particles');for(var i=0;i<20;i++){var p=document.createElement('div');p.className='particle';var s=Math.random()*4+2;var isGold=Math.random()>0.5;Object.assign(p.style,{width:s+'px',height:s+'px',left:Math.random()*100+'%',background:isGold?'rgba(220,38,38,0.6)':'rgba(0,43,92,0.5)',animationDuration:(Math.random()*10+8)+'s',animationDelay:(Math.random()*10)+'s'});c.appendChild(p);}})();
+(function(){var c=document.getElementById('particles');for(var i=0;i<40;i++){var p=document.createElement('div');p.className='particle';var s=Math.random()*6+2;var isRed=Math.random()>0.4;Object.assign(p.style,{width:s+'px',height:s+'px',left:Math.random()*100+'%',background:isRed?'rgba(220,38,38,0.7)':'rgba(0,43,92,0.5)',animationDuration:(Math.random()*10+8)+'s',animationDelay:(Math.random()*10)+'s'});c.appendChild(p);}})();
 </script>
 
 <script>
